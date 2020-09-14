@@ -2,10 +2,10 @@
 #include <string>
 #include <iostream>
 
-Entity::Entity(const int h,const int ad,const std::string n) : Name(n){
-    this->MaxHealth      =   h;
+Entity::Entity(const int health,const int attackDamage,const std::string name) : Name(name){
+    this->MaxHealth      =   health;
     this->Health         =   this->MaxHealth;
-    this->AttackDamage   =   ad;
+    this->AttackDamage   =   attackDamage;
     this->isDead         =   false;
 }
 

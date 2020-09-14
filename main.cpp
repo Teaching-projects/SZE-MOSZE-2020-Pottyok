@@ -5,9 +5,12 @@
 
 using namespace std;
 
-int isdigits(const string & s) {
-    for (char c : s) if (!isdigit(c)) return (0);
-    return (1);
+int isNumeric(const string & chars) {
+    for (char c : chars){
+        if (!isdigit(c)) return false;
+    }
+    
+    return true;
 }
 
 int main (int argc, char *argv[]) {
@@ -15,7 +18,7 @@ int main (int argc, char *argv[]) {
     Entity* ent1;
     Entity* ent2;
 
-    if(argc != 7 || !(isdigits(argv[2]) && isdigits(argv[3]) && isdigits(argv[5]) && isdigits(argv[6])) ){
+    if(argc != 7 || !(isNumeric(argv[2]) && isNumeric(argv[3]) && isNumeric(argv[5]) && isNumeric(argv[6])) ){
         std::cout << "Wrong initial data given, using default values." << std::endl;
         ent1 = new Entity(150, 10, "Maple");
         ent2 = new Entity(45, 30, "Sally");
