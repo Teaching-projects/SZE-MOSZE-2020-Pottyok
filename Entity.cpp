@@ -2,18 +2,18 @@
 #include <string>
 #include <iostream>
 
-Entity::Entity(const float h,const float ad,const std::string n) : Name(n){
+Entity::Entity(const int h,const int ad,const std::string n) : Name(n){
     this->MaxHealth      =   h;
     this->Health         =   this->MaxHealth;
     this->AttackDamage   =   ad;
     this->isDead         =   false;
 }
 
-float Entity::getHealth(){
+int Entity::getHealth(){
     return this->Health;
 }
 
-float Entity::getAttackDamage(){
+int Entity::getAttackDamage(){
     return this->AttackDamage;
 }
 
@@ -21,7 +21,7 @@ void Entity::die(){
     this->isDead = true;
 }
 
-void Entity::damage(const float dmg){
+void Entity::damage(const int dmg){
     this->Health -= dmg;
     if(this->Health <= 0){
         this->Health = 0;

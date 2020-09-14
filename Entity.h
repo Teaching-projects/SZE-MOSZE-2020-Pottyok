@@ -6,18 +6,18 @@
 class Entity{
     protected:
         const std::string Name;
-        float Health;
-        float MaxHealth;
-        float AttackDamage;
+        int Health;
+        int MaxHealth;
+        int AttackDamage;
         bool isDead;
 
     public:
-        Entity(const float,const float,const std::string);
-        void damage(const float);
-        float getAttackDamage();
+        Entity(const int,const int,const std::string);
+        void damage(const int);
+        int getAttackDamage();
         std::string getName();
         void attack(Entity&);
-        float getHealth();
+        int getHealth();
         bool getIsDead();
         void die();
 
