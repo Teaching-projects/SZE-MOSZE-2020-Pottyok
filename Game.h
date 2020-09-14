@@ -10,6 +10,7 @@ class Game{
         int turn;
     public:
         Game(const Entity&,const Entity&);
+        void echoAttackInfo();
         bool isAnyoneDead();
         void attackPhase();
         Entity getWinner();

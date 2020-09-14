@@ -13,13 +13,13 @@ class Entity{
 
     public:
         Entity(const float,const float,const std::string);
-        std::string getName();
-        float getHealth();
-        float getAttackDamage();
         void damage(const float);
+        float getAttackDamage();
+        std::string getName();
         void attack(Entity&);
-        void die();
+        float getHealth();
         bool getIsDead();
+        void die();
 
 };
 

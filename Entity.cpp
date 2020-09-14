@@ -19,7 +19,6 @@ float Entity::getAttackDamage(){
 
 void Entity::die(){
     this->isDead = true;
-    std::cout << "I am dead: " << this->Name << std::endl;
 }
 
 void Entity::damage(const float dmg){
@@ -31,6 +30,7 @@ void Entity::damage(const float dmg){
 }
 
 void Entity::attack(Entity& enemy){
+    std::cout << this->getName() << " -> " << enemy.getName() << std::endl;
     enemy.damage(this->getAttackDamage());
 }
 
