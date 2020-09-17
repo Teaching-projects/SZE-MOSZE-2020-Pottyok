@@ -9,7 +9,6 @@ class Entity{
         int Health;
         int MaxHealth;
         int AttackDamage;
-        bool isDead;
 
     public:
         Entity(const int,const int,const std::string);

@@ -14,7 +14,7 @@ int isNumeric(const string & chars) {
 }
 
 int main (int argc, char *argv[]) {
-    Entity ent1(150, 10, "Szar");
+    Entity ent1(150, 10, "Maple");
     Entity ent2(45, 30, "Sally");
     if(argc != 7 || !(isNumeric(argv[2]) && isNumeric(argv[3]) && isNumeric(argv[5]) && isNumeric(argv[6])) ){
         std::cout << "Wrong initial data given, using default values." << std::endl;
