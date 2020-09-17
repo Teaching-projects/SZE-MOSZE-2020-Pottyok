@@ -5,7 +5,7 @@
 
 class Entity{
     protected:
-        const std::string Name;
+        std::string Name;
         int Health;
         int MaxHealth;
         int AttackDamage;
@@ -13,6 +13,7 @@ class Entity{
 
     public:
         Entity(const int,const int,const std::string);
+        Entity& operator=(const Entity&);
         void damage(const int);
         int getAttackDamage();
         std::string getName();

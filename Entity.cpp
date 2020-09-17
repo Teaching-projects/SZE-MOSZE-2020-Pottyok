@@ -2,16 +2,27 @@
 #include <string>
 #include <iostream>
 
-Entity::Entity(const int health,const int attackDamage,const std::string name) : Name(name){
+Entity::Entity(const int health,const int attackDamage,const std::string name){
     this->MaxHealth      =   health;
     this->Health         =   this->MaxHealth;
     this->AttackDamage   =   attackDamage;
     this->isDead         =   false;
+    this->Name           =   name;
+}
+
+
+Entity& Entity::operator=(const Entity &entity){
+    this->MaxHealth      =   entity.MaxHealth;
+    this->Health         =   entity.Health;
+    this->AttackDamage   =   entity.AttackDamage;
+    this->Name         =   entity.Name;
+    this->isDead         =   entity.isDead; 
 }
 
 int Entity::getHealth(){
     return this->Health;
 }
+
 
 int Entity::getAttackDamage(){
     return this->AttackDamage;
