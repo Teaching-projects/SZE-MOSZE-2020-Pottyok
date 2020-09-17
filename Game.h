@@ -15,7 +15,6 @@ class Game{
         void attackPhase();
         Entity getWinner();
         void Start();
-        void Loop();
         void End();
 
 };

@@ -15,6 +15,7 @@ Entity& Entity::operator=(const Entity &entity){
     this->Health         =   entity.Health;
     this->AttackDamage   =   entity.AttackDamage;
     this->Name           =   entity.Name;
+    return *this;
 }
 
 int Entity::getHealth(){
