@@ -16,8 +16,7 @@ void Game::Start(){
 }
 
 void Game::End(){
-    this->echoAttackInfo();
-    std::cout << (this->ent2.getIsDead() ? this->ent2.getName() : this->ent1.getName()) << " died. " << this->getWinner().getName() << " wins.";
+    std::cout << this->getWinner().getName() << " wins. Remaining HP: " << this->getWinner().getHealth() << std::endl;
 }
 
 bool Game::isAnyoneDead(){
@@ -25,15 +24,9 @@ bool Game::isAnyoneDead(){
 }
 
 void Game::attackPhase(){
-    this->echoAttackInfo();
     this->turn % 2 == 0 ? this->ent1.attack(this->ent2) : this->ent2.attack(this->ent1);
 }
 
 Entity Game::getWinner(){
     return this->ent1.getIsDead() ? this->ent2 : this->ent1;
-}
-
-void Game::echoAttackInfo() {
-    std::cout << this->ent1.getName() << ": HP: " << this->ent1.getHealth() << ", DMG:" << this->ent1.getAttackDamage() << std::endl;
-    std::cout << this->ent2.getName() << ": HP: " << this->ent2.getHealth() << ", DMG:" << this->ent2.getAttackDamage() << std::endl;
 }

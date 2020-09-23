@@ -38,7 +38,6 @@ void Entity::damage(const int dmg){
 }
 
 void Entity::attack(Entity& enemy){
-    std::cout << this->getName() << " -> " << enemy.getName() << std::endl;
     enemy.damage(this->getAttackDamage());
 }
 
