@@ -3,12 +3,6 @@
 expected="units/expected.txt"
 results="results.txt"
 
-if test -f "$results"; then
-    rm "$results"
-fi
-
-$(g++ -std=c++17 *.cpp -o output)
-
 while IFS= read line
 do
     ent1="$(cut -d';' -f1 <<<"$line")"
