@@ -5,10 +5,11 @@ results="results.txt"
 
 while IFS= read line
 do
-    ent1="$(cut -d';' -f1 <<<"$line")"
-    ent2="$(cut -d';' -f2 <<<"$line")"
-    outcome="$(cut -d';' -f3 <<<"$line")"
-    output="$(./output $ent1.json  $ent2.json)"
+    ent1=`echo "$line" | cut -d ';' -f 1`
+    ent2=`echo "$line" | cut -d ';' -f 2`
+    outcome=`echo "$line" | cut -d ';' -f 3`
+
+    output="$(./output $ent1.json $ent2.json)"
     echo "$ent1;$ent2;$output" >> $results
 done < "$expected"
 
