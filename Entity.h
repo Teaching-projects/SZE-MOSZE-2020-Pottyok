@@ -16,10 +16,12 @@ class Entity{
         void damage(const int);
         int getAttackDamage();
         std::string getName();
+        static Entity parseUnit(const std::string);
         void attack(Entity&);
         int getHealth();
         bool getIsDead();
         void die();
+
 
 };
 

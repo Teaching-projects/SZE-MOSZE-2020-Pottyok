@@ -1,6 +1,8 @@
 #include "Entity.h"
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <regex> 
 
 Entity::Entity(const int health,const int attackDamage,const std::string name){
     this->MaxHealth      =   health;
@@ -42,6 +44,31 @@ void Entity::attack(Entity& enemy){
 
 bool Entity::getIsDead(){
     return (this->Health <= 0);
+}
+
+Entity Entity::parseUnit(const std::string fileName){
+    std::ifstream f("units/"+fileName);
+    if(!f.good()) throw std::runtime_error("The given file was not found: " + fileName);
+    std::string fileInOneLine, line;
+    while (std::getline(f, line)){ fileInOneLine += line; }
+    f.close();
+    const std::regex searchRegex("\"([a-zA-Z0-9]*)\"[\\s:]*\"?([a-zA-Z0-9]*)\"?,?");
+    std::smatch searchMatches;
+    std::string name;
+    int health, attackDamage;
+    while (std::regex_search(fileInOneLine, searchMatches, searchRegex))
+    {
+        if(searchMatches[1] == "name")
+            name = searchMatches[2];
+        else if(searchMatches[1] == "hp")
+            health = stoi(searchMatches[2]);
+        else
+            attackDamage = stoi(searchMatches[2]);
+
+        fileInOneLine = searchMatches.suffix();
+    }
+    Entity toCreate(health, attackDamage, name);
+    return toCreate;
 }
 
 std::string Entity::getName(){
