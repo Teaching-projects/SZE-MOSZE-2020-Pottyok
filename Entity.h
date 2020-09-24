@@ -15,7 +15,7 @@ class Entity{
         Entity& operator=(const Entity&);
         void damage(const int);
         int getAttackDamage();
-        std::string getName();
+        const std::string getName();
         static Entity parseUnit(const std::string);
         void attack(Entity&);
         int getHealth();

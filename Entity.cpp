@@ -72,10 +72,10 @@ Entity Entity::parseUnit(const std::string fileName){
 
         fileInOneLine = searchMatches.suffix();
     }
-    Entity toCreate(health, attackDamage, name);
-    return toCreate;
+    
+    return Entity(health, attackDamage, name);
 }
 
-std::string Entity::getName(){
+const std::string Entity::getName(){
     return this->Name;
 }
