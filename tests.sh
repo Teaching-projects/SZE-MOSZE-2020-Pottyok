@@ -9,7 +9,7 @@ do
     ent2=`echo "$line" | cut -d ';' -f 2`
     outcome=`echo "$line" | cut -d ';' -f 3`
 
-    output="$(./output $ent1.json $ent2.json)"
+    output="$(./output units/$ent1.json units/$ent2.json)"
     echo "$ent1;$ent2;$output" >> $results
 done < "$expected"
 
