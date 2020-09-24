@@ -26,6 +26,7 @@ int main (int argc, char *argv[]) {
             ent2 = Entity::parseUnit(argv[2]);
         }catch(std::exception& e){
             std::cout << "An error occured while the program was running: " << e.what() << std::endl;
+            return 1;
         }
     }
 
