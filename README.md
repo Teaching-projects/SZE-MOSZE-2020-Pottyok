@@ -3,7 +3,7 @@ Modern szoftverfejlesztés órára készült C++ projekt.
 ## A program működése
 A program két indítási paramétert vár, két **.json** kiterjesztésű fájlnevet. Példa indítás:
 ```bash
-./a kakarott.json sally.json
+./a units/kakarott.json units/sally.json
 ```
 Amennyiben ezek nem állnak rendelkezésre, a program alapértelmezett adatokkal dolgozik.
 A két egység felváltva támadja egymást, amíg az egyik életereje el nem fogy, ekkor a játék véget ér.
