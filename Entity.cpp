@@ -46,23 +46,29 @@ bool Entity::getIsDead(){
 }
 
 Entity Entity::parseUnit(const std::string fileName){
-    std::ifstream f("units/"+fileName);
+    std::ifstream f(fileName);
     if(!f.good()) throw std::runtime_error("The given file was not found: " + fileName);
     std::string fileInOneLine, line;
     while (std::getline(f, line)){ fileInOneLine += line; }
     f.close();
-    const std::regex searchRegex("\"([a-zA-Z0-9]*)\"[\\s:]*\"?([a-zA-Z0-9]*)\"?,?");
+
+    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s:\\s(\"[a-zA-Z0-9]+\"|[a-zA-Z0-9]+)[,\n}]{1}");
+    const std::regex replaceRegex("\"");
     std::smatch searchMatches;
     std::string name;
+    std::string matchValue;
     int health, attackDamage;
+    std::regex_match(fileInOneLine, searchMatches, searchRegex);
     while (std::regex_search(fileInOneLine, searchMatches, searchRegex))
     {
+        matchValue = searchMatches[2].str();
+        std::replace(matchValue.begin(), matchValue.end(), '\"', '\0');
         if(searchMatches[1] == "name")
-            name = searchMatches[2];
+            name = matchValue;
         else if(searchMatches[1] == "hp")
-            health = stoi(searchMatches[2]);
-        else
-            attackDamage = stoi(searchMatches[2]);
+            health = stoi(matchValue);
+        else if(searchMatches[1] == "dmg")
+            attackDamage = stoi(matchValue);
 
         fileInOneLine = searchMatches.suffix();
     }
