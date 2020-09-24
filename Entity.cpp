@@ -45,7 +45,7 @@ bool Entity::getIsDead(){
     return (this->Health <= 0);
 }
 
-Entity Entity::parseUnit(const std::string fileName){
+Entity Entity::parseUnit(const std::string& fileName){
     std::ifstream f(fileName);
     if(!f.good()) throw std::runtime_error("The given file was not found: " + fileName);
     std::string fileInOneLine, line;
@@ -72,7 +72,7 @@ Entity Entity::parseUnit(const std::string fileName){
 
         fileInOneLine = searchMatches.suffix();
     }
-    
+
     return Entity(health, attackDamage, name);
 }
 
