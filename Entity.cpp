@@ -53,10 +53,8 @@ Entity Entity::parseUnit(const std::string& fileName){
     f.close();
 
     const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s:\\s(\"[a-zA-Z0-9]+\"|[a-zA-Z0-9]+)[,\n}]{1}");
-    const std::regex replaceRegex("\"");
     std::smatch searchMatches;
-    std::string name;
-    std::string matchValue;
+    std::string name, matchValue;
     int health, attackDamage;
     std::regex_match(fileInOneLine, searchMatches, searchRegex);
     while (std::regex_search(fileInOneLine, searchMatches, searchRegex))
