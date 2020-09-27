@@ -19,7 +19,7 @@ void Game::End(){
     std::cout << this->getWinner().getName() << " wins. Remaining HP: " << this->getWinner().getHealth() << std::endl;
 }
 
-bool Game::isAnyoneDead(){
+const bool Game::isAnyoneDead(){
     return (this->ent1.getIsDead() || this->ent2.getIsDead());
 }
 
@@ -27,6 +27,6 @@ void Game::attackPhase(){
     this->turn % 2 == 0 ? this->ent1.attack(this->ent2) : this->ent2.attack(this->ent1);
 }
 
-Entity Game::getWinner(){
+const Entity Game::getWinner(){
     return this->ent1.getIsDead() ? this->ent2 : this->ent1;
 }

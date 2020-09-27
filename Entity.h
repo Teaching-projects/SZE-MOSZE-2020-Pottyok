@@ -14,13 +14,14 @@ class Entity{
         Entity(const int,const int,const std::string);
         Entity& operator=(const Entity&);
         void damage(const int);
-        int getAttackDamage();
-        const std::string getName();
-        static Entity parseUnit(const std::string&);
+        int getAttackDamage() const;
+        std::string getName() const;
         void attack(Entity&);
-        int getHealth();
-        bool getIsDead();
+        int getHealth() const;
+        bool getIsDead() const;
         void die();
+
+        static Entity parseUnit(const std::string&);
 
 
 };

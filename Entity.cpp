@@ -20,12 +20,12 @@ Entity& Entity::operator=(const Entity &entity){
     return *this;
 }
 
-int Entity::getHealth(){
+int Entity::getHealth() const{
     return this->Health;
 }
 
 
-int Entity::getAttackDamage(){
+int Entity::getAttackDamage() const{
     return this->AttackDamage;
 }
 
@@ -41,9 +41,14 @@ void Entity::attack(Entity& enemy){
     enemy.damage(this->getAttackDamage());
 }
 
-bool Entity::getIsDead(){
+bool Entity::getIsDead() const{
     return (this->Health <= 0);
 }
+
+std::string Entity::getName() const{
+    return this->Name;
+}
+
 
 Entity Entity::parseUnit(const std::string& fileName){
     std::ifstream f(fileName);
@@ -72,8 +77,4 @@ Entity Entity::parseUnit(const std::string& fileName){
     }
 
     return Entity(health, attackDamage, name);
-}
-
-const std::string Entity::getName(){
-    return this->Name;
 }

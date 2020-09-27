@@ -10,9 +10,9 @@ class Game{
         int turn;
     public:
         Game(const Entity&,const Entity&);
-        bool isAnyoneDead();
+        const bool isAnyoneDead();
         void attackPhase();
-        Entity getWinner();
+        const Entity getWinner();
         void Start();
         void End();
 
