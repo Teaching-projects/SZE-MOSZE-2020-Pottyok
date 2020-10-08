@@ -1,0 +1,40 @@
+#include "JsonParser.h"
+#include <iostream>
+
+#include <fstream>
+#include <regex>
+
+std::map<std::string, std::any> JsonParser::ParseString(const std::string &input){
+    std::map<std::string, std::any> data;
+    std::smatch searchMatches;
+    
+    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]+[.]?[0-9]+)?(true|false)?[,\n}]{1}");
+
+    std::string worker(input), key, value;
+
+    while (std::regex_search(worker, searchMatches, searchRegex))
+    {
+        key = searchMatches[1].str();
+        if(searchMatches[2].str() != ""){
+            value = searchMatches[2].str();
+            std::replace(value.begin(), value.end(), '\"', '\0');
+            data[key] = value;
+        }
+        else if(searchMatches[3].str() != ""){
+            value = searchMatches[3].str();
+            if(searchMatches[3].str().find('.') != std::string::npos){
+                data[key] = stof(value);
+            } else {
+                data[key] = stoi(value);
+            }
+        }
+        else if(searchMatches[4].str() != ""){
+            value = searchMatches[4].str();
+            data[key] = value == "true" ? true : false;
+        }
+
+        worker = searchMatches.suffix();
+    }
+
+    return data;
+}
