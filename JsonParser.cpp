@@ -38,3 +38,23 @@ std::map<std::string, std::any> JsonParser::ParseString(const std::string &input
 
     return data;
 }
+
+std::map<std::string, std::any> JsonParser::ParseFile(const std::string &fileName){
+    std::ifstream stream(fileName);
+    if(!stream.good()) throw std::runtime_error("The given file was not found: " + fileName);
+
+    std::map<std::string, std::any> data = ParseStream(stream);
+    
+    stream.close();
+
+    return data;
+}
+
+std::map<std::string, std::any> JsonParser::ParseStream(std::istream &stream){
+  std::string fileContent, currentLine;
+  while(std::getline(stream, currentLine)){
+    fileContent += currentLine;
+  }
+
+  return ParseString(fileContent);
+}
