@@ -17,13 +17,13 @@ int isNumeric(const string & chars) {
 
 int main (int argc, char *argv[]) {
     
-    Entity ent1(150, 10, "Maple");
-    Player ent2(45, 30, "Sally");
+    Player ent1(800, 150, "Kakarott");
+    Entity ent2(450, 300, "Sally");
     if(argc != 3){
         std::cout << "Wrong initial data given, using default values." << std::endl;
     }else{
         try{
-            ent1 = Entity::parseUnit(argv[1]);
+            ent1 = Player::parseUnit(argv[1]);
             ent2 = Entity::parseUnit(argv[2]);
         }catch(std::exception& e){
             std::cout << "An error occured while the program was running: " << e.what() << std::endl;
