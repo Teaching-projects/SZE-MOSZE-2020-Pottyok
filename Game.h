@@ -2,14 +2,15 @@
 #define GAME_HEADER
 #include <vector>
 #include "Entity.h"
+#include "Player.h"
 
 class Game{
     protected:
-        Entity ent1;
+        Player ent1;
         Entity ent2;
         int turn;
     public:
-        Game(const Entity&,const Entity&);
+        Game(const Player&,const Entity&);
         bool isAnyoneDead() const;
         void attackPhase();
         Entity getWinner() const;
