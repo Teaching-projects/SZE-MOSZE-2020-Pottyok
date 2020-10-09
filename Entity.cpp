@@ -4,11 +4,10 @@
 #include <fstream>
 #include <regex> 
 
-Entity::Entity(const float health,const float attackDamage,const std::string name){
+Entity::Entity(const float health,const float attackDamage,const std::string name) : Name(name){
     this->MaxHealth      =   health;
     this->Health         =   this->MaxHealth;
     this->AttackDamage   =   attackDamage;
-    this->Name           =   name;
 }
 
 
