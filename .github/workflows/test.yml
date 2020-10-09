@@ -11,3 +11,10 @@ jobs:
         run: g++ -std=c++17 *.cpp -o output
       - name: Test
         run: ./tests.sh
+      - name: cppcheck
+        uses: deep5050/cppcheck-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN}}
+          github_username: "tamasori"
+          github_email: "oeri.tamas@gmail.com"
+          commit_msg: "CPPCHECK log"
