@@ -1,4 +1,3 @@
-[Entity.cpp:11]: (performance) Variable 'Name' is assigned in constructor body. Consider performing initialization in initialization list.
 [Entity.cpp:7]: (performance) Function parameter 'name' should be passed by const reference.
 [Player.cpp:7]: (performance) Function parameter 'name' should be passed by const reference.
 [Player.cpp:44]: (style) The function 'getLevel' is never used.
