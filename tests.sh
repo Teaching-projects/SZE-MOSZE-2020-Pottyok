@@ -4,7 +4,14 @@ sudo apt-get install -y valgrind
 expected="units/expected.txt"
 results="results.txt"
 
-valgrind ./output
+valgrindOutput="$(valgrind ./output)"
+if [[ $valgrindOutput == *"ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)"* ]]; then
+    echo "No memoryleak found!"
+else
+    echo "Memoryleak found!"
+    echo $valgrindOutput
+    exit 1
+fi
 
 while IFS= read line
 do
