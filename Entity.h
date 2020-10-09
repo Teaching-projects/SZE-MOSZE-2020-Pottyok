@@ -11,13 +11,14 @@ class Entity{
         float AttackDamage;
 
     public:
-        Entity(const int,const int,const std::string);
+        Entity(const float,const float,const std::string);
         Entity& operator=(const Entity&);
-        void damage(const int);
-        int getAttackDamage() const;
+        void damage(const float);
+        float getAttackDamage() const;
         std::string getName() const;
         void attack(Entity&);
-        int getHealth() const;
+        float getHealth() const;
+        float getMaxHealth() const;
         bool getIsDead() const;
         void die();
 
