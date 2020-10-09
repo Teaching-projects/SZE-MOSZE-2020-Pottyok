@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Game.h"
 #include "Entity.h"
+#include "Player.h"
 #include <fstream>
 
 using namespace std;
@@ -17,7 +18,7 @@ int isNumeric(const string & chars) {
 int main (int argc, char *argv[]) {
     
     Entity ent1(150, 10, "Maple");
-    Entity ent2(45, 30, "Sally");
+    Player ent2(45, 30, "Sally");
     if(argc != 3){
         std::cout << "Wrong initial data given, using default values." << std::endl;
     }else{
