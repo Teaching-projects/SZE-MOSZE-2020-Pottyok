@@ -15,7 +15,9 @@ class Player : public Entity{
     public:
         Player(const int,const int,const std::string);
         Player& operator=(const Player&);
+        Player& operator=(const Entity&);
         int getLevel() const;
+        void attack(Entity&);
 
 };
 

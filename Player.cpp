@@ -22,6 +22,18 @@ Player& Player::operator=(const Player &player){
     return *this;
 }
 
+Player& Player::operator=(const Entity &entity){
+    this->MaxHealth                     =   entity.getMaxHealth();
+    this->Health                        =   entity.getHealth();
+    this->AttackDamage                  =   entity.getAttackDamage();
+    this->Name                          =   entity.getName();
+    this->ExperienceAtFightStart        =   0;
+    this->ExperienceAtLastRound         =   0;
+    this->ExperienceCurrent             =   0;
+    
+    return *this;
+}
+
 void Player::addExperience(float experience){
     this->ExperienceCurrent += experience;
     int levelsToAdd = (this->ExperienceCurrent - this->ExperienceAtLastRound) / 100;
@@ -32,4 +44,9 @@ void Player::addExperience(float experience){
 
 int Player::getLevel() const{
     return this->ExperienceCurrent / 100;
+}
+
+void Player::attack(Entity& entity){
+    this->addExperience(std::min(this->getAttackDamage(),entity.getHealth()));
+    Entity::attack(entity);
 }
