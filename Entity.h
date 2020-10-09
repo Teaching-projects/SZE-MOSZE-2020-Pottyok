@@ -6,9 +6,9 @@
 class Entity{
     protected:
         std::string Name;
-        int Health;
-        int MaxHealth;
-        int AttackDamage;
+        float Health;
+        float MaxHealth;
+        float AttackDamage;
 
     public:
         Entity(const int,const int,const std::string);
