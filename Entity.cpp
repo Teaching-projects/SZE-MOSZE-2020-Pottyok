@@ -4,10 +4,11 @@
 #include <fstream>
 #include <regex> 
 
-Entity::Entity(const int health,const int attackDamage,const std::string name){
+Entity::Entity(const int health,const int attackDamage,const std::string name, const int attackSpeed){
     this->MaxHealth      =   health;
     this->Health         =   this->MaxHealth;
     this->AttackDamage   =   attackDamage;
+    this->AttackSpeed    =   attackSpeed;
     this->Name           =   name;
 }
 
@@ -16,6 +17,7 @@ Entity& Entity::operator=(const Entity &entity){
     this->MaxHealth      =   entity.MaxHealth;
     this->Health         =   entity.Health;
     this->AttackDamage   =   entity.AttackDamage;
+    this->AttackSpeed    =   entity.AttackSpeed;
     this->Name           =   entity.Name;
     return *this;
 }
@@ -27,6 +29,11 @@ int Entity::getHealth() const{
 
 int Entity::getAttackDamage() const{
     return this->AttackDamage;
+}
+
+
+int Entity::getAttackSpeed() const {
+    return this->AttackSpeed;
 }
 
 
@@ -60,21 +67,23 @@ Entity Entity::parseUnit(const std::string& fileName){
     const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s:\\s(\"[a-zA-Z0-9]+\"|[a-zA-Z0-9]+)[,\n}]{1}");
     std::smatch searchMatches;
     std::string name, matchValue;
-    int health, attackDamage;
+    int health, attackDamage, attackSpeed;
     std::regex_match(fileInOneLine, searchMatches, searchRegex);
     while (std::regex_search(fileInOneLine, searchMatches, searchRegex))
     {
         matchValue = searchMatches[2].str();
         std::replace(matchValue.begin(), matchValue.end(), '\"', '\0');
-        if(searchMatches[1] == "name")
+        if (searchMatches[1] == "name")
             name = matchValue;
-        else if(searchMatches[1] == "hp")
+        else if (searchMatches[1] == "hp")
             health = stoi(matchValue);
-        else if(searchMatches[1] == "dmg")
+        else if (searchMatches[1] == "dmg")
             attackDamage = stoi(matchValue);
+        else if (searchMatches[1] == "spd")
+            attackSpeed = stoi(matchValue);
 
         fileInOneLine = searchMatches.suffix();
     }
 
-    return Entity(health, attackDamage, name);
+    return Entity(health, attackDamage, name, attackSpeed);
 }
