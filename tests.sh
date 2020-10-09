@@ -1,7 +1,10 @@
 #!/bin/bash
+sudo apt-get install -y valgrind
 
 expected="units/expected.txt"
 results="results.txt"
+
+valgrind ./output
 
 while IFS= read line
 do
