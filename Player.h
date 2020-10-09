@@ -8,7 +8,6 @@ class Player : public Entity{
     protected:
         float ExperienceCurrent;
         float ExperienceAtLastRound;
-        float ExperienceAtFightStart;
 
         void addExperience(float);
 

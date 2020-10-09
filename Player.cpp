@@ -5,7 +5,6 @@
 #include <cmath>
 
 Player::Player(const int health,const int attackDamage,const std::string name) : Entity(health, attackDamage, name) {
-    this->ExperienceAtFightStart        = 0;
     this->ExperienceAtLastRound         = 0;
     this->ExperienceCurrent             = 0;
 }
@@ -15,7 +14,6 @@ Player& Player::operator=(const Player &player){
     this->Health                        =   player.Health;
     this->AttackDamage                  =   player.AttackDamage;
     this->Name                          =   player.Name;
-    this->ExperienceAtFightStart        =   player.ExperienceAtFightStart;
     this->ExperienceAtLastRound         =   player.ExperienceAtLastRound;
     this->ExperienceCurrent             =   player.ExperienceCurrent;
     
@@ -27,7 +25,6 @@ Player& Player::operator=(const Entity &entity){
     this->Health                        =   entity.getHealth();
     this->AttackDamage                  =   entity.getAttackDamage();
     this->Name                          =   entity.getName();
-    this->ExperienceAtFightStart        =   0;
     this->ExperienceAtLastRound         =   0;
     this->ExperienceCurrent             =   0;
     
@@ -39,7 +36,9 @@ void Player::addExperience(float experience){
     int levelsToAdd = (this->ExperienceCurrent - this->ExperienceAtLastRound) / 100;
     this->MaxHealth *= powf(1.1f,levelsToAdd);
     this->AttackDamage *= powf(1.1f,levelsToAdd);
-    this->Health = this->MaxHealth;
+    this->Health = levelsToAdd > 0 ? this->MaxHealth : this->Health;
+    this->ExperienceAtLastRound = this->ExperienceCurrent;
+
 }
 
 int Player::getLevel() const{
@@ -49,4 +48,5 @@ int Player::getLevel() const{
 void Player::attack(Entity& entity){
     this->addExperience(std::min(this->getAttackDamage(),entity.getHealth()));
     Entity::attack(entity);
+
 }
