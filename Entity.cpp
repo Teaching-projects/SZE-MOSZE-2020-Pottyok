@@ -4,7 +4,7 @@
 #include <fstream>
 #include <regex> 
 
-Entity::Entity(const int health,const int attackDamage,const std::string name, const int attackSpeed){
+Entity::Entity(const int health,const int attackDamage,const std::string name, const float attackSpeed){
     this->MaxHealth      =   health;
     this->Health         =   this->MaxHealth;
     this->AttackDamage   =   attackDamage;
@@ -32,7 +32,7 @@ int Entity::getAttackDamage() const{
 }
 
 
-int Entity::getAttackSpeed() const {
+float Entity::getAttackSpeed() const {
     return this->AttackSpeed;
 }
 
@@ -57,6 +57,33 @@ std::string Entity::getName() const{
 }
 
 
+
+void Entity::fightLoop(Entity& enemy) {
+    float attackerTimer = 0, enemyTimer = 0;
+
+    do
+    {
+        if (attackerTimer < enemyTimer) {
+            enemyTimer -= attackerTimer;
+            attackerTimer = this->getAttackSpeed();
+            this->attack(enemy);
+        }
+        else if (enemyTimer < attackerTimer) {
+            attackerTimer -= enemyTimer;
+            enemyTimer = enemy.getAttackSpeed();
+            enemy.attack(*this);
+        }
+        else {
+            enemyTimer = 0;
+            attackerTimer = this->getAttackSpeed();
+            this->attack(enemy);
+        }
+
+    } while (!this->getIsDead() && !enemy.getIsDead());
+
+}
+
+
 Entity Entity::parseUnit(const std::string& fileName){
     std::ifstream f(fileName);
     if(!f.good()) throw std::runtime_error("The given file was not found: " + fileName);
@@ -64,10 +91,11 @@ Entity Entity::parseUnit(const std::string& fileName){
     while (std::getline(f, line)){ fileInOneLine += line; }
     f.close();
 
-    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s:\\s(\"[a-zA-Z0-9]+\"|[a-zA-Z0-9]+)[,\n}]{1}");
+    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s:\\s(\"[a-zA-Z0-9.]+\"|[a-zA-Z0-9.]+)[,\r\n}]{1}");
     std::smatch searchMatches;
     std::string name, matchValue;
-    int health, attackDamage, attackSpeed;
+    int health, attackDamage;
+    float attackSpeed;
     std::regex_match(fileInOneLine, searchMatches, searchRegex);
     while (std::regex_search(fileInOneLine, searchMatches, searchRegex))
     {
@@ -80,7 +108,7 @@ Entity Entity::parseUnit(const std::string& fileName){
         else if (searchMatches[1] == "dmg")
             attackDamage = stoi(matchValue);
         else if (searchMatches[1] == "spd")
-            attackSpeed = stoi(matchValue);
+            attackSpeed = stof(matchValue);
 
         fileInOneLine = searchMatches.suffix();
     }

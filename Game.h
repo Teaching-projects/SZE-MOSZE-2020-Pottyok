@@ -11,7 +11,6 @@ class Game{
     public:
         Game(const Entity&,const Entity&);
         bool isAnyoneDead() const;
-        void attackPhase();
         Entity getWinner() const;
         void Start();
         void End();

@@ -2,5 +2,5 @@
     "name" : "Kakarott",
     "hp" : 80,
     "dmg" : 15,
-	"spd" : 10
+    "spd" : 11.5
 }

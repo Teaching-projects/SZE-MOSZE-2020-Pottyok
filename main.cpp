@@ -16,8 +16,8 @@ int isNumeric(const string & chars) {
 
 int main (int argc, char *argv[]) {
     
-    Entity ent1(150, 10, "Maple", 10);
-    Entity ent2(45, 30, "Sally", 10);
+    Entity ent1(150, 10, "Maple", 15.2f);
+    Entity ent2(45, 30, "Sally", 10.5f);
     if(argc != 3){
         std::cout << "Wrong initial data given, using default values." << std::endl;
     }else{
