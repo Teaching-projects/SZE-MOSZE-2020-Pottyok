@@ -18,3 +18,4 @@ jobs:
           github_username: "tamasori"
           github_email: "oeri.tamas@gmail.com"
           commit_msg: "CPPCHECK log"
+          enable: "style,warning,performance,portability,unusedFunction,missingInclude"
