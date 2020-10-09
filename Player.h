@@ -6,14 +6,16 @@
 
 class Player : public Entity{
     protected:
-        int Level;
-        float Experience;
+        float ExperienceCurrent;
+        float ExperienceAtLastRound;
+        float ExperienceAtFightStart;
 
         void addExperience(float);
 
     public:
         Player(const int,const int,const std::string);
         Player& operator=(const Player&);
+        int getLevel() const;
 
 };
 
