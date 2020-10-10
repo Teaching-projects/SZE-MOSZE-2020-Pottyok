@@ -7,10 +7,10 @@
 class Game{
     protected:
         Player ent1;
-        Entity ent2;
+        Player ent2;
         int turn;
     public:
-        Game(const Player&,const Entity&);
+        Game(const Player&,const Player&);
         bool isAnyoneDead() const;
         void attackPhase();
         Entity getWinner() const;
