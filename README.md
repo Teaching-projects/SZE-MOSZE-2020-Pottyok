@@ -12,6 +12,9 @@ A projekt bővült 3 teszt egységgel, amik a "units" mappában találhatóak.
 
 Egy automatizált teszt is lefut minden egyes "push" után, ahol a 3 egység felváltva küzdenek meg egymással, és a kapott eredményeket összehasonlítja a kalkulált/várt eredményekkel. Amennyiben megegyeznek, a teszt sikeresnek minősül.
 
+## Dokumentáció
+https://teaching-projects.github.io/SZE-MOSZE-2020-Pottyok/index.html
+
 ## Csapattagok
  - Pénzes Péter
  - Nagy Bálint
