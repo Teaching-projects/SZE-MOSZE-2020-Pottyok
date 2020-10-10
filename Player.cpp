@@ -4,9 +4,15 @@
 #include <iostream>
 #include <cmath>
 
-Player::Player(const int health,const int attackDamage,const std::string name) : Entity(health, attackDamage, name) {
-    this->ExperienceAtLastRound         = 0;
-    this->ExperienceCurrent             = 0;
+Player::Player(const int health,const int attackDamage,const std::string& name) : ExperienceCurrent(0), ExperienceAtLastRound(0), Entity(health, attackDamage, name) {}
+
+Player::Player(const Player& other) : Entity(other.Health, other.AttackDamage, other.Name){
+    this->MaxHealth                     =   other.MaxHealth;
+    this->Health                        =   other.Health;
+    this->AttackDamage                  =   other.AttackDamage;
+    this->Name                          =   other.Name;
+    this->ExperienceAtLastRound         =   other.ExperienceAtLastRound;
+    this->ExperienceCurrent             =   other.ExperienceCurrent;
 }
 
 Player& Player::operator=(const Player &player){

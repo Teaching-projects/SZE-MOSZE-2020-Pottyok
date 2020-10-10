@@ -12,7 +12,8 @@ class Player : public Entity{
         void addExperience(float);
 
     public:
-        Player(const int,const int,const std::string);
+        Player(const int,const int,const std::string&);
+        Player(const Player&);
         Player& operator=(const Player&);
         Player& operator=(const Entity&);
         int getLevel() const;
