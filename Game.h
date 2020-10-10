@@ -17,7 +17,6 @@ class Game{
     protected:
         Entity ent1;    ///< A jatekban resztvevo elso Entity
         Entity ent2;    ///< A jatekban resztvevo masodik Entity
-        int turn;
     public:
         /**
          * \brief A Game class konstruktora
