@@ -17,7 +17,7 @@ class Entity{
         void damage(const float);
         float getAttackDamage() const;
         std::string getName() const;
-        void attack(Entity&);
+        virtual void attack(Entity&);
         float getHealth() const;
         float getMaxHealth() const;
         bool getIsDead() const;
