@@ -12,6 +12,11 @@ do
     echo "$ent1;$ent2;$output" >> $results
 done < "$expected"
 
+echo "Expected OUTPUT"
+echo $expected
+echo "Real OUTPUT"
+echo $results
+
 different="$(diff $expected $results)"
 
 if [ -z "$different" ]; then
