@@ -16,9 +16,7 @@ jobs:
           path: cppcheck_report.txt
       - name: Build
         run: g++ -Wall -Werror -Wno-reorder -std=c++17 *.cpp -o output
-      - name: Test run after build
-        run: ./output
       - name: Valgrind memory check
-        run: valgrind ./output
+        run: valgrind --error-exitcode=1 ./output
       - name: In-Out tests
         run: ./tests.sh
