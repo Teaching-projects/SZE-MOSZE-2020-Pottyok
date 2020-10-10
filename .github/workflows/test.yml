@@ -6,8 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: sudo apt-get install -y valgrind
-        run: sudo apt-get install -y cppcheck
+        run: sudo apt-get install -y valgrind && sudo apt-get install -y cppcheck
       - name: CPPCheck Static Code Analysis
         run: ./cpp_check.sh
       - name: Upload CPPCheck report as artifact
