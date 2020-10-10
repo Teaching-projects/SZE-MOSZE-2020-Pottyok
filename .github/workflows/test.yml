@@ -15,7 +15,7 @@ jobs:
           name: cppcheck_report
           path: cppcheck_report.txt
       - name: Build
-        run: g++ -fsanitize=leak -fsanitize=address -Wall -Werror -Wno-reorder -std=c++17 *.cpp -o output
+        run: g++ -fsanitize=address -Wall -Werror -Wno-reorder -std=c++17 *.cpp -o output
       - name: Test run after build
         run: ./output
       - name: Valgrind memory check
