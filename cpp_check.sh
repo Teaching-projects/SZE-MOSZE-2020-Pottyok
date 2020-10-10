@@ -1,5 +1,4 @@
 #!/bin/bash
-
 cppcheck --enable=all ./*.cpp 2> cppcheck_report.txt
 
 if grep -q "warning:" "./cppcheck_report.txt"; then
