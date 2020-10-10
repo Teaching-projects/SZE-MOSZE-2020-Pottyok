@@ -7,7 +7,6 @@
 class Player : public Entity{
     protected:
         float ExperienceCurrent;
-        float ExperienceAtLastRound;
 
         void addExperience(float);
 

@@ -4,14 +4,13 @@
 #include <iostream>
 #include <cmath>
 
-Player::Player(const int health,const int attackDamage,const std::string& name) : ExperienceCurrent(0), ExperienceAtLastRound(0), Entity(health, attackDamage, name) {}
+Player::Player(const int health,const int attackDamage,const std::string& name) : ExperienceCurrent(0), Entity(health, attackDamage, name) {}
 
 Player::Player(const Player& other) : Entity(other.Health, other.AttackDamage, other.Name){
     this->MaxHealth                     =   other.MaxHealth;
     this->Health                        =   other.Health;
     this->AttackDamage                  =   other.AttackDamage;
     this->Name                          =   other.Name;
-    this->ExperienceAtLastRound         =   other.ExperienceAtLastRound;
     this->ExperienceCurrent             =   other.ExperienceCurrent;
 }
 
@@ -20,7 +19,6 @@ Player& Player::operator=(const Player &player){
     this->Health                        =   player.Health;
     this->AttackDamage                  =   player.AttackDamage;
     this->Name                          =   player.Name;
-    this->ExperienceAtLastRound         =   player.ExperienceAtLastRound;
     this->ExperienceCurrent             =   player.ExperienceCurrent;
     
     return *this;
@@ -31,20 +29,18 @@ Player& Player::operator=(const Entity &entity){
     this->Health                        =   entity.getHealth();
     this->AttackDamage                  =   entity.getAttackDamage();
     this->Name                          =   entity.getName();
-    this->ExperienceAtLastRound         =   0;
     this->ExperienceCurrent             =   0;
     
     return *this;
 }
 
 void Player::addExperience(float experience){
-    this->ExperienceCurrent += experience;
-    int levelsToAdd = (this->ExperienceCurrent - this->ExperienceAtLastRound) / 100;
+    float experienceAfterRound = this->ExperienceCurrent + experience;
+    int levelsToAdd = (experienceAfterRound - this->ExperienceCurrent) / 100;
     this->MaxHealth *= powf(1.1f,levelsToAdd);
     this->AttackDamage *= powf(1.1f,levelsToAdd);
     this->Health = levelsToAdd > 0 ? this->MaxHealth : this->Health;
-    this->ExperienceAtLastRound = this->ExperienceCurrent;
-
+    this->ExperienceCurrent = experienceAfterRound;
 }
 
 int Player::getLevel() const{
