@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cmath>
 
-Player::Player(const int health,const int attackDamage,const std::string& name) : ExperienceCurrent(0), Entity(health, attackDamage, name) {}
+Player::Player(const int health,const int attackDamage,const std::string& name) : Entity(health, attackDamage, name), ExperienceCurrent(0) {}
 
 Player::Player(const Player& other) : Entity(other.Health, other.AttackDamage, other.Name){
     this->MaxHealth                     =   other.MaxHealth;

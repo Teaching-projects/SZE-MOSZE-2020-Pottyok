@@ -11,8 +11,8 @@ class Entity{
         float AttackDamage;
 
     public:
-        Entity(const float,const float,const std::string&);
-        Entity(const Entity&);
+        Entity(const float health,const float attackDamage,const std::string& name) : Name(name), Health(health), MaxHealth(health), AttackDamage(attackDamage){};
+        Entity(const Entity& entity) : Name(entity.Name), Health(entity.Health), MaxHealth(entity.MaxHealth),AttackDamage(entity.AttackDamage) {};
         Entity& operator=(const Entity&);
         void damage(const float);
         float getAttackDamage() const;
