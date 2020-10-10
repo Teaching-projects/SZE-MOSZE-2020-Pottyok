@@ -8,10 +8,8 @@ class Player : public Entity{
     protected:
         float ExperienceCurrent;
         float ExperienceAtLastRound;
-        float ExperienceStartOfFight;
 
         void addExperience(float);
-        void looseGainedLevels();
 
     public:
         Player(const int,const int,const std::string);
