@@ -1,5 +1,5 @@
 [Entity.cpp:7]: (performance) Function parameter 'name' should be passed by const reference.
 [Player.cpp:7]: (performance) Function parameter 'name' should be passed by const reference.
-[Player.cpp:54]: (style) The function 'getLevel' is never used.
+[Player.cpp:44]: (style) The function 'getLevel' is never used.
 [main.cpp:10]: (style) The function 'isNumeric' is never used.
 (information) Cppcheck cannot find all the include files (use --check-config for details)
