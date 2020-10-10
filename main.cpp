@@ -17,8 +17,8 @@ int isNumeric(const string & chars) {
 
 int main (int argc, char *argv[]) {
     
-    Player ent1(800, 150, "Kakarott");
-    Player ent2(450, 300, "Sally");
+    Player ent1(450, 300, "Sally");
+    Player ent2(800, 150, "Kakarott");
     if(argc != 3){
         std::cout << "Wrong initial data given, using default values." << std::endl;
     }else{

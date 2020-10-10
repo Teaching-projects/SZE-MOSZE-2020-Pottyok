@@ -5,17 +5,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: sudo apt-get install -y valgrind
+        run: sudo apt-get install -y cppcheck
+      - name: CPPCheck Static Code Analysis
+        run: ./cpp_check.sh
+      - name: Upload CPPCheck report as artifact
+        uses: actions/upload-artifact@v2
         with:
-          ref: levelup
+          name: cppcheck_report
+          path: cppcheck_report.txt
       - name: Build
-        run: g++ -fsanitize=leak -fsanitize=address -std=c++17 *.cpp -o output
-      - name: cppcheck
-        uses: deep5050/cppcheck-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN}}
-          github_username: "tamasori"
-          github_email: "oeri.tamas@gmail.com"
-          commit_msg: "CPPCHECK log"
-          enable: "style,warning,performance,portability,unusedFunction,missingInclude"
-      - name: Test
+        run: g++ -fsanitize=leak -fsanitize=address -Wall -Werror -std=c++17 *.cpp -o output
+      - name: Valgrind memory check
+        run: valgrind ./output
+      - name: In-Out tests
         run: ./tests.sh

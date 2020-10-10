@@ -1,10 +1,6 @@
 #!/bin/bash
-sudo apt-get install -y valgrind
-
 expected="units/expected.txt"
 results="results.txt"
-
-valgrind ./output
 
 while IFS= read line
 do
@@ -17,14 +13,6 @@ do
 done < "$expected"
 
 different="$(diff $expected $results)"
-
-if grep -q "(warning)" "./cppcheck_report.txt"; then
-  exit 1
-fi
-
-if grep -q "(error)" "./cppcheck_report.txt"; then
-  exit 1 
-fi
 
 if [ -z "$different" ]; then
     echo "Successful test."
