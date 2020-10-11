@@ -1,5 +1,4 @@
 #!/bin/bash
-
 expected="units/expected.txt"
 results="results.txt"
 
@@ -12,6 +11,11 @@ do
     output="$(./output units/$ent1.json units/$ent2.json)"
     echo "$ent1;$ent2;$output" >> $results
 done < "$expected"
+
+echo "Expected OUTPUT"
+cat $expected
+echo "Real OUTPUT"
+cat $results
 
 different="$(diff $expected $results)"
 

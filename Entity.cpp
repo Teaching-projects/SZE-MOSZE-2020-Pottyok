@@ -4,15 +4,7 @@
 #include <fstream>
 #include <regex> 
 
-Entity::Entity(const int health,const int attackDamage,const std::string name){
-    this->MaxHealth      =   health;
-    this->Health         =   this->MaxHealth;
-    this->AttackDamage   =   attackDamage;
-    this->Name           =   name;
-}
-
-
-Entity& Entity::operator=(const Entity &entity){
+Entity& Entity::operator=(const Entity &entity) {
     this->MaxHealth      =   entity.MaxHealth;
     this->Health         =   entity.Health;
     this->AttackDamage   =   entity.AttackDamage;
@@ -20,17 +12,20 @@ Entity& Entity::operator=(const Entity &entity){
     return *this;
 }
 
-int Entity::getHealth() const{
+float Entity::getHealth() const{
     return this->Health;
 }
 
+float Entity::getMaxHealth() const{
+    return this->MaxHealth;
+}
 
-int Entity::getAttackDamage() const{
+float Entity::getAttackDamage() const{
     return this->AttackDamage;
 }
 
 
-void Entity::damage(const int dmg){
+void Entity::damage(const float dmg){
     this->Health -= dmg;
     if(this->Health <= 0){
         this->Health = 0;
