@@ -1,3 +1,7 @@
 *.exe
 *.code-workspace
 .vscode/*
+tests/CmakeFiles/*
+tests/CMakeCache.txt
+tests/Makefile
+*.cmake
