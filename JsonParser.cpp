@@ -3,12 +3,13 @@
 
 #include <fstream>
 #include <regex>
+#include <algorithm>
 
 std::map<std::string, std::any> JsonParser::ParseString(const std::string &input){
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
-    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]+[.]?[0-9]+)?(true|false)?[,\n}]{1}");
+    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\n}]{1}");
 
     std::string worker(input), key, value;
 
@@ -17,7 +18,7 @@ std::map<std::string, std::any> JsonParser::ParseString(const std::string &input
         key = searchMatches[1].str();
         if(searchMatches[2].str() != ""){
             value = searchMatches[2].str();
-            std::replace(value.begin(), value.end(), '\"', '\0');
+            value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
             data[key] = value;
         }
         else if(searchMatches[3].str() != ""){
