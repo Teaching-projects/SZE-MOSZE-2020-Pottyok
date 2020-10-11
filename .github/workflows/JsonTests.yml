@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install gtest and cmake
-        run: sudo apt install && sudo apt install libgtests-dev && sudo apt install cmake && cd /usr/src/gtest && sudo cmake . && sudo make 
+        run: sudo apt update && sudo apt install libgtests-dev && sudo apt install cmake && cd /usr/src/gtest && sudo cmake . && sudo make 
       - name: cmake
         run: cd tests && cmake . && make
       - name: Run Tests
