@@ -10,4 +10,4 @@ jobs:
       - name: cmake
         run: cd tests && cmake . && make
       - name: Run Tests
-        run: tests/runTests
+        run: cd tests && ./runTests
