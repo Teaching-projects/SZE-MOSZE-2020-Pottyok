@@ -5,7 +5,13 @@
 #include <cmath>
 
 Player& Player::operator=(const Entity &entity){
-    return *dynamic_cast<Player*>(const_cast<Entity*>(&entity));
+    this->MaxHealth                     =   entity.getMaxHealth();
+    this->Health                        =   entity.getHealth();
+    this->AttackDamage                  =   entity.getAttackDamage();
+    this->Name                          =   entity.getName();
+    this->ExperienceCurrent             =   0;
+    
+    return *this;
 }
 
 void Player::addExperience(float experience){
