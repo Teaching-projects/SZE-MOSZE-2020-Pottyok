@@ -16,20 +16,22 @@
 class Entity{
     protected:
         std::string Name;       ///< Entity neve
-        int Health;             ///< Entity jelenlegi eletereje
-        int MaxHealth;          ///< Entity maximum eletereje
-        int AttackDamage;       ///< Entity sebzese
+        float Health;             ///< Entity jelenlegi eletereje
+        float MaxHealth;          ///< Entity maximum eletereje
+        float AttackDamage;       ///< Entity sebzese
         float AttackSpeed;      ///< Entity ket tamadasa kozotti ido
-        void damage(const int); ///< Entity jelenlegi eleterejenek csokkentese
+        void damage(const float); ///< Entity jelenlegi eleterejenek csokkentese
 
     public:
-        Entity(const int, const int, const std::string, const float);   ///< Az Entity class konstruktora
-        Entity& operator=(const Entity&);   ///< Az Entity class konstruktora
-        int getAttackDamage() const;    ///< Entity sebzeset visszaado getter
+        Entity(const float health,const float attackDamage,const std::string& name, const float attackSpeed) : Name(name), Health(health), MaxHealth(health), AttackDamage(attackDamage), AttackSpeed(attackSpeed) {};   ///< Az Entity class konstruktora
+		Entity(const Entity& entity) : Name(entity.Name), Health(entity.Health), MaxHealth(entity.MaxHealth), AttackDamage(entity.AttackDamage), AttackSpeed(entity.AttackSpeed) {};	///< Az Entity class copy konstruktora
+        Entity& operator=(const Entity&);   ///< Az Entity class egyenloseg operatora
+        float getAttackDamage() const;    ///< Entity sebzeset visszaado getter
         float getAttackSpeed() const;   ///< Entity ket tamadas kozotti idot visszaado getter
         std::string getName() const;    ///< Entity nevet visszaado getter
-        void attack(Entity& /** [in] A megtamadni kivant Entity */);   ///< Masik Entity sebzese a damage() meghivasaval
-        int getHealth() const;  ///< Entity jelenlegi eleterejet visszaado getter
+        virtual void attack(Entity& /** [in] A megtamadni kivant Entity */);   ///< Masik Entity sebzese a damage() meghivasaval
+        float getHealth() const;  ///< Entity jelenlegi eleterejet visszaado getter
+		float getMaxHealth() const;	///< Entity maximum eleterejet visszaado getter
         
         /**
          * \brief Visszaadja, hogy az Entity halott-e

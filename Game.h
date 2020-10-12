@@ -12,22 +12,23 @@
 #define GAME_HEADER
 #include <vector>
 #include "Entity.h"
+#include "Player.h"
 
 class Game{
     protected:
-        Entity ent1;    ///< A jatekban resztvevo elso Entity
-        Entity ent2;    ///< A jatekban resztvevo masodik Entity
+        Player ent1;    ///< A jatekban resztvevo elso Player
+        Player ent2;    ///< A jatekban resztvevo masodik Player
     public:
         /**
          * \brief A Game class konstruktora
-         * \param Entity A jatekban resztvevo Entity (mint tamado)
-         * \param Entity A jakekban resztvevo Entity (mint ellenfel)
+         * \param Player A jatekban resztvevo Player (mint tamado)
+         * \param Player A jakekban resztvevo Player (mint ellenfel)
         */
-        Game(const Entity&,const Entity&);
-        bool isAnyoneDead() const;  ///< Lekeri, hogy a ket Entity kozul halott-e valamelyik
+        Game(const Player&,const Player&);
+        bool isAnyoneDead() const;  ///< Lekeri, hogy a ket Player kozul halott-e valamelyik
         Entity getWinner() const;   ///< Lekeri, hogy melyik Entity nyerte a harcot
-        void Start();   ///< Elinditja a harcot a ket Entity kozott, aminek a vegen az End() kerul meghivasra
-        void End(); ///< Ket Entity kozotti harc vegen kiirja annak vegeredmenyet
+        void Start();   ///< Elinditja a harcot a ket Player kozott, aminek a vegen az End() kerul meghivasra
+        void End(); ///< Ket Player kozotti harc vegen kiirja annak vegeredmenyet
 
 };
 

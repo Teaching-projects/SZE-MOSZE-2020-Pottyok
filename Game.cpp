@@ -1,8 +1,9 @@
 #include "Game.h"
 #include "Entity.h"
+#include "Player.h"
 #include <iostream>
 
-Game::Game(const Entity& ent1, const Entity& ent2) :ent1(ent1), ent2(ent2) {}
+Game::Game(const Player& ent1, const Player& ent2) :ent1(ent1), ent2(ent2) {}
 
 void Game::Start(){
 

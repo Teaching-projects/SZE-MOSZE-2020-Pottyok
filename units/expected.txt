@@ -1,6 +1,6 @@
-maple;sally;Sally wins. Remaining HP: 15
-maple;kakarott;Kakarott wins. Remaining HP: 10
-sally;maple;Sally wins. Remaining HP: 15
-sally;kakarott;Sally wins. Remaining HP: 15
-kakarott;maple;Kakarott wins. Remaining HP: 10
-kakarott;sally;Sally wins. Remaining HP: 15
+maple;sally;Sally wins. Remaining HP: 4029.44
+maple;kakarott;Kakarott wins. Remaining HP: 105837
+sally;maple;Sally wins. Remaining HP: 4029.44
+sally;kakarott;Sally wins. Remaining HP: 5363.18
+kakarott;maple;Kakarott wins. Remaining HP: 105837
+kakarott;sally;Sally wins. Remaining HP: 5363.18
