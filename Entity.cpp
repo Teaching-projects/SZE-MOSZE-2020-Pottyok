@@ -55,5 +55,9 @@ std::string Entity::getName() const{
 Entity Entity::parseUnit(const std::string& fileName){
     std::map<std::string, std::any> data = JsonParser::ParseFile(fileName);
 
+    JsonParser::CheckValues<int>(data, "hp");
+    JsonParser::CheckValues<int>(data, "dmg");
+    JsonParser::CheckValues<std::string>(data, "name");
+
     return Entity(std::any_cast<int>(data["hp"]), std::any_cast<int>(data["dmg"]), std::any_cast<std::string>(data["name"]));
 }
