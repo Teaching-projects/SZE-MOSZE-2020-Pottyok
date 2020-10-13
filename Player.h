@@ -11,7 +11,7 @@ class Player : public Entity{
         void addExperience(float);
 
     public:
-        Player(const int health,const int attackDamage,const std::string& name) : Entity(health, attackDamage, name), ExperienceCurrent(0) {};
+        Player(const int health, const int attackDamage, const std::string& name, const float attackSpeed) : Entity(health, attackDamage, name, attackSpeed), ExperienceCurrent(0) {};
         Player& operator=(const Entity&);
         int getLevel() const;
         void attack(Entity&);
