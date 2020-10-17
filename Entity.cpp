@@ -3,36 +3,36 @@
 #include <iostream>
 #include <fstream>
 #include <regex> 
-
 #include "JsonParser.h"
 
-Entity::Entity(const int health,const int attackDamage,const std::string name){
-    this->MaxHealth      =   health;
-    this->Health         =   this->MaxHealth;
-    this->AttackDamage   =   attackDamage;
-    this->Name           =   name;
-}
-
-
-Entity& Entity::operator=(const Entity &entity){
+Entity& Entity::operator=(const Entity &entity) {
     this->MaxHealth      =   entity.MaxHealth;
     this->Health         =   entity.Health;
     this->AttackDamage   =   entity.AttackDamage;
+    this->AttackSpeed    =   entity.AttackSpeed;
     this->Name           =   entity.Name;
     return *this;
 }
 
-int Entity::getHealth() const{
+float Entity::getHealth() const{
     return this->Health;
 }
 
+float Entity::getMaxHealth() const{
+    return this->MaxHealth;
+}
 
-int Entity::getAttackDamage() const{
+float Entity::getAttackDamage() const{
     return this->AttackDamage;
 }
 
 
-void Entity::damage(const int dmg){
+float Entity::getAttackSpeed() const {
+    return this->AttackSpeed;
+}
+
+
+void Entity::damage(const float dmg){
     this->Health -= dmg;
     if(this->Health <= 0){
         this->Health = 0;
@@ -49,6 +49,33 @@ bool Entity::getIsDead() const{
 
 std::string Entity::getName() const{
     return this->Name;
+}
+
+
+
+void Entity::fightLoop(Entity& enemy) {
+    float attackerTimer = 0, enemyTimer = 0;
+
+    do
+    {
+        if (attackerTimer < enemyTimer) {
+            enemyTimer -= attackerTimer;
+            attackerTimer = this->getAttackSpeed();
+            this->attack(enemy);
+        }
+        else if (enemyTimer < attackerTimer) {
+            attackerTimer -= enemyTimer;
+            enemyTimer = enemy.getAttackSpeed();
+            enemy.attack(*this);
+        }
+        else {
+            enemyTimer = 0;
+            attackerTimer = this->getAttackSpeed();
+            this->attack(enemy);
+        }
+
+    } while (!this->getIsDead() && !enemy.getIsDead());
+
 }
 
 
