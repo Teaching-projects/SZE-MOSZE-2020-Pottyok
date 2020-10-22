@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <regex> 
+#include "JsonParser.h"
 
 Entity& Entity::operator=(const Entity &entity) {
     this->MaxHealth      =   entity.MaxHealth;
@@ -79,33 +80,17 @@ void Entity::fightLoop(Entity& enemy) {
 
 
 Entity Entity::parseUnit(const std::string& fileName){
-    std::ifstream f(fileName);
-    if(!f.good()) throw std::runtime_error("The given file was not found: " + fileName);
-    std::string fileInOneLine, line;
-    while (std::getline(f, line)){ fileInOneLine += line; }
-    f.close();
+    std::map<std::string, std::any> data = JsonParser::ParseFile(fileName);
 
-    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s:\\s(\"[a-zA-Z0-9.]+\"|[a-zA-Z0-9.]+)[,\r\n}]{1}");
-    std::smatch searchMatches;
-    std::string name, matchValue;
-    int health, attackDamage;
-    float attackSpeed;
-    std::regex_match(fileInOneLine, searchMatches, searchRegex);
-    while (std::regex_search(fileInOneLine, searchMatches, searchRegex))
-    {
-        matchValue = searchMatches[2].str();
-        std::replace(matchValue.begin(), matchValue.end(), '\"', '\0');
-        if (searchMatches[1] == "name")
-            name = matchValue;
-        else if (searchMatches[1] == "hp")
-            health = stoi(matchValue);
-        else if (searchMatches[1] == "dmg")
-            attackDamage = stoi(matchValue);
-        else if (searchMatches[1] == "spd")
-            attackSpeed = stof(matchValue);
+    JsonParser::CheckValues<float>(data, "hp");
+    JsonParser::CheckValues<float>(data, "dmg");
+    JsonParser::CheckValues<std::string>(data, "name");
+    JsonParser::CheckValues<float>(data, "spd");
 
-        fileInOneLine = searchMatches.suffix();
-    }
-
-    return Entity(health, attackDamage, name, attackSpeed);
+    return Entity(
+        std::any_cast<float>(data["hp"]),
+        std::any_cast<float>(data["dmg"]),
+        std::any_cast<std::string>(data["name"]),
+        std::any_cast<float>(data["spd"])
+    );
 }
