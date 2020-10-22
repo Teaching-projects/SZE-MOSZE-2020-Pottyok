@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['name',['Name',['../classEntity.html#ae8f30f7e882096be1fe49167a16d8611',1,'Entity']]]
+  ['maxhealth',['MaxHealth',['../classEntity.html#ad0fd2065fee63a19ec55980280191471',1,'Entity']]]
 ];

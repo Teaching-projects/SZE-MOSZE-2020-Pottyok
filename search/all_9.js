@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d',['operator=',['../classEntity.html#a8d856c81a0f7c02ffcbc4f3d08d651e5',1,'Entity']]]
+  ['name',['Name',['../classEntity.html#ae8f30f7e882096be1fe49167a16d8611',1,'Entity']]]
 ];
