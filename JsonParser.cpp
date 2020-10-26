@@ -5,7 +5,7 @@
 #include <regex>
 #include <algorithm>
 
-std::map<std::string, std::any> JsonParser::ParseString(const std::string &input){
+std::map<std::string, std::any> JsonParser::ParseString(const std::string &input, bool forceString = false){
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
@@ -16,7 +16,10 @@ std::map<std::string, std::any> JsonParser::ParseString(const std::string &input
     while (std::regex_search(worker, searchMatches, searchRegex))
     {
         key = searchMatches[1].str();
-        if(searchMatches[2].str() != ""){
+        if (forceString) {
+            data[key] = searchMatches[2].str() != "" ? searchMatches[2].str() : (searchMatches[3].str() != "" ? searchMatches[3].str() : (searchMatches[4].str() != "" ? searchMatches[4].str() : ""));
+        }
+        else if(searchMatches[2].str() != ""){
             value = searchMatches[2].str();
             value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
             data[key] = value;
