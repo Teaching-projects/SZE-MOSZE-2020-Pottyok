@@ -9,7 +9,7 @@ std::map<std::string, std::any> JsonParser::ParseString(const std::string &input
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
-    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\n}]{1}");
+    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\r\n}]{1}");
 
     std::string worker(input), key, value;
 
