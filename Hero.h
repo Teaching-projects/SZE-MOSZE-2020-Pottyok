@@ -7,12 +7,39 @@
 class Hero : public Monster{
     protected:
         float ExperienceCurrent;
+        int ExperiencePerLevel;
+        int HealthPointBonusPerLevel;
+        int DamageBonusPerLevel;
+        float ColdownMultiplierPerLevel;
 
-        void addExperience(float);
+        void addExperience(int);
 
     public:
-        Hero(const int health, const int attackDamage, const std::string& name, const float attackSpeed) : Monster(health, attackDamage, name, attackSpeed), ExperienceCurrent(0) {};
-        Hero(Monster monster) : Monster(monster), ExperienceCurrent(0) {};
+        Hero(const int health,
+            const int attackDamage,
+            const std::string& name,
+            const float attackSpeed,
+            int ExperiencePerLevel,
+            int HealthPointBonusPerLevel,
+            int DamageBonusPerLevel,
+            float ColdownMultiplierPerLevel) 
+                : Monster(health, attackDamage, name, attackSpeed),
+                ExperienceCurrent(0),
+                ExperiencePerLevel(ExperiencePerLevel),
+                HealthPointBonusPerLevel(HealthPointBonusPerLevel),
+                DamageBonusPerLevel(DamageBonusPerLevel),
+                ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
+                {};
+
+        Hero(Monster monster)
+            : Monster(monster), 
+            ExperienceCurrent(0),
+            ExperiencePerLevel(0),
+            HealthPointBonusPerLevel(0),
+            DamageBonusPerLevel(0),
+            ColdownMultiplierPerLevel(0)
+            {};
+            
         Hero& operator=(const Monster&);
         int getLevel() const;
         void attack(Monster&);
