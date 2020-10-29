@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <regex> 
-#include "JsonParser.h"
+#include "JSON.h"
 
 Entity& Entity::operator=(const Entity &entity) {
     this->MaxHealth      =   entity.MaxHealth;
@@ -80,12 +80,12 @@ void Entity::fightLoop(Entity& enemy) {
 
 
 Entity Entity::parseUnit(const std::string& fileName){
-    std::map<std::string, std::any> data = JsonParser::ParseFile(fileName);
+    std::map<std::string, std::any> data = JSON::ParseFile(fileName);
 
-    JsonParser::CheckValues<float>(data, "hp");
-    JsonParser::CheckValues<float>(data, "dmg");
-    JsonParser::CheckValues<std::string>(data, "name");
-    JsonParser::CheckValues<float>(data, "spd");
+    JSON::CheckValues<float>(data, "hp");
+    JSON::CheckValues<float>(data, "dmg");
+    JSON::CheckValues<std::string>(data, "name");
+    JSON::CheckValues<float>(data, "spd");
 
     return Entity(
         std::any_cast<float>(data["hp"]),

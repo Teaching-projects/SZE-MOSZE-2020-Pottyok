@@ -3,7 +3,7 @@
 #include <any>
 #include <iostream>
 
-class JsonParser{
+class JSON{
     public:
         static std::map<std::string, std::any> ParseString(const std::string &input);
         static std::map<std::string, std::any> ParseFile(const std::string &fileName);
