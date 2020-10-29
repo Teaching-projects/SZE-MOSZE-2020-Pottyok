@@ -14,7 +14,7 @@ Monster& Monster::operator=(const Monster &monster) {
     return *this;
 }
 
-float Monster::getHealth() const{
+float Monster::getHealthPoints() const{
     return this->Health;
 }
 
@@ -47,13 +47,17 @@ bool Monster::getIsDead() const{
     return (this->Health <= 0);
 }
 
+bool Monster::isAlive() const{
+    return (this->Health > 0);
+}
+
 std::string Monster::getName() const{
     return this->Name;
 }
 
 
 
-void Monster::fightLoop(Monster& enemy) {
+void Monster::fightTilDeath(Monster& enemy) {
     float attackerTimer = 0, enemyTimer = 0;
 
     do
@@ -79,7 +83,7 @@ void Monster::fightLoop(Monster& enemy) {
 }
 
 
-Monster Monster::parseUnit(const std::string& fileName){
+Monster Monster::parse(const std::string& fileName){
     std::map<std::string, std::any> data = JSON::parseFromFile(fileName);
 
     JSON::CheckValues<float>(data, "hp");

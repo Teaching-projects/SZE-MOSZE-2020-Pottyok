@@ -6,7 +6,7 @@
 
 Hero& Hero::operator=(const Monster &monster){
     this->MaxHealth                     =   monster.getMaxHealth();
-    this->Health                        =   monster.getHealth();
+    this->Health                        =   monster.getHealthPoints();
     this->AttackDamage                  =   monster.getAttackDamage();
     this->Name                          =   monster.getName();
 	this->AttackSpeed					=	monster.getAttackSpeed();
@@ -30,7 +30,7 @@ int Hero::getLevel() const{
 }
 
 void Hero::attack(Monster& monster){
-	float enemyHealthBeforeAttack = monster.getHealth();
+	float enemyHealthBeforeAttack = monster.getHealthPoints();
 	
 	Monster::attack(monster);
     this->addExperience(std::min(this->getAttackDamage(), enemyHealthBeforeAttack));
