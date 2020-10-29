@@ -23,7 +23,11 @@ JSON JSON::parseFromString(const std::string &input){
         }
         else if(searchMatches[3].str() != ""){
             value = searchMatches[3].str();
-            data[key] = stof(value);
+            if(searchMatches[3].str().find('.') != std::string::npos){
+                data[key] = stof(value);
+            } else {
+                data[key] = stoi(value);
+            }
         }
         else if(searchMatches[4].str() != ""){
             value = searchMatches[4].str();

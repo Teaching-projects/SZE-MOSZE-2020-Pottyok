@@ -16,22 +16,22 @@
 class Monster{
     protected:
         std::string Name;       ///< Monster neve
-        float Health;             ///< Monster jelenlegi eletereje
-        float MaxHealth;          ///< Monster maximum eletereje
-        float AttackDamage;       ///< Monster sebzese
+        int Health;             ///< Monster jelenlegi eletereje
+        int MaxHealth;          ///< Monster maximum eletereje
+        int AttackDamage;       ///< Monster sebzese
         float AttackSpeed;      ///< Monster ket tamadasa kozotti ido
-        void damage(const float); ///< Monster jelenlegi eleterejenek csokkentese
+        void damage(const int); ///< Monster jelenlegi eleterejenek csokkentese
 
     public:
-        Monster(const float health,const float attackDamage,const std::string& name, const float attackSpeed) : Name(name), Health(health), MaxHealth(health), AttackDamage(attackDamage), AttackSpeed(attackSpeed) {};   ///< Az Monster class konstruktora
+        Monster(const float health, const float attackDamage,const std::string& name, const float attackSpeed) : Name(name), Health(health), MaxHealth(health), AttackDamage(attackDamage), AttackSpeed(attackSpeed) {};   ///< Az Monster class konstruktora
 		Monster(const Monster& monster) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), AttackSpeed(monster.AttackSpeed) {};	///< Az Monster class copy konstruktora
         Monster& operator=(const Monster&);   ///< Az Monster class egyenloseg operatora
-        float getDamage() const;    ///< Monster sebzeset visszaado getter
+        int getDamage() const;    ///< Monster sebzeset visszaado getter
         float getAttackCoolDown() const;   ///< Monster ket tamadas kozotti idot visszaado getter
         std::string getName() const;    ///< Monster nevet visszaado getter
         virtual void attack(Monster& /** [in] A megtamadni kivant Monster */);   ///< Masik Monster sebzese a damage() meghivasaval
-        float getHealthPoints() const;  ///< Monster jelenlegi eleterejet visszaado getter
-		float getMaxHealthPoints() const;	///< Monster maximum eleterejet visszaado getter
+        int getHealthPoints() const;  ///< Monster jelenlegi eleterejet visszaado getter
+		int getMaxHealthPoints() const;	///< Monster maximum eleterejet visszaado getter
         
         /**
          * \brief Visszaadja, hogy az Monster halott-e

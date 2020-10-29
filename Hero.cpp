@@ -31,7 +31,7 @@ int Hero::getLevel() const{
 }
 
 void Hero::attack(Monster& monster){
-	float enemyHealthBeforeAttack = monster.getHealthPoints();
+	int enemyHealthBeforeAttack = monster.getHealthPoints();
 	
 	Monster::attack(monster);
     this->addExperience(std::min(this->getDamage(), enemyHealthBeforeAttack));
@@ -42,8 +42,8 @@ Hero Hero::parse(const std::string& fileName){
     JSON json = JSON::parseFromFile(fileName);
     
     return Hero(
-        json.get<float>("base_health_points"),
-        json.get<float>("base_damage"),
+        json.get<int>("base_health_points"),
+        json.get<int>("base_damage"),
         json.get<std::string>("name"),
         json.get<float>("base_attack_cooldown")
     );
