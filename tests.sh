@@ -6,7 +6,7 @@ while IFS= read line
 do
     if [[ $line =~ ";" ]]; then
         scenario=`echo "$line" | cut -d ';' -f 1`
-        output="$(./main $scenario)"
+        output="$(./output $scenario)"
         echo "$scenario;" >> $results;
         echo "$output" >> $results;
     fi
