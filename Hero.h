@@ -1,21 +1,21 @@
-#ifndef PLAYER_HEADER
-#define PLAYER_HEADER
+#ifndef HERO_HEADER
+#define HERO_HEADER
 
 #include <string>
 #include "Monster.h"
 
-class Player : public Monster{
+class Hero : public Monster{
     protected:
         float ExperienceCurrent;
 
         void addExperience(float);
 
     public:
-        Player(const int health, const int attackDamage, const std::string& name, const float attackSpeed) : Monster(health, attackDamage, name, attackSpeed), ExperienceCurrent(0) {};
-        Player& operator=(const Monster&);
+        Hero(const int health, const int attackDamage, const std::string& name, const float attackSpeed) : Monster(health, attackDamage, name, attackSpeed), ExperienceCurrent(0) {};
+        Hero& operator=(const Monster&);
         int getLevel() const;
         void attack(Monster&);
 
 };
 
-#endif // PLAYER_HEADER
+#endif // HERO_HEADER
