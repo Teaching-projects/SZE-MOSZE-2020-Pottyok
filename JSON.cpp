@@ -5,11 +5,11 @@
 #include <regex>
 #include <algorithm>
 
-std::map<std::string, std::any> JSON::parseFromString(const std::string &input){
+JSON JSON::parseFromString(const std::string &input){
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
-    const std::regex searchRegex("\"([a-zA-Z0-9]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\n}]{1}");
+    const std::regex searchRegex("\"([^\"]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\n}]{1}");
 
     std::string worker(input), key, value;
 
@@ -23,11 +23,7 @@ std::map<std::string, std::any> JSON::parseFromString(const std::string &input){
         }
         else if(searchMatches[3].str() != ""){
             value = searchMatches[3].str();
-            if(searchMatches[3].str().find('.') != std::string::npos){
-                data[key] = stof(value);
-            } else {
-                data[key] = stoi(value);
-            }
+            data[key] = stof(value);
         }
         else if(searchMatches[4].str() != ""){
             value = searchMatches[4].str();
@@ -37,21 +33,21 @@ std::map<std::string, std::any> JSON::parseFromString(const std::string &input){
         worker = searchMatches.suffix();
     }
 
-    return data;
+    return *(new JSON(data));
 }
 
-std::map<std::string, std::any> JSON::parseFromFile(const std::string &fileName){
+JSON JSON::parseFromFile(const std::string &fileName){
     std::ifstream stream(fileName);
     if(!stream.good()) throw JSON::ParseException("The given file was not found: " + fileName);
 
-    std::map<std::string, std::any> data = parseFromStream(stream);
+    JSON json = parseFromStream(stream);
     
     stream.close();
 
-    return data;
+    return json;
 }
 
-std::map<std::string, std::any> JSON::parseFromStream(std::istream &stream){
+JSON JSON::parseFromStream(std::istream &stream){
   std::string fileContent, currentLine;
   while(std::getline(stream, currentLine)){
     fileContent += currentLine;

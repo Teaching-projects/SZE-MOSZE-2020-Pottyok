@@ -18,16 +18,16 @@ float Monster::getHealthPoints() const{
     return this->Health;
 }
 
-float Monster::getMaxHealth() const{
+float Monster::getMaxHealthPoints() const{
     return this->MaxHealth;
 }
 
-float Monster::getAttackDamage() const{
+float Monster::getDamage() const{
     return this->AttackDamage;
 }
 
 
-float Monster::getAttackSpeed() const {
+float Monster::getAttackCoolDown() const {
     return this->AttackSpeed;
 }
 
@@ -40,7 +40,7 @@ void Monster::damage(const float dmg){
 }
 
 void Monster::attack(Monster& enemy){
-    enemy.damage(this->getAttackDamage());
+    enemy.damage(this->getDamage());
 }
 
 bool Monster::getIsDead() const{
@@ -64,17 +64,17 @@ void Monster::fightTilDeath(Monster& enemy) {
     {
         if (attackerTimer < enemyTimer) {
             enemyTimer -= attackerTimer;
-            attackerTimer = this->getAttackSpeed();
+            attackerTimer = this->getAttackCoolDown();
             this->attack(enemy);
         }
         else if (enemyTimer < attackerTimer) {
             attackerTimer -= enemyTimer;
-            enemyTimer = enemy.getAttackSpeed();
+            enemyTimer = enemy.getAttackCoolDown();
             enemy.attack(*this);
         }
         else {
             enemyTimer = 0;
-            attackerTimer = this->getAttackSpeed();
+            attackerTimer = this->getAttackCoolDown();
             this->attack(enemy);
         }
 
@@ -84,17 +84,12 @@ void Monster::fightTilDeath(Monster& enemy) {
 
 
 Monster Monster::parse(const std::string& fileName){
-    std::map<std::string, std::any> data = JSON::parseFromFile(fileName);
-
-    JSON::CheckValues<float>(data, "hp");
-    JSON::CheckValues<float>(data, "dmg");
-    JSON::CheckValues<std::string>(data, "name");
-    JSON::CheckValues<float>(data, "spd");
-
+    JSON json = JSON::parseFromFile(fileName);
+    
     return Monster(
-        std::any_cast<float>(data["hp"]),
-        std::any_cast<float>(data["dmg"]),
-        std::any_cast<std::string>(data["name"]),
-        std::any_cast<float>(data["spd"])
+        json.get<float>("health_points"),
+        json.get<float>("damage"),
+        json.get<std::string>("name"),
+        json.get<float>("attack_cooldown")
     );
 }

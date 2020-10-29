@@ -16,7 +16,7 @@ class Hero : public Monster{
         Hero& operator=(const Monster&);
         int getLevel() const;
         void attack(Monster&);
-
+        static Hero parse(const std::string&);
 };
 
 #endif // HERO_HEADER

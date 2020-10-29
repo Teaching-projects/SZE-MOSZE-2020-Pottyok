@@ -11,6 +11,9 @@
 #include "Hero.h"
 #include "Monster.h"
 
+
+
+
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
     { 2 , "The provided scenario file is not accessible." },
@@ -32,18 +35,18 @@ int main(int argc, char** argv){
     std::string hero_file;
     std::list<std::string> monster_files;
     try {
-        auto scenario = JSON::parseFromFile(argv[1]);
+        JSON scenario = JSON::parseFromFile(argv[1]); 
         if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
         else {
-            hero_file= scenario["hero"];
-            std::istringstream monsters(scenario["monsters"]);
+            hero_file=scenario.get<std::string>("hero");
+            std::istringstream monsters(scenario.get<std::string>("monsters"));
             std::copy(std::istream_iterator<std::string>(monsters),
                 std::istream_iterator<std::string>(),
-                back_inserter(monster_files));
+                std::back_inserter(monster_files));
         }
-    } catch (const JSON::ParseException& e){ bad_exit(4); }
+    } catch (const JSON::ParseException& e) {bad_exit(4);}
 
-    try {
+    try { 
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
@@ -51,7 +54,7 @@ int main(int argc, char** argv){
 
         while (hero.isAlive() && !monsters.empty()) {
             std::cout 
-                << hero.getName() << "(" << hero.getLevel()<<") "<<hero.getHealthPoints()
+                << hero.getName() << "(" << hero.getLevel()<<")"
                 << " vs "
                 << monsters.front().getName()
                 <<std::endl;
@@ -59,6 +62,11 @@ int main(int argc, char** argv){
             if (!monsters.front().isAlive()) monsters.pop_front();
         }
         std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-    } catch (const JSON::ParseException& e){ bad_exit(4); }
+        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
+                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
+                  << "  DMG: "<<hero.getDamage()<<std::endl
+                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
+                  ;
+    } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }
