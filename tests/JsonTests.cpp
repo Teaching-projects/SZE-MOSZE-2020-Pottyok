@@ -3,12 +3,12 @@
 #include <gtest/gtest.h>
 
 TEST(JsonTests, ParseFile) {
-    ASSERT_THROW(JSON::ParseFile("none.json"), std::runtime_error);
-    ASSERT_NO_THROW(JSON::ParseFile("../units/sally.json"));
+    ASSERT_THROW(JSON::parseFromFile("none.json"), std::runtime_error);
+    ASSERT_NO_THROW(JSON::parseFromFile("../units/sally.json"));
 }
 
 TEST(JsonTests, GoodValues) {
-    std::map<std::string, std::any> data = JSON::ParseString("{\"string\":\"Hello\",\"int\":4,\"float\":1.6,\"bool\":true}");
+    std::map<std::string, std::any> data = JSON::parseFromString("{\"string\":\"Hello\",\"int\":4,\"float\":1.6,\"bool\":true}");
     ASSERT_EQ(std::any_cast<std::string>(data["string"]), "Hello");
     ASSERT_EQ(std::any_cast<int>(data["int"]), 4);
     ASSERT_EQ(std::any_cast<float>(data["float"]), 1.6f);
@@ -16,7 +16,7 @@ TEST(JsonTests, GoodValues) {
 }
 
 TEST(JsonTests, WrongValues) {
-    std::map<std::string, std::any> data = JSON::ParseString("{\"unclosed_string\":\"Hello,\"double_point\":1.2.3,\"unclosed_float\":1.}");
+    std::map<std::string, std::any> data = JSON::parseFromString("{\"unclosed_string\":\"Hello,\"double_point\":1.2.3,\"unclosed_float\":1.}");
     ASSERT_EQ(data.count("unclosed_string"), 0);
     ASSERT_EQ(data.count("double_point"), 0);
     ASSERT_EQ(data.count("unclosed_float"), 0);

@@ -5,7 +5,7 @@
 #include <regex>
 #include <algorithm>
 
-std::map<std::string, std::any> JSON::ParseString(const std::string &input){
+std::map<std::string, std::any> JSON::parseFromString(const std::string &input){
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
@@ -40,22 +40,22 @@ std::map<std::string, std::any> JSON::ParseString(const std::string &input){
     return data;
 }
 
-std::map<std::string, std::any> JSON::ParseFile(const std::string &fileName){
+std::map<std::string, std::any> JSON::parseFromFile(const std::string &fileName){
     std::ifstream stream(fileName);
     if(!stream.good()) throw std::runtime_error("The given file was not found: " + fileName);
 
-    std::map<std::string, std::any> data = ParseStream(stream);
+    std::map<std::string, std::any> data = parseFromStream(stream);
     
     stream.close();
 
     return data;
 }
 
-std::map<std::string, std::any> JSON::ParseStream(std::istream &stream){
+std::map<std::string, std::any> JSON::parseFromStream(std::istream &stream){
   std::string fileContent, currentLine;
   while(std::getline(stream, currentLine)){
     fileContent += currentLine;
   }
 
-  return ParseString(fileContent);
+  return parseFromString(fileContent);
 }

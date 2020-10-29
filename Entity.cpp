@@ -80,7 +80,7 @@ void Entity::fightLoop(Entity& enemy) {
 
 
 Entity Entity::parseUnit(const std::string& fileName){
-    std::map<std::string, std::any> data = JSON::ParseFile(fileName);
+    std::map<std::string, std::any> data = JSON::parseFromFile(fileName);
 
     JSON::CheckValues<float>(data, "hp");
     JSON::CheckValues<float>(data, "dmg");
