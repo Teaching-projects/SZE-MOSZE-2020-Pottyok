@@ -1,6 +1,21 @@
-maple;sally;Sally wins. Remaining HP: 4029.44
-maple;kakarott;Kakarott wins. Remaining HP: 105837
-sally;maple;Sally wins. Remaining HP: 4029.44
-sally;kakarott;Sally wins. Remaining HP: 5363.18
-kakarott;maple;Kakarott wins. Remaining HP: 105837
-kakarott;sally;Sally wins. Remaining HP: 5363.18
+scenario1.json;
+Prince Aidan of Khanduras(0) vs Fallen
+Prince Aidan of Khanduras(0) vs Fallen
+Prince Aidan of Khanduras(0) vs Zombie
+Prince Aidan of Khanduras(0) vs Fallen
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Zombie
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(2) vs Blood Raven
+The hero won.
+Prince Aidan of Khanduras: LVL7
+   HP: 65/65
+  DMG: 10
+  ACD: 0.526127
+scenario2.json;
+Prince Aidan of Khanduras(0) vs Blood Raven
+The hero died.
+Prince Aidan of Khanduras: LVL0
+   HP: 0/30
+  DMG: 3
+  ACD: 1.1

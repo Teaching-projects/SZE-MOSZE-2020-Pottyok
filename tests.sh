@@ -4,12 +4,13 @@ results="results.txt"
 
 while IFS= read line
 do
-    ent1=`echo "$line" | cut -d ';' -f 1`
-    ent2=`echo "$line" | cut -d ';' -f 2`
-    outcome=`echo "$line" | cut -d ';' -f 3`
+    if [[ $line =~ ";" ]]; then
+        scenario=`echo "$line" | cut -d ';' -f 1`
+        output="$(./main $scenario)"
+        echo "$scenario;" >> $results;
+        echo "$output" >> $results;
+    fi
 
-    output="$(./output units/$ent1.json units/$ent2.json)"
-    echo "$ent1;$ent2;$output" >> $results
 done < "$expected"
 
 echo "Expected OUTPUT"
@@ -18,7 +19,7 @@ echo "Real OUTPUT"
 cat $results
 
 different="$(diff $expected $results)"
-
+sleep 55000000
 if [ -z "$different" ]; then
     echo "Successful test."
     exit 0
