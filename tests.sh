@@ -19,7 +19,7 @@ echo "Real OUTPUT"
 cat $results
 
 different="$(diff $expected $results)"
-sleep 55000000
+
 if [ -z "$different" ]; then
     echo "Successful test."
     exit 0
