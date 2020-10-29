@@ -1,15 +1,15 @@
 #include "Player.h"
-#include "Entity.h"
+#include "Monster.h"
 #include <string>
 #include <iostream>
 #include <cmath>
 
-Player& Player::operator=(const Entity &entity){
-    this->MaxHealth                     =   entity.getMaxHealth();
-    this->Health                        =   entity.getHealth();
-    this->AttackDamage                  =   entity.getAttackDamage();
-    this->Name                          =   entity.getName();
-	this->AttackSpeed					=	entity.getAttackSpeed();
+Player& Player::operator=(const Monster &monster){
+    this->MaxHealth                     =   monster.getMaxHealth();
+    this->Health                        =   monster.getHealth();
+    this->AttackDamage                  =   monster.getAttackDamage();
+    this->Name                          =   monster.getName();
+	this->AttackSpeed					=	monster.getAttackSpeed();
     this->ExperienceCurrent             =   0;
     
     return *this;
@@ -29,10 +29,10 @@ int Player::getLevel() const{
     return this->ExperienceCurrent / 100;
 }
 
-void Player::attack(Entity& entity){
-	float enemyHealthBeforeAttack = entity.getHealth();
+void Player::attack(Monster& monster){
+	float enemyHealthBeforeAttack = monster.getHealth();
 	
-	Entity::attack(entity);
+	Monster::attack(monster);
     this->addExperience(std::min(this->getAttackDamage(), enemyHealthBeforeAttack));
 
 }

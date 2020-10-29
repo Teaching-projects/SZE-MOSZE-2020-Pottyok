@@ -1,59 +1,59 @@
-#include "Entity.h"
+#include "Monster.h"
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <regex> 
 #include "JSON.h"
 
-Entity& Entity::operator=(const Entity &entity) {
-    this->MaxHealth      =   entity.MaxHealth;
-    this->Health         =   entity.Health;
-    this->AttackDamage   =   entity.AttackDamage;
-    this->AttackSpeed    =   entity.AttackSpeed;
-    this->Name           =   entity.Name;
+Monster& Monster::operator=(const Monster &monster) {
+    this->MaxHealth      =   monster.MaxHealth;
+    this->Health         =   monster.Health;
+    this->AttackDamage   =   monster.AttackDamage;
+    this->AttackSpeed    =   monster.AttackSpeed;
+    this->Name           =   monster.Name;
     return *this;
 }
 
-float Entity::getHealth() const{
+float Monster::getHealth() const{
     return this->Health;
 }
 
-float Entity::getMaxHealth() const{
+float Monster::getMaxHealth() const{
     return this->MaxHealth;
 }
 
-float Entity::getAttackDamage() const{
+float Monster::getAttackDamage() const{
     return this->AttackDamage;
 }
 
 
-float Entity::getAttackSpeed() const {
+float Monster::getAttackSpeed() const {
     return this->AttackSpeed;
 }
 
 
-void Entity::damage(const float dmg){
+void Monster::damage(const float dmg){
     this->Health -= dmg;
     if(this->Health <= 0){
         this->Health = 0;
     }
 }
 
-void Entity::attack(Entity& enemy){
+void Monster::attack(Monster& enemy){
     enemy.damage(this->getAttackDamage());
 }
 
-bool Entity::getIsDead() const{
+bool Monster::getIsDead() const{
     return (this->Health <= 0);
 }
 
-std::string Entity::getName() const{
+std::string Monster::getName() const{
     return this->Name;
 }
 
 
 
-void Entity::fightLoop(Entity& enemy) {
+void Monster::fightLoop(Monster& enemy) {
     float attackerTimer = 0, enemyTimer = 0;
 
     do
@@ -79,7 +79,7 @@ void Entity::fightLoop(Entity& enemy) {
 }
 
 
-Entity Entity::parseUnit(const std::string& fileName){
+Monster Monster::parseUnit(const std::string& fileName){
     std::map<std::string, std::any> data = JSON::parseFromFile(fileName);
 
     JSON::CheckValues<float>(data, "hp");
@@ -87,7 +87,7 @@ Entity Entity::parseUnit(const std::string& fileName){
     JSON::CheckValues<std::string>(data, "name");
     JSON::CheckValues<float>(data, "spd");
 
-    return Entity(
+    return Monster(
         std::any_cast<float>(data["hp"]),
         std::any_cast<float>(data["dmg"]),
         std::any_cast<std::string>(data["name"]),

@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "Entity.h"
+#include "Monster.h"
 #include "Player.h"
 #include <iostream>
 
@@ -19,6 +19,6 @@ bool Game::isAnyoneDead() const {
     return (this->ent1.getIsDead() || this->ent2.getIsDead());
 }
 
-Entity Game::getWinner() const  {
+Monster Game::getWinner() const  {
     return this->ent1.getIsDead() ? this->ent2 : this->ent1;
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include "Game.h"
-#include "Entity.h"
+#include "Monster.h"
 #include "Player.h"
 #include <fstream>
 

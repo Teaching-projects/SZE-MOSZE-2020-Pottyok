@@ -11,7 +11,7 @@
 #ifndef GAME_HEADER
 #define GAME_HEADER
 #include <vector>
-#include "Entity.h"
+#include "Monster.h"
 #include "Player.h"
 
 class Game{
@@ -26,7 +26,7 @@ class Game{
         */
         Game(const Player&,const Player&);
         bool isAnyoneDead() const;  ///< Lekeri, hogy a ket Player kozul halott-e valamelyik
-        Entity getWinner() const;   ///< Lekeri, hogy melyik Entity nyerte a harcot
+        Monster getWinner() const;   ///< Lekeri, hogy melyik Monster nyerte a harcot
         void Start();   ///< Elinditja a harcot a ket Player kozott, aminek a vegen az End() kerul meghivasra
         void End(); ///< Ket Player kozotti harc vegen kiirja annak vegeredmenyet
 
