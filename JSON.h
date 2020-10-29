@@ -11,13 +11,18 @@ class JSON{
         template <typename T>
         static void CheckValues(std::map<std::string, std::any> &data, std::string key){
             if(!data.count(key)){
-                throw std::runtime_error("JSON is missing a key: " + key); 
+                throw ParseException("JSON is missing a key: " + key); 
             }
 
             try {
                 std::any_cast<T>(data[key]);
             } catch(const std::exception& e) {
-                throw std::runtime_error(key + " has a bad type"); 
+                throw ParseException(key + " has a bad type"); 
             }
+        };
+
+        class ParseException : virtual public std::runtime_error{
+            public:
+                explicit ParseException(const std::string &description) : std::runtime_error("Error while parsing " + description) {}
         };
 };

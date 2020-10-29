@@ -42,7 +42,7 @@ std::map<std::string, std::any> JSON::parseFromString(const std::string &input){
 
 std::map<std::string, std::any> JSON::parseFromFile(const std::string &fileName){
     std::ifstream stream(fileName);
-    if(!stream.good()) throw std::runtime_error("The given file was not found: " + fileName);
+    if(!stream.good()) throw JSON::ParseException("The given file was not found: " + fileName);
 
     std::map<std::string, std::any> data = parseFromStream(stream);
     
