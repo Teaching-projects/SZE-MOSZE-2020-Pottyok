@@ -1,10 +1,10 @@
-#include "Player.h"
+#include "Hero.h"
 #include "Monster.h"
 #include <string>
 #include <iostream>
 #include <cmath>
 
-Player& Player::operator=(const Monster &monster){
+Hero& Hero::operator=(const Monster &monster){
     this->MaxHealth                     =   monster.getMaxHealth();
     this->Health                        =   monster.getHealth();
     this->AttackDamage                  =   monster.getAttackDamage();
@@ -15,7 +15,7 @@ Player& Player::operator=(const Monster &monster){
     return *this;
 }
 
-void Player::addExperience(float experience){
+void Hero::addExperience(float experience){
     float experienceAfterRound = this->ExperienceCurrent + experience;
     int levelsToAdd = (experienceAfterRound - this->ExperienceCurrent) / 100;
     this->MaxHealth *= powf(1.1f,levelsToAdd);
@@ -25,11 +25,11 @@ void Player::addExperience(float experience){
     this->ExperienceCurrent = experienceAfterRound;
 }
 
-int Player::getLevel() const{
+int Hero::getLevel() const{
     return this->ExperienceCurrent / 100;
 }
 
-void Player::attack(Monster& monster){
+void Hero::attack(Monster& monster){
 	float enemyHealthBeforeAttack = monster.getHealth();
 	
 	Monster::attack(monster);
