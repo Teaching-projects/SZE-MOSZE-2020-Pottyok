@@ -7,21 +7,21 @@
 class Hero : public Monster{
     protected:
         float ExperienceCurrent;
-        int ExperiencePerLevel;
-        int HealthPointBonusPerLevel;
-        int DamageBonusPerLevel;
+        float ExperiencePerLevel;
+        float HealthPointBonusPerLevel;
+        float DamageBonusPerLevel;
         float ColdownMultiplierPerLevel;
 
-        void addExperience(int);
+        void addExperience(float);
 
     public:
-        Hero(const int health,
-            const int attackDamage,
+        Hero(const float health,
+            const float attackDamage,
             const std::string& name,
             const float attackSpeed,
-            int ExperiencePerLevel,
-            int HealthPointBonusPerLevel,
-            int DamageBonusPerLevel,
+            float ExperiencePerLevel,
+            float HealthPointBonusPerLevel,
+            float DamageBonusPerLevel,
             float ColdownMultiplierPerLevel) 
                 : Monster(health, attackDamage, name, attackSpeed),
                 ExperienceCurrent(0),

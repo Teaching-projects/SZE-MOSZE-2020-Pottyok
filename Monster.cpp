@@ -14,15 +14,15 @@ Monster& Monster::operator=(const Monster &monster) {
     return *this;
 }
 
-int Monster::getHealthPoints() const{
+float Monster::getHealthPoints() const{
     return this->Health;
 }
 
-int Monster::getMaxHealthPoints() const{
+float Monster::getMaxHealthPoints() const{
     return this->MaxHealth;
 }
 
-int Monster::getDamage() const{
+float Monster::getDamage() const{
     return this->AttackDamage;
 }
 
@@ -32,7 +32,7 @@ float Monster::getAttackCoolDown() const {
 }
 
 
-void Monster::damage(const int dmg){
+void Monster::damage(const float dmg){
     this->Health -= dmg;
     if(this->Health <= 0){
         this->Health = 0;
@@ -87,9 +87,9 @@ Monster Monster::parse(const std::string& fileName){
     JSON json = JSON::parseFromFile(fileName);
     
     return Monster(
-        json.get<int>("health_points"),
-        json.get<int>("damage"),
+        (float)json.get<int>("health_points"),
+        (float)json.get<int>("damage"),
         json.get<std::string>("name"),
-        json.get<float>("attack_cooldown")
+        (float)json.get<float>("attack_cooldown")
     );
 }
