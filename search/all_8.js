@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maxhealth',['MaxHealth',['../classEntity.html#ad0fd2065fee63a19ec55980280191471',1,'Entity']]]
+  ['operator_3d',['operator=',['../classMonster.html#aa824afb3c7bfbc25e3d67fe9a9209d22',1,'Monster']]]
 ];
