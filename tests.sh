@@ -4,12 +4,13 @@ results="results.txt"
 
 while IFS= read line
 do
-    ent1=`echo "$line" | cut -d ';' -f 1`
-    ent2=`echo "$line" | cut -d ';' -f 2`
-    outcome=`echo "$line" | cut -d ';' -f 3`
+    if [[ $line =~ ";" ]]; then
+        scenario=`echo "$line" | cut -d ';' -f 1`
+        output="$(./output $scenario)"
+        echo "$scenario;" >> $results;
+        echo "$output" >> $results;
+    fi
 
-    output="$(./output units/$ent1.json units/$ent2.json)"
-    echo "$ent1;$ent2;$output" >> $results
 done < "$expected"
 
 echo "Expected OUTPUT"

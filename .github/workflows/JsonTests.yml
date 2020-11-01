@@ -1,4 +1,4 @@
-name: JsonParser Tests
+name: JSON Tests
 on: push
 jobs:
   build_and_test:
