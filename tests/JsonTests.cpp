@@ -46,6 +46,11 @@ TEST(JsonTests, DifferentOrder) {
     ASSERT_TRUE(json_equal(orderFirst, orderSecond));
 }
 
+TEST(JsonTests, CaseSensitivity) {
+    JSON json = JSON::parseFromString("{\"NAME\":\"Maple\",\"hp\":1500.0}");
+    ASSERT_THROW(json.get<std::string>("name"), std::runtime_error);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

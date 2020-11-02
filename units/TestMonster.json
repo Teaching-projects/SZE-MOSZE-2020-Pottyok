@@ -1,5 +1,5 @@
 {
-    "name" : "TestUnit",
+    "name" : "Test Monster",
     "health_points" : 450,
     "damage" : 300,
     "attack_cooldown" : 10.5
