@@ -12,4 +12,4 @@ jobs:
       - name: Run Json Tests
         run: cd tests && ./runJsonTests
       - name: Run Entity Tests
-        run: ./runEntityTests
+        run: cd tests && ./runEntityTests
