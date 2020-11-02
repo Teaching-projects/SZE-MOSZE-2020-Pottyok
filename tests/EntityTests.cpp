@@ -1,41 +1,41 @@
-#include "Entity.h"
-#include "Player.h"
+#include "Monster.h"
+#include "Hero.h"
 
 #include <gtest/gtest.h>
 
 
 TEST(EntityTests, ParseUnit) {
-    Entity entity = Entity::parseUnit("../units/TestUnit.json");
+    Monster entity = Monster::parse("../units/TestUnit.json");
 
-    ASSERT_EQ(entity.getHealth(), 450.0);
-    ASSERT_EQ(entity.getAttackDamage(), 300.0);
+    ASSERT_EQ(entity.getHealthPoints(), 450.0);
+    ASSERT_EQ(entity.getDamage(), 300.0);
     ASSERT_EQ(entity.getName(), "TestUnit");
-    ASSERT_EQ(entity.getAttackSpeed(), 10.5);
+    ASSERT_EQ(entity.getAttackCoolDown(), 10.5);
 }
 
 TEST(EntityTests, Attack) {
-    Entity entity = Entity::parseUnit("../units/TestUnit.json");
+    Monster entity = Monster::parse("../units/TestUnit.json");
 
     entity.attack(entity);
-    ASSERT_EQ(entity.getHealth(), 150.0);
+    ASSERT_EQ(entity.getHealthPoints(), 150.0);
 }
 
 TEST(EntityTests, fightVictory) {
-    Player ent1(450.0, 300.0, "Sally", 10.5f);
-    Player ent2(1500.0, 100.0, "Maple", 15.2f);
+    Hero ent1(30.0, 3.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.9);
+    Monster ent2(10.0, 1.0, "Zombie", 2.8f);
     
-    ent1.fightLoop(ent2);
+    ent1.fightTilDeath(ent2);
 
-    ASSERT_NEAR(ent1.getHealth(), 4029.44, 0.005);
+    ASSERT_NEAR(ent1.getHealthPoints(), 28.0, 0.005);
 }
 
 TEST(EntityTests, fightLose) {
-    Player ent1(1500.0, 100.0, "Maple", 15.2f);
-    Player ent2(450.0, 300.0, "Sally", 10.5f);
+    Hero ent1(30.0, 3.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.9);
+    Monster ent2(113.0, 8.0, "Blood Draven", 1.2);
     
-    ent1.fightLoop(ent2);
+    ent1.fightTilDeath(ent2);
 
-    ASSERT_EQ(ent1.getHealth(), 0);
+    ASSERT_EQ(ent1.getHealthPoints(), 0);
 }
 
 

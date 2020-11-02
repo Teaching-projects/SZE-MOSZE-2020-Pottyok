@@ -9,17 +9,14 @@ JSON JSON::parseFromString(const std::string &input){
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
-    const std::regex searchRegex("\"([^\"]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\n}]{1}");
+    const std::regex searchRegex("\"([^\"]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\r\n}]{1}");
 
     std::string worker(input), key, value;
 
     while (std::regex_search(worker, searchMatches, searchRegex))
     {
         key = searchMatches[1].str();
-        if (forceString) {
-            data[key] = searchMatches[2].str() != "" ? searchMatches[2].str() : (searchMatches[3].str() != "" ? searchMatches[3].str() : (searchMatches[4].str() != "" ? searchMatches[4].str() : ""));
-        }
-        else if(searchMatches[2].str() != ""){
+        if(searchMatches[2].str() != ""){
             value = searchMatches[2].str();
             value.erase(std::remove(value.begin(), value.end(), '\"'), value.end());
             data[key] = value;

@@ -1,6 +1,6 @@
 {
     "name" : "TestUnit",
-    "hp" : 450.0,
-    "dmg" : 300.0,
-    "spd" : 10.5
+    "health_points" : 450,
+    "damage" : 300,
+    "attack_cooldown" : 10.5
 }

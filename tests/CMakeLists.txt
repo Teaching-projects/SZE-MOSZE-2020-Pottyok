@@ -12,7 +12,7 @@ add_executable( runJsonTests JsonTests.cpp )
 target_link_libraries(runJsonTests gtest gtest_main pthread)
 target_compile_features(runJsonTests PRIVATE cxx_std_17)
 
-add_executable( runEntityTests EntityTests.cpp ${PARENT_DIR}/Entity.cpp ${PARENT_DIR}/JsonParser.cpp ${PARENT_DIR}/Player.cpp )
+add_executable( runEntityTests EntityTests.cpp ${PARENT_DIR}/Monster.cpp ${PARENT_DIR}/JSON.cpp ${PARENT_DIR}/Hero.cpp )
 target_link_libraries(runEntityTests gtest gtest_main pthread)
 target_compile_features(runEntityTests PRIVATE cxx_std_17)
 

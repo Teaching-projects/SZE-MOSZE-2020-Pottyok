@@ -3,14 +3,10 @@
 #include <gtest/gtest.h>
 
 
-bool map_equal(std::map<std::string, std::any> map_a, std::map<std::string, std::any> map_b) {
-    for(std::map<std::string, std::any>::iterator i = map_a.begin(); i != map_a.end(); ++i)
-    {
-        std::string value_a = std::any_cast<std::string>(map_a[i->first]);
-        std::string value_b = std::any_cast<std::string>(map_b[i->first]);
+bool json_equal(JSON json_a, JSON json_b) {
+    if (json_a.get<std::string>("name") != json_b.get<std::string>("name")) return false;
+    if (json_a.get<float>("hp") != json_b.get<float>("hp")) return false;
 
-        if (value_a != value_b) return false;
-    }
     return true;
 }
 
@@ -36,18 +32,18 @@ TEST(JsonTests, WrongValues) {
 }
 
 TEST(JsonTests, Whitespace) {
-    std::map<std::string, std::any> noWhitespace = JsonParser::ParseString("{\"name\":\"Maple\",\"hp\":1500.0}", true);
-    std::map<std::string, std::any> singleWhitespace = JsonParser::ParseString("{\"name\" : \"Maple\", \"hp\" : 1500.0}", true);
-    std::map<std::string, std::any> moreWhitespace = JsonParser::ParseString("{ \"name\"   : \"Maple\",  \"hp\"  :   1500.0}", true);
-    ASSERT_TRUE(map_equal(noWhitespace, singleWhitespace));
-    ASSERT_TRUE(map_equal(noWhitespace, moreWhitespace));
-    ASSERT_TRUE(map_equal(singleWhitespace, moreWhitespace));
+    JSON noWhitespace = JSON::parseFromString("{\"name\":\"Maple\",\"hp\":1500.0}");
+    JSON singleWhitespace = JSON::parseFromString("{\"name\" : \"Maple\", \"hp\" : 1500.0}");
+    JSON moreWhitespace = JSON::parseFromString("{ \"name\"   : \"Maple\",  \"hp\"  :   1500.0}");
+    ASSERT_TRUE(json_equal(noWhitespace, singleWhitespace));
+    ASSERT_TRUE(json_equal(noWhitespace, moreWhitespace));
+    ASSERT_TRUE(json_equal(singleWhitespace, moreWhitespace));
 }
 
 TEST(JsonTests, DifferentOrder) {
-    std::map<std::string, std::any> orderFirst =  JsonParser::ParseString("{\"name\":\"Maple\",\"hp\":1500.0}", true);
-    std::map<std::string, std::any> orderSecond =  JsonParser::ParseString("{\"hp\":1500.0,\"name\":\"Maple\"}", true);
-    ASSERT_TRUE(map_equal(orderFirst, orderSecond));
+    JSON orderFirst =  JSON::parseFromString("{\"name\":\"Maple\",\"hp\":1500.0}");
+    JSON orderSecond =  JSON::parseFromString("{\"hp\":1500.0,\"name\":\"Maple\"}");
+    ASSERT_TRUE(json_equal(orderFirst, orderSecond));
 }
 
 int main(int argc, char **argv) {
