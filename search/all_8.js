@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d',['operator=',['../classMonster.html#aa824afb3c7bfbc25e3d67fe9a9209d22',1,'Monster']]]
+  ['json',['JSON',['../classJSON.html',1,'JSON'],['../classJSON.html#ac76a6196a66189b8d1187d7b6952613e',1,'JSON::JSON()']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operator_3d',['operator=',['../classMonster.html#aa824afb3c7bfbc25e3d67fe9a9209d22',1,'Monster']]]
+  ['hero',['Hero',['../classHero.html#a23ee3fa9762dcdb5715446224fd4fa9e',1,'Hero::Hero(const float health, const float attackDamage, const std::string &amp;name, const float attackSpeed, float ExperiencePerLevel, float HealthPointBonusPerLevel, float DamageBonusPerLevel, float ColdownMultiplierPerLevel)'],['../classHero.html#a1e7352b9d4070fe3f088cceff7bfe1df',1,'Hero::Hero(Monster monster)']]]
 ];

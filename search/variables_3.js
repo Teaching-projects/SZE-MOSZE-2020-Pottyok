@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name',['Name',['../classMonster.html#a37a050f8478d4b2ac0e476261ab9d825',1,'Monster']]]
+  ['experiencecurrent',['ExperienceCurrent',['../classHero.html#ae3ededf96d0b1841993835c371ff911b',1,'Hero']]],
+  ['experienceperlevel',['ExperiencePerLevel',['../classHero.html#a4c1c874bc1f3ed768f47ef9e1ef3e623',1,'Hero']]]
 ];
