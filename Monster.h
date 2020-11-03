@@ -7,7 +7,6 @@
  * 
  * Created on: 2020/10/10 12:25
 */
-
 #ifndef MONSTER_HEADER
 #define MONSTER_HEADER
 
@@ -23,9 +22,9 @@ class Monster{
         void damage(const float); ///< Monster jelenlegi eleterejenek csokkentese
 
     public:
-        Monster(const float health, const float attackDamage,const std::string& name, const float attackSpeed) : Name(name), Health(health), MaxHealth(health), AttackDamage(attackDamage), AttackSpeed(attackSpeed) {};   ///< Az Monster class konstruktora
-		Monster(const Monster& monster) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), AttackSpeed(monster.AttackSpeed) {};	///< Az Monster class copy konstruktora
-        Monster& operator=(const Monster&);   ///< Az Monster class egyenloseg operatora
+        Monster(const float health /** [in] A Monster eletereje */, const float attackDamage /** [in] A Monster tamadasi ereje */,const std::string& name /** [in] A Monster neve */, const float attackSpeed /** [in] A Monster tamadasi sebessege */) : Name(name), Health(health), MaxHealth(health), AttackDamage(attackDamage), AttackSpeed(attackSpeed) {};   ///< Az Monster class konstruktora
+		Monster(const Monster& monster /** [in] Másolni kívánt Monster */) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), AttackSpeed(monster.AttackSpeed) {};	///< Az Monster class copy konstruktora
+        Monster& operator=(const Monster& /** [in] A Monster amivel egyenlove akarjuk tenni az objektumot */);   ///< Az Monster class egyenloseg operatora
         float getDamage() const;    ///< Monster sebzeset visszaado getter
         float getAttackCoolDown() const;   ///< Monster ket tamadas kozotti idot visszaado getter
         std::string getName() const;    ///< Monster nevet visszaado getter
@@ -38,7 +37,7 @@ class Monster{
          * \return True, ha az Monster jelenlegi eletereje 0, mas esetben False
         */
         bool getIsDead() const;
-        bool isAlive() const;
+        bool isAlive() const; ///< Megadja, hogy a Monster eletben van-e
 
         void fightTilDeath(Monster& /** [in] Az Monster akivel a harcot kezdemenyezzuk */);    ///< Harc kezdemenyezese egy masik Monster-vel
 
