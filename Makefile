@@ -23,7 +23,7 @@ documentation:
 	doxygen doxconf
 
 unittests:
-	cd tests && ./runTests
+	cd tests && make && ./runEntityTests && ./runJsonTests
 
 outputtest:
 	./tests.sh
