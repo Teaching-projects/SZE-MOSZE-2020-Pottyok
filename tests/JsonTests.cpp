@@ -51,6 +51,10 @@ TEST(JsonTests, CaseSensitivity) {
     ASSERT_THROW(json.get<std::string>("name"), std::runtime_error);
 }
 
+TEST(JsonTests, NoBracketError) {
+    ASSERT_THROW(JSON::parseFromString("\"NAME\":\"Maple\",\"hp\":1500.0"), std::runtime_error);
+}
+
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
