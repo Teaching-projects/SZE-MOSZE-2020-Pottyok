@@ -38,6 +38,12 @@ JSON JSON::parseFromString(const std::string &input){
             value = searchMatches[4].str();
             data[key] = value == "true" ? true : false;
         }
+        else if(searchMatches[5].str() != ""){
+            value = searchMatches[2].str();
+            value.erase(std::remove(value.begin(), value.end(), '['), value.end());
+            value.erase(std::remove(value.begin(), value.end(), ']'), value.end());
+            data[key] = value;
+        }
 
         worker = searchMatches.suffix();
     }
