@@ -11,11 +11,10 @@ jobs:
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
+    container: balintxd/mosze:latest
     steps:
       - uses: actions/checkout@v2
 
-      - run: sudo apt-get install doxygen
-      - run: sudo apt-get install graphviz
       - run: make documentation
 
       - name: Push git subdirectory as branch
