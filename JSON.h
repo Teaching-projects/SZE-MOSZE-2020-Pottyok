@@ -12,11 +12,15 @@
 #include <string>
 #include <any>
 #include <iostream>
+#include <list>
+#include <variant>
+#include <sstream>
 
 class JSON{
     protected:
          std::map<std::string, std::any> Data;                      ///< Az adatok tarolasara szolgalo adatstruktura
     public:
+        typedef std::list<std::variant<std::string, int, double, float>> list; ///< Egy string, int, double, float, tarolasara alkalmas variant lista 
         /**
          * \brief A JSON class konstruktora
          * \param data Adatokat tartalmazo adatstruktura
@@ -45,13 +49,47 @@ class JSON{
         static JSON parseFromStream(std::istream &stream);
 
         /**
+         * \brief Adott kulcshoz tartozo erteket listava alakit
+         * \param key Keresendo kulcs
+         * \throw ParseException
+         * \return A kulcshoz tartozo ertek a kivant tipusban
+        */
+        template <typename T>
+        inline typename std::enable_if<std::is_same<T, JSON::list>::value, JSON::list>::type
+        get(std::string key){
+            if(!Data.count(key)){
+                throw ParseException("JSON is missing a key: " + key); 
+            }
+
+            JSON::list list;
+            std::string value = std::any_cast<std::string>(Data[key]);
+
+            std::stringstream ss(value);
+            std::string temp = "";
+            for (char i; ss >> i;) {
+                if (i == ',' ){
+                    list.push_back(temp);
+                    temp = "";
+                } else{
+                    if(i != '"'){
+                        temp += i;
+                    }
+                }
+            }
+            list.push_back(temp);
+
+            return list;
+        }
+
+        /**
          * \brief Ha letezik az adott kulcs, akkor megprobalja castolni a kivant tipusra
          * \param key Keresendo kulcs
          * \throw ParseException
          * \return A kulcshoz tartozo ertek a kivant tipusban
         */
         template <typename T>
-        T get(std::string key){
+        inline typename std::enable_if<!std::is_same<T, JSON::list>::value, T>::type
+        get(std::string key){
             if(!Data.count(key)){
                 throw ParseException("JSON is missing a key: " + key); 
             }
@@ -62,6 +100,7 @@ class JSON{
                 throw ParseException(key + " has a bad type"); 
             }
         }
+
 
         /**
          * \brief Kulcsok darabszamat visszaado fuggveny 
