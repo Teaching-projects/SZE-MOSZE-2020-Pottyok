@@ -9,7 +9,7 @@ JSON JSON::parseFromString(const std::string &input){
     std::map<std::string, std::any> data;
     std::smatch searchMatches;
     
-    const std::regex searchRegex("\"([^\"]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?[,\r\n}]{1}");
+    const std::regex searchRegex("\"([^\"]+)\"\\s*:\\s*(\"[^\"]+\")?([0-9]*[.]?[0-9]+)?(true|false)?(\\[[^\\]]+\\])?[,\r\n}]{1}");
     const std::regex syntaxRegex("\\w*[{]{1}[^}]+}{1}\\w*");
 
     std::string worker(input), key, value;
@@ -37,6 +37,12 @@ JSON JSON::parseFromString(const std::string &input){
         else if(searchMatches[4].str() != ""){
             value = searchMatches[4].str();
             data[key] = value == "true" ? true : false;
+        }
+        else if(searchMatches[5].str() != ""){
+            value = searchMatches[5].str();
+            value.erase(std::remove(value.begin(), value.end(), '['), value.end());
+            value.erase(std::remove(value.begin(), value.end(), ']'), value.end());
+            data[key] = value;
         }
 
         worker = searchMatches.suffix();
