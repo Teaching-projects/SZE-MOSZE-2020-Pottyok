@@ -16,11 +16,26 @@
 
 class Map {
     private:
-        std::vector<std::string> map;
+        std::vector<std::string> map;   ///< A terkepet tarolo adatstruktura
 
     public:
-        enum type {Free, Wall};
+        /**
+         * A terkep egy adott pontjanak tipusat meghatarozo enum
+         */ 
+        enum type {
+            Free,       /**< Az adott pont ures */
+            Wall        /**< Az adott ponton fal van */
+            };
+        /**
+         * \brief A Map class konstruktora
+         * \param filename A terkepet tartalmazo fajl
+         */
         Map(std::string filename);
+        /**
+         * \brief A terkep egy adott pontjanak tipusat visszaado fuggveny
+         * \param x A terkep x koordinataja - a vector y. soranak x. eleme
+         * \param y A terkep y koordinataja - a vector y. eleme
+         */ 
         Map::type get(unsigned int x, unsigned int y) const;
         
     /**
