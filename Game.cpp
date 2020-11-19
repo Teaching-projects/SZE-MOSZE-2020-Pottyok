@@ -40,19 +40,19 @@ void Game::printMap() {
     std::regex replaceFree("\\s");
 
     std::cout << "╔";
-    for (int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
     std::cout << "╗" << std::endl;
 
-    for (int i = 0; i < map.getColumnCount(); i++) {
+    for (unsigned int i = 0; i < map.getColumnCount(); i++) {
         std::cout << "║";
         std::cout << std::regex_replace(std::regex_replace(map.getRow(i), replaceFree, "░"), replaceWall, "█");
-        for (int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
+        for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
             std::cout << "█";
         }
         std::cout << "║" << std::endl;
     }
 
     std::cout << "╚";
-    for (int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
 }
