@@ -17,6 +17,7 @@
 class Map {
     private:
         std::vector<std::string> map;   ///< A terkepet tarolo adatstruktura
+        unsigned int longestRowCount;
 
     public:
         /**
@@ -25,7 +26,8 @@ class Map {
         enum type {
             Free,       /**< Az adott pont ures */
             Wall        /**< Az adott ponton fal van */
-            };
+        };
+        Map();
         /**
          * \brief A Map class konstruktora
          * \param filename A terkepet tartalmazo fajl
@@ -37,6 +39,18 @@ class Map {
          * \param y A terkep y koordinataja - a vector y. eleme
          */ 
         Map::type get(unsigned int x, unsigned int y) const;
+        
+        unsigned int getLongestRowCount() {
+            return this->longestRowCount;
+        }
+
+        unsigned int getColumnCount() {
+            return this->map.size();
+        }
+
+        std::string getRow(int rowNumber) {
+            return this->map[rowNumber];
+        }
         
     /**
      * \class WrongIndexException
