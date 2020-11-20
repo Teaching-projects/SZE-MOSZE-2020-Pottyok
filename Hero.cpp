@@ -36,7 +36,7 @@ void Hero::attack(Monster& monster){
 	float enemyHealthBeforeAttack = monster.getHealthPoints();
 
 	Monster::attack(monster);
-    this->addExperience(std::min(std::max(this->getDamage() - monster.getDefense(), 0), enemyHealthBeforeAttack));
+    this->addExperience(std::min(std::max(this->getDamage() - monster.getDefense(), (float)0), enemyHealthBeforeAttack));
 
 }
 
