@@ -12,26 +12,24 @@ Game::Game() {
 Game::Game(std::string mapfilename) {
     Map map(mapfilename);
     setMap(map);
-
-    isHeroSet();
 }
 
-void Game::setMap(Map map) {
+void Game::setMap(Map &map) {
     this->map = map;
 }
 
-void Game::putHero(Hero hero, int x, int y) {
+void Game::putHero(Hero &hero, int x, int y) {
     if (map.get(x, y) == Map::Wall) throw OccupiedException("Can't place entity on wall.");
-    if (isMapSet()) throw WrongIndexException("Map is not set.");
+    if (!isMapSet()) throw WrongIndexException("Map is not set.");
     if (isHeroSet()) throw AlreadyHasUnitsException("The hero is already set.");
 
     MapEntity _hero(x, y, hero);
     this->heroes.push_back(_hero);
 }
 
-void Game::putMonster(Monster monster, int x, int y) {
+void Game::putMonster(Monster &monster, int x, int y) {
     if (map.get(x, y) == Map::Wall) throw OccupiedException("Can't place entity on wall.");
-    if (isMapSet()) throw WrongIndexException("Map is not set.");
+    if (!isMapSet()) throw WrongIndexException("Map is not set.");
     
     MapEntity _monster(x, y, monster);
     this->monsters.push_back(_monster);
@@ -46,7 +44,7 @@ void Game::run() {
     while (areMonstersAlive() && areHeroesAlive()) {
         printMap();
         do{
-            std::cout << "Where to go? (north, south, west, east): ";
+            std::cerr << "Where to go? (north, south, west, east): ";
             std::cin >> input;
         }
         while(!this->checkUserInput(input));
@@ -55,10 +53,10 @@ void Game::run() {
     }
 
     if (areHeroesAlive()) {
-        std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
+        std::cerr << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
     }
     else {
-        std::cout << "The hero died.";
+        std::cerr << "The hero died.";
     }
 }
 
@@ -71,7 +69,7 @@ bool Game::checkUserInput(std::string &input){
     };
 
     if(std::find(goodInputs.begin(), goodInputs.end(),input) == goodInputs.end()){ 
-        std::cout << "The given command was not found!" << std::endl;    
+        std::cerr << "The given command was not found!" << std::endl;    
         return false; 
     }
 
@@ -88,12 +86,12 @@ bool Game::isMovePossible(std::string &input){
 
     Map::type maptype = this->map.get(futureX, futureY);
     if(maptype == Map::Wall){ 
-        std::cout << "The given coordinate is a wall!";
+        std::cerr << "The given coordinate is a wall!" << std::endl;
         return false; 
     }
 
     if(futureY < 0 || futureX < 0 || futureY >= this->map.getColumnCount() || futureX >= this->map.getRow(futureY).size()){ 
-        std::cout << "The given coordinate is not existing!";
+        std::cerr << "The given coordinate is not existing!";
         return false;
     }
 
@@ -125,14 +123,6 @@ void Game::fight(){
     
 }
 
-std::string Game::getMapRow(unsigned int rowId){
-    std::regex replaceWall("#");
-    std::regex replaceFree("\\s");
-    std::string row = map.getRow(rowId);
-    row = std::regex_replace(std::regex_replace(row, replaceFree, "░░"), replaceWall, "██");
-    return row;
-}
-
 bool Game::heroIsHere(unsigned int x,unsigned int y){
     MapEntity hero =  this->heroes[0];
     unsigned int currentX = hero.getX();
@@ -154,37 +144,36 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
 void Game::printMap() {
     
 
-    std::cout << "╔";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
-    std::cout << "╗" << std::endl;
+    std::cerr << "╔";
+    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cerr << "═"; }
+    std::cerr << "╗" << std::endl;
 
     for (unsigned int i = 0; i < map.getColumnCount(); i++) {
-        std::cout << "║";
-        std::string row = this->getMapRow(i);
-        for (unsigned int j = 0; j < row.size(); j+=2)
+        std::cerr << "║";
+        std::string row = this->map.getRow(i);
+        for (unsigned int j = 0; j < row.size(); j++)
         {
             if (this->heroIsHere(j,i)){
-                std::cout << "┣┫";
+                std::cerr << "┣┫";
             }
             else if(this->countMonstersHere(j,i) > 0){
-                std::cout << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
+                std::cerr << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
             }
             else{
-                std::cout << row[j] + row[j];
+                std::cerr << (this->map.get(j,i) == Map::Free ? "░░" : "██");
             }
             
         }
         
-        std::cout << row;
         for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
-            std::cout << "██";
+            std::cerr << "██";
         }
-        std::cout << "║" << std::endl;
+        std::cerr << "║" << std::endl;
     }
 
-    std::cout << "╚";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
-    std::cout << "╝" << std::endl;
+    std::cerr << "╚";
+    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cerr << "═"; }
+    std::cerr << "╝" << std::endl;
 }
 
 

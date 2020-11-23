@@ -51,9 +51,9 @@ class Game {
         Game();
         Game(std::string mapfilename);
 
-        void setMap(Map map);
-        void putHero(Hero hero, int x, int y);
-        void putMonster(Monster monster, int x, int y);
+        void setMap(Map &map);
+        void putHero(Hero &hero, int x, int y);
+        void putMonster(Monster &monster, int x, int y);
         void run();
 
         void printMap();
