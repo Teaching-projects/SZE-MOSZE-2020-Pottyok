@@ -56,7 +56,8 @@ class Game {
         void putMonster(Monster monster, int x, int y);
         void run();
 
-        void printMap();    
+        void printMap();
+        std::string getMapRow(unsigned int rowId);  
         bool isHeroSet();
         bool isMapSet();
         bool areMonstersAlive();
@@ -65,6 +66,8 @@ class Game {
         bool isMovePossible(std::string &input);
         void move(std::string &input);
         void fight();
+        bool heroIsHere(unsigned int x,unsigned int y);
+        int countMonstersHere(unsigned int x,unsigned int y);
 
 
     class WrongIndexException : virtual public std::runtime_error {

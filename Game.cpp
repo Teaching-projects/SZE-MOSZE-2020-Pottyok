@@ -114,19 +114,45 @@ void Game::fight(){
     MapEntity hero =  this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
-    for (int i = 0; i < this->monsters.size() && std::get<Hero>(hero.getEntity()).isAlive(); i++)
+    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(hero.getEntity()).isAlive(); i++)
     {
         MapEntity monster = this->monsters[i];
         if(currentX == monster.getX() && currentY == monster.getY()){
-            std::get<Hero>(hero.getEntity()).fightTilDeath( std::get<Monster>(monster.getEntity()) );
+            Monster m = std::get<Monster>(monster.getEntity());
+            std::get<Hero>(hero.getEntity()).fightTilDeath( m );
         }
     }
     
 }
 
-void Game::printMap() {
+std::string Game::getMapRow(unsigned int rowId){
     std::regex replaceWall("#");
     std::regex replaceFree("\\s");
+    std::string row = map.getRow(rowId);
+    row = std::regex_replace(std::regex_replace(row, replaceFree, "░░"), replaceWall, "██");
+    return row;
+}
+
+bool Game::heroIsHere(unsigned int x,unsigned int y){
+    MapEntity hero =  this->heroes[0];
+    unsigned int currentX = hero.getX();
+    unsigned int currentY = hero.getY();
+    return currentX == x && currentY == y;
+}
+int Game::countMonstersHere(unsigned int x,unsigned int y){
+    int monsterCount = 0;
+    for (unsigned int i = 0; i < this->monsters.size(); i++)
+    {
+        MapEntity monster = this->monsters[i];
+        if(x == monster.getX() && y == monster.getY()){
+            monsterCount++;
+        }
+    }
+    return monsterCount;
+}
+
+void Game::printMap() {
+    
 
     std::cout << "╔";
     for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
@@ -134,7 +160,22 @@ void Game::printMap() {
 
     for (unsigned int i = 0; i < map.getColumnCount(); i++) {
         std::cout << "║";
-        std::cout << std::regex_replace(std::regex_replace(map.getRow(i), replaceFree, "░░"), replaceWall, "██");
+        std::string row = this->getMapRow(i);
+        for (unsigned int j = 0; j < row.size(); j+=2)
+        {
+            if (this->heroIsHere(j,i)){
+                std::cout << "┣┫";
+            }
+            else if(this->countMonstersHere(j,i) > 0){
+                std::cout << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
+            }
+            else{
+                std::cout << row[j] + row[j];
+            }
+            
+        }
+        
+        std::cout << row;
         for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
             std::cout << "██";
         }
