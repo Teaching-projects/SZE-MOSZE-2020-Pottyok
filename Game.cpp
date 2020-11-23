@@ -11,12 +11,9 @@ Game::Game() {
 
 Game::Game(std::string mapfilename) {
     Map map(mapfilename);
-
     setMap(map);
 
-    const unsigned int size_y = map.getColumnCount();
-    const unsigned int size_x = map.getLongestRowCount();
-    std::vector<std::variant<Monster, Hero>> tiles[size_y][size_x];
+    isHeroSet();
 }
 
 void Game::setMap(Map map) {
@@ -24,11 +21,20 @@ void Game::setMap(Map map) {
 }
 
 void Game::putHero(Hero hero, int x, int y) {
+    if (map.get(x, y) == Map::Wall) throw OccupiedException("Can't place entity on wall.");
+    if (isMapSet()) throw WrongIndexException("Map is not set.");
+    if (isHeroSet()) throw AlreadyHasUnitsException("The hero is already set.");
 
+    MapEntity _hero(x, y, hero);
+    this->heroes.push_back(_hero);
 }
 
 void Game::putMonster(Monster monster, int x, int y) {
-
+    if (map.get(x, y) == Map::Wall) throw OccupiedException("Can't place entity on wall.");
+    if (isMapSet()) throw WrongIndexException("Map is not set.");
+    
+    MapEntity _monster(x, y, monster);
+    this->monsters.push_back(_monster);
 }
 
 void Game::run() {
@@ -55,4 +61,26 @@ void Game::printMap() {
     std::cout << "╚";
     for (unsigned int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
+}
+
+
+
+
+bool Game::isHeroSet() {
+    return this->heroes.size() > 0;
+}
+
+bool Game::isMapSet() {
+    return this->map.getColumnCount() > 0;
+}
+
+bool Game::areMonstersAlive() {
+    return this->monsters.size() > 0;
+}
+
+bool Game::areHeroesAlive() {
+    for (auto& a : this->heroes) {
+        if (std::get<Hero>(a.getEntity()).isAlive()) return true;
+    }
+    return false;
 }

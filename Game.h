@@ -18,10 +18,28 @@
 #include "Map.h"
 #include "Hero.h"
 
+class MapEntity {
+    private:
+        unsigned int x;
+        unsigned int y;
+        std::variant<Monster, Hero> entity;
+    public:
+        MapEntity(unsigned int _x, unsigned int _y, std::variant<Monster, Hero> _entity) : x(_x), y(_y), entity(_entity) {};
+
+        unsigned int getX() { return x; }
+        unsigned int getY() { return y; }
+        std::variant<Monster, Hero> getEntity() { return this->entity; }
+
+        void setX(unsigned int _x) { x = _x; }
+        void setY(unsigned int _y) { y = _y; }
+        void setEntity(std::variant<Monster, Hero> _entity) { entity = _entity; }
+};
+
 class Game {
     private:
         Map map;
-        std::vector<std::variant<Monster, Hero>> tiles;
+        std::vector<MapEntity> monsters;
+        std::vector<MapEntity> heroes;
 
     public:
         Game();
@@ -32,9 +50,17 @@ class Game {
         void putMonster(Monster monster, int x, int y);
         void run();
 
-        void printMap();
+        void printMap();    
+        bool isHeroSet();
+        bool isMapSet();
+        bool areMonstersAlive();
+        bool areHeroesAlive();
 
 
+    class WrongIndexException : virtual public std::runtime_error {
+        public:
+            explicit WrongIndexException(const std::string &description) : std::runtime_error("Index out of range: " + description) {}
+    };
     class OccupiedException : virtual public std::runtime_error {
         public:
             explicit OccupiedException(const std::string &description) : std::runtime_error("Tile occupied: " + description) {}
@@ -46,6 +72,14 @@ class Game {
     class AlreadyHasUnitsException : virtual public std::runtime_error {
         public:
             explicit AlreadyHasUnitsException(const std::string &description) : std::runtime_error("Already has units: " + description) {}
+    };
+    class NotInitializedException : virtual public std::runtime_error {
+        public:
+            explicit NotInitializedException(const std::string &description) : std::runtime_error("Requirement for run() is missing: " + description) {}
+    };
+    class GameAlreadyStartedException : virtual public std::runtime_error {
+        public:
+            explicit GameAlreadyStartedException(const std::string &description) : std::runtime_error("The game has already started: " + description) {}
     };
 };
 
