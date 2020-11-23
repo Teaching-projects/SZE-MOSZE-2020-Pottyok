@@ -40,6 +40,12 @@ class Game {
         Map map;
         std::vector<MapEntity> monsters;
         std::vector<MapEntity> heroes;
+        std::map<std::string, std::map<char,int>> movements = {
+            { "north", {{'x', 0},{'y', -1}} },
+            { "east",  {{'x', 1},{'y', 0}} },
+            { "west",  {{'x', -1},{'y', 0}} },
+            { "south",  {{'x', 0},{'y', 1}} }
+        };
 
     public:
         Game();
@@ -55,6 +61,8 @@ class Game {
         bool isMapSet();
         bool areMonstersAlive();
         bool areHeroesAlive();
+        bool checkUserInput(std::string &input);
+        bool isMovePossible(std::string &input);
 
 
     class WrongIndexException : virtual public std::runtime_error {

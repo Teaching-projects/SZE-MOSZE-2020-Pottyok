@@ -38,6 +38,65 @@ void Game::putMonster(Monster monster, int x, int y) {
 }
 
 void Game::run() {
+    if (!isMapSet()) throw NotInitializedException("Map is not set.");
+    if (!isHeroSet()) throw NotInitializedException("Hero is not set.");
+
+    std::string input;
+
+    while (areMonstersAlive() && areHeroesAlive()) {
+        printMap();
+        do{
+            std::cout << "Where to go? (north, south, west, east): ";
+            std::cin >> input;
+        }
+        while(!this->checkUserInput(input));
+
+    }
+
+    if (areHeroesAlive()) {
+        std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
+    }
+    else {
+        std::cout << "The hero died.";
+    }
+}
+
+bool Game::checkUserInput(std::string &input){
+    std::vector<std::string> goodInputs {
+        "north",
+        "south",
+        "east",
+        "west"
+    };
+
+    if(std::find(goodInputs.begin(), goodInputs.end(),input) == goodInputs.end()){ 
+        std::cout << "The given command was not found!" << std::endl;    
+        return false; 
+    }
+
+    return this->isMovePossible(input);
+}
+
+bool Game::isMovePossible(std::string &input){
+    MapEntity hero =  this->heroes[0];
+    unsigned int currentX = hero.getX();
+    unsigned int currentY = hero.getY();
+
+    unsigned int futureX = currentX + this->movements[input]['x'];
+    unsigned int futureY = currentY + this->movements[input]['y'];
+
+    Map::type maptype = this->map.get(futureX, futureY);
+    if(maptype == Map::Wall){ 
+        std::cout << "The given coordinate is a wall!";
+        return false; 
+    }
+
+    if(futureY < 0 || futureX < 0 || futureY >= this->map.getColumnCount() || futureX >= this->map.getRow(futureY).size()){ 
+        std::cout << "The given coordinate is not existing!";
+        return false;
+    }
+
+    return true;
 
 }
 
@@ -51,9 +110,9 @@ void Game::printMap() {
 
     for (unsigned int i = 0; i < map.getColumnCount(); i++) {
         std::cout << "║";
-        std::cout << std::regex_replace(std::regex_replace(map.getRow(i), replaceFree, "░"), replaceWall, "█");
+        std::cout << std::regex_replace(std::regex_replace(map.getRow(i), replaceFree, "░░"), replaceWall, "██");
         for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
-            std::cout << "█";
+            std::cout << "██";
         }
         std::cout << "║" << std::endl;
     }
