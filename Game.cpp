@@ -35,6 +35,8 @@ void Game::putMonster(Monster &monster, int x, int y) {
     this->monsters.push_back(_monster);
 }
 
+
+
 void Game::run() {
     if (!isMapSet()) throw NotInitializedException("Map is not set.");
     if (!isHeroSet()) throw NotInitializedException("Hero is not set.");
@@ -53,12 +55,16 @@ void Game::run() {
     }
 
     if (areHeroesAlive()) {
+        printMap();
         std::cerr << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
     }
     else {
+        printMap();
         std::cerr << "The hero died.";
     }
 }
+
+
 
 bool Game::checkUserInput(std::string &input){
     std::vector<std::string> goodInputs {
@@ -96,7 +102,6 @@ bool Game::isMovePossible(std::string &input){
     }
 
     return true;
-
 }
 
 void Game::move(std::string &input){
@@ -112,15 +117,23 @@ void Game::fight(){
     MapEntity hero =  this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
+    std::vector<int> toDelete;
     for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(hero.getEntity()).isAlive(); i++)
     {
         MapEntity monster = this->monsters[i];
         if(currentX == monster.getX() && currentY == monster.getY()){
             Monster m = std::get<Monster>(monster.getEntity());
-            std::get<Hero>(hero.getEntity()).fightTilDeath( m );
+            std::get<Hero>(hero.getEntity()).fightTilDeath(m);
+            
+            if (std::get<Hero>(hero.getEntity()).isAlive()) {
+                toDelete.push_back(i);
+            }
         }
     }
-    
+
+    for (unsigned int i = 0; i < toDelete.size(); i++) {
+        this->monsters.erase(this->monsters.begin()+(toDelete[i]-i));
+    }
 }
 
 bool Game::heroIsHere(unsigned int x,unsigned int y){
@@ -142,8 +155,6 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
 }
 
 void Game::printMap() {
-    
-
     std::cerr << "╔";
     for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cerr << "═"; }
     std::cerr << "╗" << std::endl;
@@ -175,7 +186,6 @@ void Game::printMap() {
     for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cerr << "═"; }
     std::cerr << "╝" << std::endl;
 }
-
 
 
 
