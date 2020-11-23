@@ -50,7 +50,8 @@ void Game::run() {
             std::cin >> input;
         }
         while(!this->checkUserInput(input));
-
+        this->move(input);
+        this->fight();
     }
 
     if (areHeroesAlive()) {
@@ -100,12 +101,35 @@ bool Game::isMovePossible(std::string &input){
 
 }
 
+void Game::move(std::string &input){
+    MapEntity hero =  this->heroes[0];
+    unsigned int currentX = hero.getX();
+    unsigned int currentY = hero.getY();
+    unsigned int futureX = currentX + this->movements[input]['x'];
+    unsigned int futureY = currentY + this->movements[input]['y'];
+    this->heroes[0].setX(futureX);
+    this->heroes[0].setY(futureY);
+}
+void Game::fight(){
+    MapEntity hero =  this->heroes[0];
+    unsigned int currentX = hero.getX();
+    unsigned int currentY = hero.getY();
+    for (int i = 0; i < this->monsters.size() && std::get<Hero>(hero.getEntity()).isAlive(); i++)
+    {
+        MapEntity monster = this->monsters[i];
+        if(currentX == monster.getX() && currentY == monster.getY()){
+            std::get<Hero>(hero.getEntity()).fightTilDeath( std::get<Monster>(monster.getEntity()) );
+        }
+    }
+    
+}
+
 void Game::printMap() {
     std::regex replaceWall("#");
     std::regex replaceFree("\\s");
 
     std::cout << "╔";
-    for (unsigned int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
     std::cout << "╗" << std::endl;
 
     for (unsigned int i = 0; i < map.getColumnCount(); i++) {
@@ -118,7 +142,7 @@ void Game::printMap() {
     }
 
     std::cout << "╚";
-    for (unsigned int i = 0; i < map.getLongestRowCount(); i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
 }
 

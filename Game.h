@@ -63,6 +63,8 @@ class Game {
         bool areHeroesAlive();
         bool checkUserInput(std::string &input);
         bool isMovePossible(std::string &input);
+        void move(std::string &input);
+        void fight();
 
 
     class WrongIndexException : virtual public std::runtime_error {
