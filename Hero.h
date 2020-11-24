@@ -19,6 +19,7 @@ class Hero : public Monster{
         float ExperiencePerLevel; ///< Hero egy szinthez szukseges tapasztalati pontjai
         float HealthPointBonusPerLevel; ///< Hero szintlepesenkent kapott eletero bonusza
         float DamageBonusPerLevel; ///< Hero szintlepesenkent kapott tamadasi ero bonusza
+        float DefenseBonusPerLevel; ///< Hero szintlepesenkent kapott vedekezesi ero bonusza
         float ColdownMultiplierPerLevel; ///< Hero szintlepesenkent kapott cooldown bonusza
 
         void addExperience(float /** [in] A kapott tapasztalati pontok */); ///< Hero tapasztalati pontjainak novelese, elvegzi a szintlepest is
@@ -26,17 +27,20 @@ class Hero : public Monster{
     public:
         Hero(const float health /** [in] A Hero kezdo eletereje */,
             const float attackDamage /** [in] A Hero kezdo tamadasi ereje */,
+            const float defense /** [in] A Hero kezdo tamadasi ereje */,
             const std::string& name /** [in] A Hero neve */,
             const float attackSpeed /** [in] A Hero kezdo tamadasi sebessege */,
             float ExperiencePerLevel /** [in] A Hero szintlepesehez szukseges tapasztalati pontjainak mennyisege */,
             float HealthPointBonusPerLevel /** [in] A Hero szintlepesenkent kapott eletero bonusza */,
             float DamageBonusPerLevel /** [in] A Hero szintlepesenkent kapott tamadasi ero bonusza */,
+            float DefenseBonusPerLevel /** [in] A Hero szintlepesenkent kapott vedekezesi ero bonusza */,
             float ColdownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */) 
-                : Monster(health, attackDamage, name, attackSpeed),
+                : Monster(health, attackDamage, defense, name, attackSpeed),
                 ExperienceCurrent(0),
                 ExperiencePerLevel(ExperiencePerLevel),
                 HealthPointBonusPerLevel(HealthPointBonusPerLevel),
                 DamageBonusPerLevel(DamageBonusPerLevel),
+                DefenseBonusPerLevel(DefenseBonusPerLevel),
                 ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
                 {}; ///< Hero osztaly konstruktora
 
@@ -46,6 +50,7 @@ class Hero : public Monster{
             ExperiencePerLevel(0),
             HealthPointBonusPerLevel(0),
             DamageBonusPerLevel(0),
+            DefenseBonusPerLevel(0),
             ColdownMultiplierPerLevel(0)
             {}; ///< Hero osztaly konstruktora Monster objektumbol
 

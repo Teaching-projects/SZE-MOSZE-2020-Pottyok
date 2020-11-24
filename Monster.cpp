@@ -8,6 +8,7 @@
 Monster& Monster::operator=(const Monster &monster) {
     this->MaxHealth      =   monster.MaxHealth;
     this->Health         =   monster.Health;
+    this->Defense        =   monster.Defense;
     this->AttackDamage   =   monster.AttackDamage;
     this->AttackSpeed    =   monster.AttackSpeed;
     this->Name           =   monster.Name;
@@ -26,6 +27,9 @@ float Monster::getDamage() const{
     return this->AttackDamage;
 }
 
+float Monster::getDefense() const{
+    return this->Defense;
+}
 
 float Monster::getAttackCoolDown() const {
     return this->AttackSpeed;
@@ -33,7 +37,8 @@ float Monster::getAttackCoolDown() const {
 
 
 void Monster::damage(const float dmg){
-    this->Health -= dmg;
+    if(dmg - this->Defense > 0)
+        this->Health -= (dmg - this->Defense);
     if(this->Health <= 0){
         this->Health = 0;
     }
@@ -89,6 +94,7 @@ Monster Monster::parse(const std::string& fileName){
     return Monster(
         (float)json.get<int>("health_points"),
         (float)json.get<int>("damage"),
+        (float)json.get<int>("defense"),
         json.get<std::string>("name"),
         (float)json.get<float>("attack_cooldown")
     );
