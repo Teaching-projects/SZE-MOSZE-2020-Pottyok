@@ -15,6 +15,7 @@ Game::Game(std::string mapfilename) {
 }
 
 void Game::setMap(Map &map) {
+    if (this->loop_cycle > 0) throw GameAlreadyStartedException("Can't set map after the game has started.");
     this->map = map;
 }
 
@@ -22,6 +23,7 @@ void Game::putHero(Hero &hero, int x, int y) {
     if (map.get(x, y) == Map::Wall) throw OccupiedException("Can't place entity on wall.");
     if (!isMapSet()) throw WrongIndexException("Map is not set.");
     if (isHeroSet()) throw AlreadyHasUnitsException("The hero is already set.");
+    if (this->loop_cycle > 0) throw GameAlreadyStartedException("Can't set hero after the game has started.");
 
     MapEntity _hero(x, y, hero);
     this->heroes.push_back(_hero);
@@ -44,6 +46,7 @@ void Game::run() {
     std::string input;
 
     while (areMonstersAlive() && areHeroesAlive()) {
+        this->loop_cycle++;
         printMap();
         do{
             std::cerr << "Where to go? (north, south, west, east): ";
@@ -53,6 +56,8 @@ void Game::run() {
         this->move(input);
         this->fight();
     }
+
+    this->loop_cycle = 0;
 
     if (areHeroesAlive()) {
         printMap();

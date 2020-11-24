@@ -46,6 +46,7 @@ class Game {
             { "west",  {{'x', -1},{'y', 0}} },
             { "south",  {{'x', 0},{'y', 1}} }
         };
+        unsigned int loop_cycle = 0;
 
     public:
         Game();
