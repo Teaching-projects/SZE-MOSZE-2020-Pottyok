@@ -4,6 +4,7 @@
 #include <fstream>
 #include <regex> 
 #include "JSON.h"
+#include "Damage.h"
 
 Monster& Monster::operator=(const Monster &monster) {
     this->MaxHealth      =   monster.MaxHealth;
@@ -23,8 +24,8 @@ float Monster::getMaxHealthPoints() const{
     return this->MaxHealth;
 }
 
-float Monster::getDamage() const{
-    return this->AttackDamage;
+float Monster::getDamage(float defense) const{
+    return std::max<float>(this->AttackDamage.physical - defense,0) + this->AttackDamage.magical;
 }
 
 float Monster::getDefense() const{
@@ -37,8 +38,7 @@ float Monster::getAttackCoolDown() const {
 
 
 void Monster::damage(const float dmg){
-    if(dmg - this->Defense > 0)
-        this->Health -= (dmg - this->Defense);
+    this->Health -= dmg;
     if(this->Health <= 0){
         this->Health = 0;
     }
@@ -60,6 +60,9 @@ std::string Monster::getName() const{
     return this->Name;
 }
 
+Damage Monster::getDamageStruct() const{
+    return this->AttackDamage;
+}
 
 
 void Monster::fightTilDeath(Monster& enemy) {
@@ -94,6 +97,7 @@ Monster Monster::parse(const std::string& fileName){
     return Monster(
         (float)json.get<int>("health_points"),
         (float)json.get<int>("damage"),
+        (float)json.get<int>("magical-damage"),
         (float)json.get<int>("defense"),
         json.get<std::string>("name"),
         (float)json.get<float>("attack_cooldown")

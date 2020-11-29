@@ -11,34 +11,41 @@
 #define MONSTER_HEADER
 
 #include <string>
+#include "Damage.h"
 
 class Monster{
     protected:
         std::string Name;       ///< Monster neve
         float Health;             ///< Monster jelenlegi eletereje
         float MaxHealth;          ///< Monster maximum eletereje
-        float AttackDamage;       ///< Monster sebzese
+        Damage AttackDamage;       ///< Monster sebzese
         float Defense;            ///< Monster vedekezesi ereje
         float AttackSpeed;      ///< Monster ket tamadasa kozotti ido
         void damage(const float); ///< Monster jelenlegi eleterejenek csokkentese
 
     public:
         Monster(const float health /** [in] A Monster eletereje */,
-                const float attackDamage /** [in] A Monster tamadasi ereje */,
+                const float attackPhysicalDamage,
+                const float attackMagicDamage,
                 const float defense /** [in] A Monster vedekezesi ereje */,
                 const std::string& name /** [in] A Monster neve */,
                 const float attackSpeed /** [in] A Monster tamadasi sebessege */) : 
                     Name(name),
                     Health(health),
                     MaxHealth(health),
-                    AttackDamage(attackDamage),
                     Defense(defense),
                     AttackSpeed(attackSpeed) 
-                    {};   ///< Az Monster class konstruktora
+                    {
+                        Damage dmg = Damage();
+                        dmg.magical = attackMagicDamage;
+                        dmg.physical = attackPhysicalDamage;
+                        this->AttackDamage = dmg;
+                    };   ///< Az Monster class konstruktora
 		Monster(const Monster& monster /** [in] Másolni kívánt Monster */) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), Defense(monster.Defense), AttackSpeed(monster.AttackSpeed) {};	///< Az Monster class copy konstruktora
         Monster& operator=(const Monster& /** [in] A Monster amivel egyenlove akarjuk tenni az objektumot */);   ///< Az Monster class egyenloseg operatora
-        float getDamage() const;    ///< Monster sebzeset visszaado getter
+        float getDamage(float defense = 0) const;    ///< Monster sebzeset visszaado getter
         float getDefense() const;    ///< Monster vedekezesi erejet visszaado getter
+        Damage getDamageStruct() const;
         float getAttackCoolDown() const;   ///< Monster ket tamadas kozotti idot visszaado getter
         std::string getName() const;    ///< Monster nevet visszaado getter
         virtual void attack(Monster& /** [in] A megtamadni kivant Monster */);   ///< Masik Monster sebzese a damage() meghivasaval

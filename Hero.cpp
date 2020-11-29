@@ -9,7 +9,7 @@ Hero& Hero::operator=(const Monster &monster){
     this->MaxHealth                     =   monster.getMaxHealthPoints();
     this->Health                        =   monster.getHealthPoints();
     this->Defense                       =   monster.getDefense();
-    this->AttackDamage                  =   monster.getDamage();
+    this->AttackDamage                  =   monster.getDamageStruct();
     this->Name                          =   monster.getName();
 	this->AttackSpeed					=	monster.getAttackCoolDown();
     this->ExperienceCurrent             =   0;
@@ -22,7 +22,7 @@ void Hero::addExperience(float experience){
     this->ExperienceCurrent = this->ExperienceCurrent + experience;
 
     this->MaxHealth += levelsToAdd * this->HealthPointBonusPerLevel;
-    this->AttackDamage += levelsToAdd * this->DamageBonusPerLevel;
+    this->AttackDamage.progress(levelsToAdd * this->PhysicalDamageBonusPerLevel,levelsToAdd * this->MagicDamageBonusPerLevel);
     this->Defense += levelsToAdd * this->DefenseBonusPerLevel;
     this->Health = levelsToAdd > 0 ? this->MaxHealth : this->Health;
 	this->AttackSpeed *= powf(this->ColdownMultiplierPerLevel ,levelsToAdd);
@@ -45,13 +45,15 @@ Hero Hero::parse(const std::string& fileName){
     
     return Hero(
         json.get<int>("base_health_points"),
-        json.get<int>("base_damage"),
+        json.get<int>("daamge"),
+        json.get<int>("magical-damage"),
         json.get<int>("base_defense"),
         json.get<std::string>("name"),
         json.get<float>("base_attack_cooldown"),
         json.get<int>("experience_per_level"),
         json.get<int>("health_point_bonus_per_level"),
-        json.get<int>("damage_bonus_per_level"),
+        json.get<int>("physical_damage_bonus_per_level"),
+        json.get<int>("magic_damage_bonus_per_level"),
         json.get<int>("defense_bonus_per_level"),
         json.get<float>("cooldown_multiplier_per_level")
     );
