@@ -94,10 +94,13 @@ void Monster::fightTilDeath(Monster& enemy) {
 Monster Monster::parse(const std::string& fileName){
     JSON json = JSON::parseFromFile(fileName);
     
+    int physicalDamage = json.count("damage") == 0 ? 0 : json.get<int>("damage");
+    int magicalDamage = json.count("magical-damage") == 0 ? 0 : json.get<int>("magical-damage");
+
     return Monster(
         (float)json.get<int>("health_points"),
-        (float)json.get<int>("damage"),
-        (float)json.get<int>("magical-damage"),
+        (float)physicalDamage,
+        (float)magicalDamage,
         (float)json.get<int>("defense"),
         json.get<std::string>("name"),
         (float)json.get<float>("attack_cooldown")

@@ -42,10 +42,12 @@ void Hero::attack(Monster& monster){
 
 Hero Hero::parse(const std::string& fileName){
     JSON json = JSON::parseFromFile(fileName);
+    int physicalDamage = json.count("damage") == 0 ? 0 : json.get<int>("damage");
+    int magicalDamage = json.count("magical-damage") == 0 ? 0 : json.get<int>("magical-damage");
     return Hero(
         json.get<int>("base_health_points"),
-        json.get<int>("damage"),
-        json.get<int>("magical-damage"),
+        physicalDamage,
+        magicalDamage,
         json.get<int>("base_defense"),
         json.get<std::string>("name"),
         json.get<float>("base_attack_cooldown"),
