@@ -49,7 +49,7 @@ void Game::run() {
         this->loop_cycle++;
         printMap();
         do{
-            std::cerr << "Where to go? (north, south, west, east): ";
+            std::cout << "Where to go? (north, south, west, east): ";
             std::cin >> input;
         }
         while(!this->checkUserInput(input));
@@ -61,11 +61,11 @@ void Game::run() {
 
     if (areHeroesAlive()) {
         printMap();
-        std::cerr << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
+        std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
     }
     else {
         printMap();
-        std::cerr << "The hero died.";
+        std::cout << "The hero died.";
     }
 }
 
@@ -80,7 +80,7 @@ bool Game::checkUserInput(std::string &input){
     };
 
     if(std::find(goodInputs.begin(), goodInputs.end(),input) == goodInputs.end()){ 
-        std::cerr << "The given command was not found!" << std::endl;    
+        std::cout << "The given command was not found!" << std::endl;    
         return false; 
     }
 
@@ -97,12 +97,12 @@ bool Game::isMovePossible(std::string &input){
 
     Map::type maptype = this->map.get(futureX, futureY);
     if(maptype == Map::Wall){ 
-        std::cerr << "The given coordinate is a wall!" << std::endl;
+        std::cout << "The given coordinate is a wall!" << std::endl;
         return false; 
     }
 
     if(futureY < 0 || futureX < 0 || futureY >= this->map.getColumnCount() || futureX >= this->map.getRow(futureY).size()){ 
-        std::cerr << "The given coordinate is not existing!";
+        std::cout << "The given coordinate is not existing!";
         return false;
     }
 
@@ -160,36 +160,36 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
 }
 
 void Game::printMap() {
-    std::cerr << "╔";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cerr << "═"; }
-    std::cerr << "╗" << std::endl;
+    std::cout << "\n╔";
+    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
+    std::cout << "╗" << std::endl;
 
     for (unsigned int i = 0; i < map.getColumnCount(); i++) {
-        std::cerr << "║";
+        std::cout << "║";
         std::string row = this->map.getRow(i);
         for (unsigned int j = 0; j < row.size(); j++)
         {
             if (this->heroIsHere(j,i)){
-                std::cerr << "┣┫";
+                std::cout << "┣┫";
             }
             else if(this->countMonstersHere(j,i) > 0){
-                std::cerr << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
+                std::cout << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
             }
             else{
-                std::cerr << (this->map.get(j,i) == Map::Free ? "░░" : "██");
+                std::cout << (this->map.get(j,i) == Map::Free ? "░░" : "██");
             }
             
         }
         
         for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
-            std::cerr << "██";
+            std::cout << "██";
         }
-        std::cerr << "║" << std::endl;
+        std::cout << "║" << std::endl;
     }
 
-    std::cerr << "╚";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cerr << "═"; }
-    std::cerr << "╝" << std::endl;
+    std::cout << "╚";
+    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
+    std::cout << "╝" << std::endl;
 }
 
 
