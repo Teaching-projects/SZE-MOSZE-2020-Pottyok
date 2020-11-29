@@ -42,8 +42,8 @@ class Hero : public Monster{
                 ExperienceCurrent(0),
                 ExperiencePerLevel(ExperiencePerLevel),
                 HealthPointBonusPerLevel(HealthPointBonusPerLevel),
-                MagicDamageBonusPerLevel(attackMagicDamage),
-                PhysicalDamageBonusPerLevel(attackPhysicalDamage),
+                MagicDamageBonusPerLevel(MagicDamageBonusPerLevel),
+                PhysicalDamageBonusPerLevel(PhysicalDamageBonusPerLevel),
                 DefenseBonusPerLevel(DefenseBonusPerLevel),
                 ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
                 {}; ///< Hero osztaly konstruktora
