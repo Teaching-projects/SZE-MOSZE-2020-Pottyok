@@ -12,10 +12,4 @@ Prince Aidan of Khanduras: LVL7
    HP: 65/65
   DMG: 10
   ACD: 0.526127
-scenario2.json;
-Prince Aidan of Khanduras(0) vs Blood Raven
-The hero died.
-Prince Aidan of Khanduras: LVL0
-   HP: 0/30
-  DMG: 3
-  ACD: 1.1
+  
