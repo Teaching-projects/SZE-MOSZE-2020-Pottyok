@@ -39,7 +39,9 @@ class Monster{
                         Damage dmg = Damage();
                         dmg.magical = attackMagicDamage;
                         dmg.physical = attackPhysicalDamage;
+
                         this->AttackDamage = dmg;
+
                     };   ///< Az Monster class konstruktora
 		Monster(const Monster& monster /** [in] Másolni kívánt Monster */) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), Defense(monster.Defense), AttackSpeed(monster.AttackSpeed) {};	///< Az Monster class copy konstruktora
         Monster& operator=(const Monster& /** [in] A Monster amivel egyenlove akarjuk tenni az objektumot */);   ///< Az Monster class egyenloseg operatora
