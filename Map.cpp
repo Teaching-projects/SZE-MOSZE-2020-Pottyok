@@ -1,13 +1,21 @@
 #include "Map.h"
 #include <string>
 #include <fstream>
+#include <regex>
+
+Map::Map() { }
 
 Map::Map(std::string filename) {
     std::ifstream stream(filename);
     if(!stream.good()) throw std::runtime_error("The given file was not found: " + filename);
 
+    std::regex replaceNewLine("[\r\n]+$");
+    this->longestRowCount = 0;
+    
     std::string currentLine;
     while(std::getline(stream, currentLine)){
+        currentLine = std::regex_replace(currentLine, replaceNewLine, "");
+        if (currentLine.length() > this->longestRowCount) this->longestRowCount = currentLine.length();
         map.push_back(currentLine);
     }
     
