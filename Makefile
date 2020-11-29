@@ -12,10 +12,10 @@ main.o: main.cpp JSON.h Monster.h Hero.h
 json.o: JSON.cpp JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp
 
-monster.o: monster.cpp monster.h JSON.h
+monster.o: monster.cpp monster.h JSON.h Damage.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
-hero.o: Hero.cpp Hero.h Monster.h
+hero.o: Hero.cpp Hero.h Monster.h Damage.h
 	$(CC) $(CFLAGS) -c Hero.cpp
 
 
