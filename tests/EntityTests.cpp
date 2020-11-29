@@ -54,7 +54,7 @@ TEST(EntityTests, MaxHealthLevelUp) {
 
     ASSERT_EQ(hero.getLevel(), 1);
     ASSERT_EQ(hero.getMaxHealthPoints(), 35);
-    ASSERT_EQ(hero.getDamage(), 6);
+    ASSERT_EQ(hero.getDamage(), 4);
     ASSERT_EQ(hero.getHealthPoints(), 35);
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f * 0.9f);
 }
@@ -79,7 +79,7 @@ TEST(EntityTests, NoMaxHealthLevelUp) {
 
     ASSERT_EQ(hero.getLevel(), 1);
     ASSERT_EQ(hero.getMaxHealthPoints(), 35);
-    ASSERT_EQ(hero.getDamage(), 6);
+    ASSERT_EQ(hero.getDamage(), 4);
     ASSERT_EQ(hero.getHealthPoints(), 35);
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f * 0.9f);
 }
