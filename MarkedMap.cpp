@@ -26,3 +26,17 @@ MarkedMap::MarkedMap(std::string &fileName) : Map(fileName){
         
     }
 }
+
+Position MarkedMap::getHeroPosition() const {
+    return this->heroPosition;
+}
+
+std::list<Position> MarkedMap::getMonsterPositions(char c) const {
+    std::list<Position> monserPositionsList;
+    for( auto const& [key, val] : this->monsterPositions ) {
+        for (auto const& i : val) {
+            monserPositionsList.push_back(i);
+        }
+    }
+    return monserPositionsList;
+}
