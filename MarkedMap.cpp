@@ -1,5 +1,6 @@
 #include "MarkedMap.h"
 #include <string>
+#include <map>
 
 MarkedMap::MarkedMap(std::string &fileName) : Map(fileName){
     for (int i = 0; i < (int)this->getColumnCount(); i++)
@@ -31,12 +32,6 @@ Position MarkedMap::getHeroPosition() const {
     return this->heroPosition;
 }
 
-std::list<Position> MarkedMap::getMonsterPositions(char c) const {
-    std::list<Position> monserPositionsList;
-    for( auto const& [key, val] : this->monsterPositions ) {
-        for (auto const& i : val) {
-            monserPositionsList.push_back(i);
-        }
-    }
-    return monserPositionsList;
+std::map<char, std::list<Position>> MarkedMap::getMonsterPositions(char c) const {
+    return this->monsterPositions;
 }
