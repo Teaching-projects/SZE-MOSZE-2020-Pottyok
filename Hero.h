@@ -22,6 +22,8 @@ class Hero : public Monster{
         float PhysicalDamageBonusPerLevel; 
         float DefenseBonusPerLevel; ///< Hero szintlepesenkent kapott vedekezesi ero bonusza
         float ColdownMultiplierPerLevel; ///< Hero szintlepesenkent kapott cooldown bonusza
+        int LightRadius;
+        int LightRadiusBonusPerLevel;
 
         void addExperience(float /** [in] A kapott tapasztalati pontok */); ///< Hero tapasztalati pontjainak novelese, elvegzi a szintlepest is
 
@@ -37,7 +39,9 @@ class Hero : public Monster{
             float PhysicalDamageBonusPerLevel,
             float MagicDamageBonusPerLevel,
             float DefenseBonusPerLevel /** [in] A Hero szintlepesenkent kapott vedekezesi ero bonusza */,
-            float ColdownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */) 
+            float ColdownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */,
+            int LightRadius,
+            int LightRadiusBonusPerLevel) 
                 : Monster(health, attackPhysicalDamage, attackMagicDamage, defense, name, attackSpeed),
                 ExperienceCurrent(0),
                 ExperiencePerLevel(ExperiencePerLevel),
@@ -45,7 +49,9 @@ class Hero : public Monster{
                 MagicDamageBonusPerLevel(MagicDamageBonusPerLevel),
                 PhysicalDamageBonusPerLevel(PhysicalDamageBonusPerLevel),
                 DefenseBonusPerLevel(DefenseBonusPerLevel),
-                ColdownMultiplierPerLevel(ColdownMultiplierPerLevel)
+                ColdownMultiplierPerLevel(ColdownMultiplierPerLevel),
+                LightRadius(LightRadius),
+                LightRadiusBonusPerLevel(LightRadiusBonusPerLevel)
                 {}; ///< Hero osztaly konstruktora
 
         Hero(Monster monster /** [in] A Monster, ami alapjan letre akarjuk hozni a Hero-t */)
@@ -56,11 +62,14 @@ class Hero : public Monster{
             MagicDamageBonusPerLevel(0),
             PhysicalDamageBonusPerLevel(0),
             DefenseBonusPerLevel(0),
-            ColdownMultiplierPerLevel(0)
+            ColdownMultiplierPerLevel(0),
+            LightRadius(0),
+            LightRadiusBonusPerLevel(0)
             {}; ///< Hero osztaly konstruktora Monster objektumbol
 
         Hero& operator=(const Monster& /** [in] A Monster, amivel egyenlove akarjuk tenni a Hero objektumot */); ///< Hero objektum egyenlove tetele egy Monster objektummal
         int getLevel() const; ///< A Hero szintjet adja vissza
+        int getLightRadius() const;
         void attack(Monster& /** [in] A Monster, amit megtamad a Hero objektum*/); ///< Hero tamadasa, ami soran egy Monstert tamad meg
         static Hero parse(const std::string& /** [in] std::string, ami megadja a fajl eleresi utvonalat*/); ///< Hero letrehozasa egy JSON fajl alapjan
 };
