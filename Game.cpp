@@ -164,7 +164,7 @@ void Game::printMap() {
     int playerX = this->heroes[0].getX();
     int playerY = this->heroes[0].getY();
     std::cout << "\n╔";
-    for (unsigned int i = 0; i < (unsigned int)std::min<int>(playerLightRadius * 2 + 2, map.getLongestRowCount()*2); i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < (unsigned int)std::min<int>(playerLightRadius * 4 + 2, map.getLongestRowCount()*2); i++) { std::cout << "═"; }
     std::cout << "╗" << std::endl;
 
     for (unsigned int i = (unsigned int)std::max<int>(playerY - playerLightRadius , 0); i < (unsigned int)std::min<int>(map.getColumnCount(), playerY + playerLightRadius); i++) {
@@ -191,7 +191,7 @@ void Game::printMap() {
     }
 
     std::cout << "╚";
-    for (unsigned int i = 0; i < (unsigned int)std::min<int>(playerLightRadius * 2 + 2, map.getLongestRowCount()*2); i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < (unsigned int)std::min<int>(playerLightRadius * 4 + 2, map.getLongestRowCount()*2); i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
 }
 
