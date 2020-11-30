@@ -42,8 +42,9 @@ std::list<Position> MarkedMap::getMonsterPositions(char c) {
 int MarkedMap::getMaxMonsterNumber() {
     int monsterNumber = 1;
     for( auto& [key, val] : this->monsterPositions ) {
-        if((int)key > monsterNumber)
-            monsterNumber = (int)key;
+        if((int)(key - '0') > monsterNumber)
+            monsterNumber = (int)(key - '0');
+        std::cout << (int)(key - '0') <<std::endl;
     }
     return monsterNumber;
 }
