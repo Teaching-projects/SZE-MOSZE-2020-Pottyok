@@ -34,7 +34,7 @@ sca:
 	cppcheck --enable=all ./*.cpp 2> cppcheck_report.txt && cat cppcheck_report.txt && if grep -q "(warning)" "./cppcheck_report.txt"; then exit 1; fi && if grep -q "(error)" "./cppcheck_report.txt"; then exit 1; fi
 
 valgrind:
-	echo "east" | valgrind --error-exitcode=1 ./$(OUT) scenario1.json
+	echo "east" | valgrind --error-exitcode=1 ./$(OUT) markedmap_test.json
 
 clean:
 	rm -rf $(OBJS) $(OUT) cppcheck_report.txt results.txt

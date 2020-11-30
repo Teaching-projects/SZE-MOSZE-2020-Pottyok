@@ -61,11 +61,11 @@ void Game::run() {
 
     if (areHeroesAlive()) {
         printMap();
-        std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map.";
+        std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map." << std::endl;
     }
     else {
         printMap();
-        std::cout << "The hero died.";
+        std::cout << "The hero died." << std::endl;
     }
 }
 
