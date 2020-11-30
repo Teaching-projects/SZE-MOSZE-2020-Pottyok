@@ -5,6 +5,7 @@
     "magical-damage" : 3,
     "base_defense" : 0,
     "base_attack_cooldown" : 1.1,
+    "light_radius": 2,
     "experience_per_level" : 20,
     "health_point_bonus_per_level" : 5,
     "magic_damage_bonus_per_level" : 1,

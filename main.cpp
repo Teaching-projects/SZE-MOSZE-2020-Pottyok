@@ -28,10 +28,10 @@ int main(int argc, char** argv){
     
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
-    //try { 
+    try { 
         PreparedGame game(argv[1]);
         game.run();
-    //} catch (const JSON::ParseException& e) {bad_exit(3);}
+    } catch (const JSON::ParseException& e) {bad_exit(3);}
 
     return 0;
 }

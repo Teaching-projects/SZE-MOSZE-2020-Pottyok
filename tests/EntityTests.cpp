@@ -30,7 +30,7 @@ TEST(EntityTests, Attack) {
 }
 
 TEST(EntityTests, FightVictory) {
-    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9);
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2);
     Monster monster(10.0, 1.0,0.0 , 0.0, "Zombie", 2.8f);
     
     hero.fightTilDeath(monster);
@@ -39,7 +39,7 @@ TEST(EntityTests, FightVictory) {
 }
 
 TEST(EntityTests, FightLose) {
-    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9);
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2);
     Monster monster(113.0, 8.0,0.0,  0.0, "Blood Raven", 1.2);
     
     hero.fightTilDeath(monster);
@@ -48,7 +48,7 @@ TEST(EntityTests, FightLose) {
 }
 
 TEST(EntityTests, MaxHealthLevelUp) {
-    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9);
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2);
     Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2);
     hero.attack(monster);
 
@@ -60,7 +60,7 @@ TEST(EntityTests, MaxHealthLevelUp) {
 }
 
 TEST(EntityTests, MaxHealthNoLevelUp) {
-    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0,0.0, 0.0, 0.9);
+    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0,0.0, 0.0, 0.9, 2, 2);
     Monster monster(113.0, 8.0,0.0, 0.0, "Blood Raven", 1.2);
     hero.attack(monster);
 
@@ -72,7 +72,7 @@ TEST(EntityTests, MaxHealthNoLevelUp) {
 }
 
 TEST(EntityTests, NoMaxHealthLevelUp) {
-    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0,0.0, 0.0, 0.9);
+    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0,0.0, 0.0, 0.9, 2, 2);
     Monster monster(113.0, 8.0,0.0, 0.0, "Blood Raven", 1.2);
     monster.attack(hero);
     hero.attack(monster);
@@ -85,7 +85,7 @@ TEST(EntityTests, NoMaxHealthLevelUp) {
 }
 
 TEST(EntityTests, NoMaxHealthNoLevelUp) {
-    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0,0.0, 0.0, 0.9);
+    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0,0.0, 0.0, 0.9, 2, 2);
     Monster monster(113.0, 8.0,0.0, 0.0, "Blood Raven", 1.2);
     monster.attack(hero);
     hero.attack(monster);
@@ -95,6 +95,14 @@ TEST(EntityTests, NoMaxHealthNoLevelUp) {
     ASSERT_EQ(hero.getDamage(), 3);
     ASSERT_EQ(hero.getHealthPoints(), 22);
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f);
+}
+
+TEST(EntityTests, IncreaseLightRadius) {
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2);
+    Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2);
+    hero.attack(monster);
+
+    ASSERT_EQ(hero.getLightRadius(), 4);
 }
 
 

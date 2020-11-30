@@ -119,18 +119,17 @@ void Game::move(std::string &input){
     this->heroes[0].setY(futureY);
 }
 void Game::fight(){
-    MapEntity hero =  this->heroes[0];
-    unsigned int currentX = hero.getX();
-    unsigned int currentY = hero.getY();
+    unsigned int currentX = this->heroes[0].getX();
+    unsigned int currentY = this->heroes[0].getY();
     std::vector<int> toDelete;
-    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(hero.getEntity()).isAlive(); i++)
+    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(this->heroes[0].getEntity()).isAlive(); i++)
     {
         MapEntity monster = this->monsters[i];
         if(currentX == monster.getX() && currentY == monster.getY()){
             Monster m = std::get<Monster>(monster.getEntity());
-            std::get<Hero>(hero.getEntity()).fightTilDeath(m);
+            std::get<Hero>(this->heroes[0].getEntity()).fightTilDeath(m);
             
-            if (std::get<Hero>(hero.getEntity()).isAlive()) {
+            if (std::get<Hero>(this->heroes[0].getEntity()).isAlive()) {
                 toDelete.push_back(i);
             }
         }
@@ -160,14 +159,19 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
 }
 
 void Game::printMap() {
+    int playerLightRadius = std::get<Hero>(this->heroes[0].getEntity()).getLightRadius();
+    int playerX = this->heroes[0].getX();
+    int playerY = this->heroes[0].getY();
+    unsigned int border_width = (std::min<int>(playerLightRadius, playerX) + 1 + std::min<int>(playerLightRadius, map.getLongestRowCount() - 1 - playerX)) * 2;
+    
     std::cout << "\n╔";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
     std::cout << "╗" << std::endl;
 
-    for (unsigned int i = 0; i < map.getColumnCount(); i++) {
+    for (unsigned int i = (unsigned int)std::max<int>(playerY - playerLightRadius , 0); i < (unsigned int)std::min<int>(map.getColumnCount(), playerY + 1 + playerLightRadius); i++) {
         std::cout << "║";
         std::string row = this->map.getRow(i);
-        for (unsigned int j = 0; j < row.size(); j++)
+        for (unsigned int j = (unsigned int)std::max<int>(playerX - playerLightRadius , 0); j < (unsigned int)std::min<int>(row.size(), playerX + 1 + playerLightRadius); j++)
         {
             if (this->heroIsHere(j,i)){
                 std::cout << "┣┫";
@@ -181,14 +185,14 @@ void Game::printMap() {
             
         }
         
-        for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
+        for (unsigned int j = (unsigned int)std::min<int>(row.size(), playerX + 1 + playerLightRadius); j < (unsigned int)std::min<int>((playerX + 1 + playerLightRadius), map.getLongestRowCount()); j++) {
             std::cout << "██";
         }
         std::cout << "║" << std::endl;
     }
 
     std::cout << "╚";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
 }
 
