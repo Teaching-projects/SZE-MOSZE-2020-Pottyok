@@ -32,13 +32,22 @@ Position MarkedMap::getHeroPosition() const {
 }
 
 std::list<Position> MarkedMap::getMonsterPositions(char c) const {
-    std::list<Position> monserPositionsList;
+    std::list<Position> monsterPositionsList;
     for( auto const& [key, val] : this->monsterPositions ) {
         if(key == c){
             for (auto const& i : val) {
-                monserPositionsList.push_back(i);
+                monsterPositionsList.push_back(i);
             }
         }
     }
-    return monserPositionsList;
-} 
+    return monsterPositionsList;
+}
+
+int MarkedMap::getMaxMonsterNumber() {
+    int monsterNumber = 1;
+    for( auto const& [key, val] : this->monsterPositions ) {
+        if((int)key > monsterNumber)
+            monsterNumber = (int)key;
+    }
+    return monsterNumber;
+}
