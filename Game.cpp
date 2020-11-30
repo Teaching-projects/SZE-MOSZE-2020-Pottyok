@@ -160,14 +160,17 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
 }
 
 void Game::printMap() {
+    int playerLightRadius = std::get<Hero>(this->heroes[0].getEntity()).getLightRadius();
+    int playerX = this->heroes[0].getX();
+    int playerY = this->heroes[0].getY();
     std::cout << "\n╔";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < (unsigned int)std::min<int>(playerLightRadius * 2 + 2, map.getLongestRowCount()*2); i++) { std::cout << "═"; }
     std::cout << "╗" << std::endl;
 
-    for (unsigned int i = 0; i < map.getColumnCount(); i++) {
+    for (unsigned int i = (unsigned int)std::max<int>(playerY - playerLightRadius , 0); i < (unsigned int)std::min<int>(map.getColumnCount(), playerY + playerLightRadius); i++) {
         std::cout << "║";
         std::string row = this->map.getRow(i);
-        for (unsigned int j = 0; j < row.size(); j++)
+        for (unsigned int j = (unsigned int)std::max<int>(playerX - playerLightRadius , 0); j < (unsigned int)std::min<int>(row.size(), playerX + playerLightRadius); j++)
         {
             if (this->heroIsHere(j,i)){
                 std::cout << "┣┫";
@@ -181,14 +184,14 @@ void Game::printMap() {
             
         }
         
-        for (unsigned int j = 0; j < map.getLongestRowCount() - map.getRow(i).length(); j++) {
+        for (unsigned int j = 0; j < (unsigned int)std::min<int>(row.length() - playerX, playerLightRadius); j++) {
             std::cout << "██";
         }
         std::cout << "║" << std::endl;
     }
 
     std::cout << "╚";
-    for (unsigned int i = 0; i < map.getLongestRowCount()*2; i++) { std::cout << "═"; }
+    for (unsigned int i = 0; i < (unsigned int)std::min<int>(playerLightRadius * 2 + 2, map.getLongestRowCount()*2); i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
 }
 
