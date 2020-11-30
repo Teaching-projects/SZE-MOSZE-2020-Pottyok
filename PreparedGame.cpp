@@ -19,12 +19,12 @@ PreparedGame::PreparedGame(std::string mapjson) {
     int maxMonsterNumber = map.getMaxMonsterNumber();
     std::string actualMosnterFile;
 
-    for (int i = 1; i == maxMonsterNumber; i++) {
-        actualMosnterFile = json.get<std::string>("monster-" + i);
+    for (int i = 1; i < maxMonsterNumber; i++) {
+        actualMosnterFile = json.get<std::string>("monster-" + std::to_string(i));
         Monster monster = Monster::parse(actualMosnterFile);
-        std::list<Position> monsterPositions = map.getMonsterPositions((char)i);
+        std::list<Position> monsterPositions = map.getMonsterPositions((char)(i + '0'));
 
-        for (auto const& pos : monsterPositions) {
+        for (auto& pos : monsterPositions) {
             this->putMonster(monster, pos.x, pos.y);
         }
     }    
