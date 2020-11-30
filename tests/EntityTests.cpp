@@ -97,6 +97,14 @@ TEST(EntityTests, NoMaxHealthNoLevelUp) {
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f);
 }
 
+TEST(EntityTests, IncreaseLightRadius) {
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2);
+    Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2);
+    hero.attack(monster);
+
+    ASSERT_EQ(hero.getLightRadius(), 4);
+}
+
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
