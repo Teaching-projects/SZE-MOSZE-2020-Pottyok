@@ -21,7 +21,7 @@ class Hero : public Monster{
         float MagicDamageBonusPerLevel; 
         float PhysicalDamageBonusPerLevel; 
         float DefenseBonusPerLevel; ///< Hero szintlepesenkent kapott vedekezesi ero bonusza
-        float ColdownMultiplierPerLevel; ///< Hero szintlepesenkent kapott cooldown bonusza
+        float CooldownMultiplierPerLevel; ///< Hero szintlepesenkent kapott cooldown bonusza
         int LightRadius;
         int LightRadiusBonusPerLevel;
 
@@ -39,7 +39,7 @@ class Hero : public Monster{
             float PhysicalDamageBonusPerLevel,
             float MagicDamageBonusPerLevel,
             float DefenseBonusPerLevel /** [in] A Hero szintlepesenkent kapott vedekezesi ero bonusza */,
-            float ColdownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */,
+            float CooldownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */,
             int LightRadius,
             int LightRadiusBonusPerLevel) 
                 : Monster(health, attackPhysicalDamage, attackMagicDamage, defense, name, attackSpeed),
@@ -49,7 +49,7 @@ class Hero : public Monster{
                 MagicDamageBonusPerLevel(MagicDamageBonusPerLevel),
                 PhysicalDamageBonusPerLevel(PhysicalDamageBonusPerLevel),
                 DefenseBonusPerLevel(DefenseBonusPerLevel),
-                ColdownMultiplierPerLevel(ColdownMultiplierPerLevel),
+                CooldownMultiplierPerLevel(CooldownMultiplierPerLevel),
                 LightRadius(LightRadius),
                 LightRadiusBonusPerLevel(LightRadiusBonusPerLevel)
                 {}; ///< Hero osztaly konstruktora
@@ -62,7 +62,7 @@ class Hero : public Monster{
             MagicDamageBonusPerLevel(0),
             PhysicalDamageBonusPerLevel(0),
             DefenseBonusPerLevel(0),
-            ColdownMultiplierPerLevel(0),
+            CooldownMultiplierPerLevel(0),
             LightRadius(0),
             LightRadiusBonusPerLevel(0)
             {}; ///< Hero osztaly konstruktora Monster objektumbol

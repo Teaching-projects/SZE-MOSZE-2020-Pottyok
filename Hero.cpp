@@ -25,7 +25,7 @@ void Hero::addExperience(float experience){
     this->AttackDamage.progress(levelsToAdd * this->PhysicalDamageBonusPerLevel,levelsToAdd * this->MagicDamageBonusPerLevel);
     this->Defense += levelsToAdd * this->DefenseBonusPerLevel;
     this->Health = levelsToAdd > 0 ? this->MaxHealth : this->Health;
-	this->AttackSpeed *= powf(this->ColdownMultiplierPerLevel ,levelsToAdd);
+	this->AttackSpeed *= powf(this->CooldownMultiplierPerLevel ,levelsToAdd);
     this->LightRadius += levelsToAdd * this->LightRadiusBonusPerLevel;
 }
 
