@@ -94,8 +94,8 @@ Collaboration diagram for Hero:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a180758efde4d4b0f1bee35e2f45687e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a180758efde4d4b0f1bee35e2f45687e9">Hero</a> (const float health, const float attackPhysicalDamage, const float attackMagicDamage, const float defense, const std::string &amp;name, const float attackSpeed, float <a class="el" href="classHero.html#a4c1c874bc1f3ed768f47ef9e1ef3e623">ExperiencePerLevel</a>, float <a class="el" href="classHero.html#abc239daac29da8a4421a5bc61dda1092">HealthPointBonusPerLevel</a>, float PhysicalDamageBonusPerLevel, float MagicDamageBonusPerLevel, float <a class="el" href="classHero.html#a71400e2a8abf5e1c969f583b09f7e17d">DefenseBonusPerLevel</a>, float <a class="el" href="classHero.html#a5fe58d7be691784fb6abad706d74fa61">ColdownMultiplierPerLevel</a>)</td></tr>
-<tr class="separator:a180758efde4d4b0f1bee35e2f45687e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa541d1c54a8722826e78548d649a7e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a8fa541d1c54a8722826e78548d649a7e">Hero</a> (const float health, const float attackPhysicalDamage, const float attackMagicDamage, const float defense, const std::string &amp;name, const float attackSpeed, float <a class="el" href="classHero.html#a4c1c874bc1f3ed768f47ef9e1ef3e623">ExperiencePerLevel</a>, float <a class="el" href="classHero.html#abc239daac29da8a4421a5bc61dda1092">HealthPointBonusPerLevel</a>, float PhysicalDamageBonusPerLevel, float MagicDamageBonusPerLevel, float <a class="el" href="classHero.html#a71400e2a8abf5e1c969f583b09f7e17d">DefenseBonusPerLevel</a>, float <a class="el" href="classHero.html#ab5140be65dec5bd103c71f751c3813a6">CooldownMultiplierPerLevel</a>, int LightRadius, int LightRadiusBonusPerLevel)</td></tr>
+<tr class="separator:a8fa541d1c54a8722826e78548d649a7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e7352b9d4070fe3f088cceff7bfe1df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a1e7352b9d4070fe3f088cceff7bfe1df">Hero</a> (<a class="el" href="classMonster.html">Monster</a> monster)</td></tr>
 <tr class="memdesc:a1e7352b9d4070fe3f088cceff7bfe1df"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class. ">Hero</a> osztaly konstruktora.  <a href="#a1e7352b9d4070fe3f088cceff7bfe1df">More...</a><br /></td></tr>
 <tr class="separator:a1e7352b9d4070fe3f088cceff7bfe1df"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,6 +106,9 @@ Public Member Functions</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a17e77f3769e62aeb4e1807bbfc720f47">getLevel</a> () const</td></tr>
 <tr class="memdesc:a17e77f3769e62aeb4e1807bbfc720f47"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintjet adja vissza. <br /></td></tr>
 <tr class="separator:a17e77f3769e62aeb4e1807bbfc720f47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb3f50ace2a337b9dfaa4d32c58f4307"><td class="memItemLeft" align="right" valign="top"><a id="abb3f50ace2a337b9dfaa4d32c58f4307"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>getLightRadius</b> () const</td></tr>
+<tr class="separator:abb3f50ace2a337b9dfaa4d32c58f4307"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b9b1bdf62427c56e3f4ff074c8441e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a0b9b1bdf62427c56e3f4ff074c8441e7">attack</a> (<a class="el" href="classMonster.html">Monster</a> &amp;)</td></tr>
 <tr class="memdesc:a0b9b1bdf62427c56e3f4ff074c8441e7"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class. ">Hero</a> tamadasa, ami soran egy Monstert tamad meg.  <a href="#a0b9b1bdf62427c56e3f4ff074c8441e7">More...</a><br /></td></tr>
 <tr class="separator:a0b9b1bdf62427c56e3f4ff074c8441e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -201,10 +204,16 @@ float&#160;</td><td class="memItemRight" valign="bottom"><b>PhysicalDamageBonusP
 float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a71400e2a8abf5e1c969f583b09f7e17d">DefenseBonusPerLevel</a></td></tr>
 <tr class="memdesc:a71400e2a8abf5e1c969f583b09f7e17d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott vedekezesi ero bonusza. <br /></td></tr>
 <tr class="separator:a71400e2a8abf5e1c969f583b09f7e17d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fe58d7be691784fb6abad706d74fa61"><td class="memItemLeft" align="right" valign="top"><a id="a5fe58d7be691784fb6abad706d74fa61"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a5fe58d7be691784fb6abad706d74fa61">ColdownMultiplierPerLevel</a></td></tr>
-<tr class="memdesc:a5fe58d7be691784fb6abad706d74fa61"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott cooldown bonusza. <br /></td></tr>
-<tr class="separator:a5fe58d7be691784fb6abad706d74fa61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5140be65dec5bd103c71f751c3813a6"><td class="memItemLeft" align="right" valign="top"><a id="ab5140be65dec5bd103c71f751c3813a6"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#ab5140be65dec5bd103c71f751c3813a6">CooldownMultiplierPerLevel</a></td></tr>
+<tr class="memdesc:ab5140be65dec5bd103c71f751c3813a6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott cooldown bonusza. <br /></td></tr>
+<tr class="separator:ab5140be65dec5bd103c71f751c3813a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b72308c010620c04ab8fdff561aa4c"><td class="memItemLeft" align="right" valign="top"><a id="a92b72308c010620c04ab8fdff561aa4c"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>LightRadius</b></td></tr>
+<tr class="separator:a92b72308c010620c04ab8fdff561aa4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af27c15b4ff77f0c1d96125b5b06aaa1d"><td class="memItemLeft" align="right" valign="top"><a id="af27c15b4ff77f0c1d96125b5b06aaa1d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>LightRadiusBonusPerLevel</b></td></tr>
+<tr class="separator:af27c15b4ff77f0c1d96125b5b06aaa1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classMonster"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classMonster')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classMonster.html">Monster</a></td></tr>
 <tr class="memitem:a37a050f8478d4b2ac0e476261ab9d825 inherit pro_attribs_classMonster"><td class="memItemLeft" align="right" valign="top"><a id="a37a050f8478d4b2ac0e476261ab9d825"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMonster.html#a37a050f8478d4b2ac0e476261ab9d825">Name</a></td></tr>
@@ -236,8 +245,8 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <dl class="section author"><dt>Author</dt><dd>Pénzes Péter, Nagy Bálint, Őri Tamás</dd></dl>
 <p>Created on: 2020/10/30 12:25 </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a180758efde4d4b0f1bee35e2f45687e9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a180758efde4d4b0f1bee35e2f45687e9">&#9670;&nbsp;</a></span>Hero() <span class="overload">[1/2]</span></h2>
+<a id="a8fa541d1c54a8722826e78548d649a7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fa541d1c54a8722826e78548d649a7e">&#9670;&nbsp;</a></span>Hero() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -315,7 +324,19 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>ColdownMultiplierPerLevel</em>&#160;</td>
+          <td class="paramname"><em>CooldownMultiplierPerLevel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>LightRadius</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>LightRadiusBonusPerLevel</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -338,7 +359,7 @@ float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
     <tr><td class="paramdir">[in]</td><td class="paramname">ExperiencePerLevel</td><td>A <a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesehez szukseges tapasztalati pontjainak mennyisege </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">HealthPointBonusPerLevel</td><td>A <a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott eletero bonusza </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">DefenseBonusPerLevel</td><td>A <a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott vedekezesi ero bonusza </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">ColdownMultiplierPerLevel</td><td>A <a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott cooldown bonusza </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">CooldownMultiplierPerLevel</td><td>A <a class="el" href="classHero.html" title="Hero class. ">Hero</a> szintlepesenkent kapott cooldown bonusza </td></tr>
   </table>
   </dd>
 </dl>

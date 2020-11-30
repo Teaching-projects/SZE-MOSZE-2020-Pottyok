@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['coldownmultiplierperlevel',['ColdownMultiplierPerLevel',['../classHero.html#a5fe58d7be691784fb6abad706d74fa61',1,'Hero']]]
+  ['cooldownmultiplierperlevel',['CooldownMultiplierPerLevel',['../classHero.html#ab5140be65dec5bd103c71f751c3813a6',1,'Hero']]]
 ];
