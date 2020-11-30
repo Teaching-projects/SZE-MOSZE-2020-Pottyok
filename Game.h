@@ -28,7 +28,7 @@ class MapEntity {
 
         unsigned int getX() { return x; }
         unsigned int getY() { return y; }
-        std::variant<Monster, Hero> getEntity() { return this->entity; }
+        std::variant<Monster, Hero>& getEntity() { return this->entity; }
 
         void setX(unsigned int _x) { x = _x; }
         void setY(unsigned int _y) { y = _y; }

@@ -119,18 +119,17 @@ void Game::move(std::string &input){
     this->heroes[0].setY(futureY);
 }
 void Game::fight(){
-    MapEntity hero =  this->heroes[0];
-    unsigned int currentX = hero.getX();
-    unsigned int currentY = hero.getY();
+    unsigned int currentX = this->heroes[0].getX();
+    unsigned int currentY = this->heroes[0].getY();
     std::vector<int> toDelete;
-    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(hero.getEntity()).isAlive(); i++)
+    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(this->heroes[0].getEntity()).isAlive(); i++)
     {
         MapEntity monster = this->monsters[i];
         if(currentX == monster.getX() && currentY == monster.getY()){
             Monster m = std::get<Monster>(monster.getEntity());
-            std::get<Hero>(hero.getEntity()).fightTilDeath(m);
+            std::get<Hero>(this->heroes[0].getEntity()).fightTilDeath(m);
             
-            if (std::get<Hero>(hero.getEntity()).isAlive()) {
+            if (std::get<Hero>(this->heroes[0].getEntity()).isAlive()) {
                 toDelete.push_back(i);
             }
         }
@@ -195,6 +194,7 @@ void Game::printMap() {
     std::cout << "╚";
     for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
+    std::cout << "LEVEL: " << std::get<Hero>(this->heroes[0].getEntity()).getLevel() << std::endl;
 }
 
 
