@@ -51,6 +51,10 @@ class Map {
         std::string getRow(int rowNumber) {
             return this->map[rowNumber];
         }
+
+        void setRow(int rowNumber, std::string &newValue) {
+            this->map[rowNumber] = newValue;
+        }
         
     /**
      * \class WrongIndexException
