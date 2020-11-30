@@ -194,7 +194,6 @@ void Game::printMap() {
     std::cout << "╚";
     for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
     std::cout << "╝" << std::endl;
-    std::cout << "LEVEL: " << std::get<Hero>(this->heroes[0].getEntity()).getLevel() << std::endl;
 }
 
 
