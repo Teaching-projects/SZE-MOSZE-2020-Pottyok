@@ -10,18 +10,19 @@ MarkedMap::MarkedMap(std::string &fileName) : Map(fileName){
         {
             if(currentRow[j] == 'H'){
                 currentRow[j] = ' ';
+
                 this->setRow(i,currentRow);
-                Position tempHeroPosition = Position(i,j);
+                Position tempHeroPosition = Position(j,i);
                 this->heroPosition = tempHeroPosition;
             }
             else if(isdigit(currentRow[j])){
-                currentRow[j] = ' ';
-                this->setRow(i,currentRow);
-                Position tempMonsterPosition = Position(i,j);
+                Position tempMonsterPosition = Position(j,i);
                 if ( this->monsterPositions.find(currentRow[j]) == this->monsterPositions.end() ) {
                     this->monsterPositions.insert(std::pair<char,std::list<Position>>(currentRow[j],NULL));
                 }
                 this->monsterPositions[currentRow[j]].push_back(tempMonsterPosition);
+                currentRow[j] = ' ';
+                this->setRow(i,currentRow);
             }
         }
         
@@ -32,21 +33,15 @@ Position MarkedMap::getHeroPosition() const {
     return this->heroPosition;
 }
 
-std::list<Position> MarkedMap::getMonsterPositions(char c) const {
-    std::list<Position> monsterPositionsList;
-    for( auto const& [key, val] : this->monsterPositions ) {
-        if(key == c){
-            for (auto const& i : val) {
-                monsterPositionsList.push_back(i);
-            }
-        }
-    }
-    return monsterPositionsList;
+std::list<Position> MarkedMap::getMonsterPositions(char c) {
+    std::list<Position> positions = this->monsterPositions[c];
+
+    return positions;
 }
 
 int MarkedMap::getMaxMonsterNumber() {
     int monsterNumber = 1;
-    for( auto const& [key, val] : this->monsterPositions ) {
+    for( auto& [key, val] : this->monsterPositions ) {
         if((int)key > monsterNumber)
             monsterNumber = (int)key;
     }
