@@ -29,3 +29,7 @@ PreparedGame::PreparedGame(std::string mapjson) {
         }
     }    
 }
+
+void PreparedGame::run(){
+    Game::run();
+}
