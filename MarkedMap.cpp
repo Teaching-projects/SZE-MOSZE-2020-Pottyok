@@ -1,11 +1,12 @@
 #include "MarkedMap.h"
 #include <string>
+#include <iostream>
 
 MarkedMap::MarkedMap(std::string &fileName) : Map(fileName){
     for (int i = 0; i < (int)this->getColumnCount(); i++)
     {
         std::string currentRow = this->getRow(i);
-        for (int j = 0; j < (int)currentRow.length(); i++)
+        for (int j = 0; j < (int)currentRow.length(); j++)
         {
             if(currentRow[j] == 'H'){
                 currentRow[j] = ' ';
