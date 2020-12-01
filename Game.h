@@ -67,8 +67,12 @@ class Game {
         bool isMovePossible(std::string &input);
         void move(std::string &input);
         void fight();
-        bool heroIsHere(unsigned int x,unsigned int y);
-        int countMonstersHere(unsigned int x,unsigned int y);
+        bool heroIsHere(unsigned int x,unsigned int y) const;
+        int countMonstersHere(unsigned int x,unsigned int y) const;
+
+        std::vector<MapEntity> getHeroes() const;
+        std::vector<MapEntity> getMonsters() const;
+        Map getMap() const;
 
 
     class WrongIndexException : virtual public std::runtime_error {

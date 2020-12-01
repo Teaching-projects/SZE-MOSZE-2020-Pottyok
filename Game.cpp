@@ -4,6 +4,7 @@
 
 #include "Game.h"
 #include "Map.h"
+#include "Renderer.h"
 
 Game::Game() {
 
@@ -140,13 +141,13 @@ void Game::fight(){
     }
 }
 
-bool Game::heroIsHere(unsigned int x,unsigned int y){
+bool Game::heroIsHere(unsigned int x,unsigned int y) const {
     MapEntity hero =  this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
     return currentX == x && currentY == y;
 }
-int Game::countMonstersHere(unsigned int x,unsigned int y){
+int Game::countMonstersHere(unsigned int x,unsigned int y) const {
     int monsterCount = 0;
     for (unsigned int i = 0; i < this->monsters.size(); i++)
     {
@@ -159,41 +160,9 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
 }
 
 void Game::printMap() {
-    int playerLightRadius = std::get<Hero>(this->heroes[0].getEntity()).getLightRadius();
-    int playerX = this->heroes[0].getX();
-    int playerY = this->heroes[0].getY();
-    unsigned int border_width = (std::min<int>(playerLightRadius, playerX) + 1 + std::min<int>(playerLightRadius, map.getLongestRowCount() - 1 - playerX)) * 2;
-    
-    std::cout << "\n╔";
-    for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
-    std::cout << "╗" << std::endl;
-
-    for (unsigned int i = (unsigned int)std::max<int>(playerY - playerLightRadius , 0); i < (unsigned int)std::min<int>(map.getColumnCount(), playerY + 1 + playerLightRadius); i++) {
-        std::cout << "║";
-        std::string row = this->map.getRow(i);
-        for (unsigned int j = (unsigned int)std::max<int>(playerX - playerLightRadius , 0); j < (unsigned int)std::min<int>(row.size(), playerX + 1 + playerLightRadius); j++)
-        {
-            if (this->heroIsHere(j,i)){
-                std::cout << "┣┫";
-            }
-            else if(this->countMonstersHere(j,i) > 0){
-                std::cout << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
-            }
-            else{
-                std::cout << (this->map.get(j,i) == Map::Free ? "░░" : "██");
-            }
-            
-        }
-        
-        for (unsigned int j = (unsigned int)std::min<int>(row.size(), playerX + 1 + playerLightRadius); j < (unsigned int)std::min<int>((playerX + 1 + playerLightRadius), map.getLongestRowCount()); j++) {
-            std::cout << "██";
-        }
-        std::cout << "║" << std::endl;
-    }
-
-    std::cout << "╚";
-    for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
-    std::cout << "╝" << std::endl;
+    Game *game = this;
+    Renderer renderer;
+    renderer.render((Game)(*game));
 }
 
 
@@ -215,4 +184,16 @@ bool Game::areHeroesAlive() {
         if (std::get<Hero>(a.getEntity()).isAlive()) return true;
     }
     return false;
+}
+
+std::vector<MapEntity> Game::getHeroes() const {
+    return this->heroes;
+}
+
+std::vector<MapEntity> Game::getMonsters() const {
+    return this->monsters;
+}
+
+Map Game::getMap() const {
+    return this->map;
 }
