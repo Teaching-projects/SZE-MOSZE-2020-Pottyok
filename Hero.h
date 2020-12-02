@@ -41,8 +41,9 @@ class Hero : public Monster{
             float DefenseBonusPerLevel /** [in] A Hero szintlepesenkent kapott vedekezesi ero bonusza */,
             float CooldownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */,
             int LightRadius,
-            int LightRadiusBonusPerLevel) 
-                : Monster(health, attackPhysicalDamage, attackMagicDamage, defense, name, attackSpeed),
+            int LightRadiusBonusPerLevel,
+            const std::string texture) 
+                : Monster(health, attackPhysicalDamage, attackMagicDamage, defense, name, attackSpeed, texture),
                 ExperienceCurrent(0),
                 ExperiencePerLevel(ExperiencePerLevel),
                 HealthPointBonusPerLevel(HealthPointBonusPerLevel),

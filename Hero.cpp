@@ -64,6 +64,7 @@ Hero Hero::parse(const std::string& fileName){
         json.get<int>("defense_bonus_per_level"),
         json.get<float>("cooldown_multiplier_per_level"),
         json.get<int>("light_radius"),
-        lightRadiusBonusPerLevel
+        lightRadiusBonusPerLevel,
+        json.get<std::string>("texture")
     );
 }

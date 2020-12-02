@@ -103,6 +103,7 @@ Monster Monster::parse(const std::string& fileName){
         (float)magicalDamage,
         (float)json.get<int>("defense"),
         json.get<std::string>("name"),
-        (float)json.get<float>("attack_cooldown")
+        (float)json.get<float>("attack_cooldown"),
+        json.get<std::string>("texture")
     );
 }
