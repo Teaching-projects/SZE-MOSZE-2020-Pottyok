@@ -22,7 +22,7 @@ class TextRenderer : public Renderer {
         std::ostream& stream;
         
     public:
-        TextRenderer(std::ostream& stream = std::cout): stream(stream) {};
+        explicit TextRenderer(std::ostream& stream = std::cout): stream(stream) {};
 
         virtual void render(const Game&) const = 0;
 

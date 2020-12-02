@@ -18,6 +18,7 @@
 
 class HeroTextRenderer : public TextRenderer {
     public:
+        using TextRenderer::TextRenderer;
         virtual void render(const Game&) const;
 };
 
