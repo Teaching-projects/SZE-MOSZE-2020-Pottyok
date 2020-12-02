@@ -3,6 +3,7 @@
 #include "PreparedGame.h"
 #include "MarkedMap.h"
 #include "JSON.h"
+#include "Renderer.h"
 
 PreparedGame::PreparedGame(std::string mapjson) {
     JSON json = JSON::parseFromFile(mapjson);
@@ -32,4 +33,16 @@ PreparedGame::PreparedGame(std::string mapjson) {
 
 void PreparedGame::run(){
     Game::run();
+}
+
+void PreparedGame::registerRenderer(Renderer* renderer){
+    this->renderers.push_back(renderer);
+}
+
+void PreparedGame::render(){
+    Game *game = this;
+
+    for (unsigned int i = 0; i < this->renderers.size(); i++) {
+        this->renderers[i]->render((Game)(*game));
+    }
 }
