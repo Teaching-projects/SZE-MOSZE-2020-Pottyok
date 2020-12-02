@@ -7,5 +7,6 @@
     "damage" : 1, "attack_cooldown" : 2.8,
     "magical-damage" : 1,
     "race" : "undead",
-    "defense" : 0
+    "defense" : 0,
+    "texture": "monster.svg"
 }
