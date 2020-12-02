@@ -18,12 +18,17 @@
 #include "Game.h"
 
 class TextRenderer : public Renderer {
-    private:
+    protected:
         std::ostream& stream;
+        
     public:
-        virtual void render(const Game&) const;
-        void setOutputStream(std::ostream& stream);
         TextRenderer(std::ostream& stream = std::cout): stream(stream) {};
+
+        virtual void render(const Game&) const = 0;
+
+        void setOutputStream(std::ostream& stream) {
+             stream.copyfmt(this->stream);
+        };
 };
 
 #endif // TEXTRENDERER_HEADER
