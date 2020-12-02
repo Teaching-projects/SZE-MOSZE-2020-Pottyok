@@ -47,6 +47,7 @@ class Game {
             { "south",  {{'x', 0},{'y', 1}} }
         };
         unsigned int loop_cycle = 0;
+        
 
     public:
         Game();
@@ -57,7 +58,7 @@ class Game {
         void putMonster(Monster &monster, int x, int y);
         void run();
 
-        void printMap();
+        virtual void render();
         std::string getMapRow(unsigned int rowId);  
         bool isHeroSet();
         bool isMapSet();
@@ -69,7 +70,8 @@ class Game {
         void fight();
         bool heroIsHere(unsigned int x,unsigned int y) const;
         int countMonstersHere(unsigned int x,unsigned int y) const;
-
+        
+        
         std::vector<MapEntity> getHeroes() const;
         std::vector<MapEntity> getMonsters() const;
         Map getMap() const;

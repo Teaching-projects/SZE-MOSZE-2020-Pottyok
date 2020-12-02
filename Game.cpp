@@ -4,7 +4,6 @@
 
 #include "Game.h"
 #include "Map.h"
-#include "Renderer.h"
 
 Game::Game() {
 
@@ -48,7 +47,7 @@ void Game::run() {
 
     while (areMonstersAlive() && areHeroesAlive()) {
         this->loop_cycle++;
-        printMap();
+        render();
         do{
             std::cout << "Where to go? (north, south, west, east): ";
             std::cin >> input;
@@ -61,11 +60,11 @@ void Game::run() {
     this->loop_cycle = 0;
 
     if (areHeroesAlive()) {
-        printMap();
+        render();
         std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map." << std::endl;
     }
     else {
-        printMap();
+        render();
         std::cout << "The hero died." << std::endl;
     }
 }
@@ -159,10 +158,9 @@ int Game::countMonstersHere(unsigned int x,unsigned int y) const {
     return monsterCount;
 }
 
-void Game::printMap() {
-    Game *game = this;
-    Renderer renderer;
-    renderer.render((Game)(*game));
+void Game::render() {
+    
+    
 }
 
 
@@ -197,3 +195,4 @@ std::vector<MapEntity> Game::getMonsters() const {
 Map Game::getMap() const {
     return this->map;
 }
+
