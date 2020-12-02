@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <map>
+#include <string>
 
 #include "Renderer.h"
 #include "Game.h"
