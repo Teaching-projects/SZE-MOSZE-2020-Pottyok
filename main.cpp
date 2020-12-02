@@ -10,7 +10,8 @@
 
 #include "PreparedGame.h"
 #include "JSON.h"
-#include "TextRenderer.h"
+#include "ObserverTextRenderer.h"
+#include "HeroTextRenderer.h"
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single map file should be provided." },
@@ -32,7 +33,9 @@ int main(int argc, char** argv){
 
     try { 
         PreparedGame game(argv[1]);
-        game.registerRenderer(new TextRenderer());
+
+        game.registerRenderer(new HeroTextRenderer());
+        game.registerRenderer(new ObserverTextRenderer());
         game.run();
     } catch (const JSON::ParseException& e) {bad_exit(3);}
 
