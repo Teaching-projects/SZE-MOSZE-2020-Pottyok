@@ -52,3 +52,11 @@ void PreparedGame::render(){
         this->renderers[i]->render((Game)(*game));
     }
 }
+
+std::string PreparedGame::getWallTexture(){
+    return this->wallTexture;
+};
+
+std::string PreparedGame::getFreeTexture(){
+    return this->freeTexture;
+};

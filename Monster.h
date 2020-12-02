@@ -72,6 +72,8 @@ class Monster{
         */
         static Monster parse(const std::string&);
 
+        std::string getTexture();
+
 
 };
 

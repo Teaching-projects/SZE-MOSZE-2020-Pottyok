@@ -107,3 +107,7 @@ Monster Monster::parse(const std::string& fileName){
         json.get<std::string>("texture")
     );
 }
+
+std::string Monster::getTexture() {
+    return this->Texture;
+}

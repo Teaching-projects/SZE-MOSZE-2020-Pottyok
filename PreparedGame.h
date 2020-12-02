@@ -30,6 +30,8 @@ class PreparedGame : Game {
         void run();
         void registerRenderer(Renderer*);
         void render();
+        std::string getWallTexture();
+        std::string getFreeTexture();
 
 };
 
