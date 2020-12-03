@@ -8,5 +8,5 @@
     "magical-damage" : 1,
     "race" : "undead",
     "defense" : 0,
-    "texture": "assets/monster.svg"
+    "texture": "assets/zombie.svg"
 }
