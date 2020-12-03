@@ -14,6 +14,8 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <regex>
+#include <fstream>
 
 #include "Renderer.h"
 #include "Game.h"
@@ -26,6 +28,19 @@ class SvgRenderer : public Renderer {
         SvgRenderer(std::string filename): filename(filename) {};
 
         virtual void render(const Game&) const = 0;
+
+        std::string getSVGContent(const std::string filename) const {
+            std::ifstream file("assets/" + filename);
+            std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+            return content;
+        }
+
+        std::string replaceSVGCoordinates(std::string fileContent, int x, int y) const {
+            std::regex regex_x("\\{\\{X\\}\\}");
+            std::regex regex_y("\\{\\{Y\\}\\}");
+            return std::regex_replace(std::regex_replace(fileContent, regex_x, std::to_string(x)), regex_y, std::to_string(y));
+        }
+
 };
 
 #endif // SVGRENDERER_HEADER
