@@ -31,7 +31,13 @@ class SvgRenderer : public Renderer {
 
         std::string getSVGContent(const std::string filename) const {
             std::ifstream file(filename);
+            if(!file.good()){
+                file.close();
+                return "<svg width=\"10\" height=\"10\" viewBox=\"0 0 1 1\"><rect width=\"10\" height=\"10\"/></svg>";
+            }
             std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+            file.close();
+
             return content;
         }
 
