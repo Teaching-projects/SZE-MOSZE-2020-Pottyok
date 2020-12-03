@@ -13,6 +13,7 @@ Monster& Monster::operator=(const Monster &monster) {
     this->AttackDamage   =   monster.AttackDamage;
     this->AttackSpeed    =   monster.AttackSpeed;
     this->Name           =   monster.Name;
+    this->Texture        =   monster.Texture;
     return *this;
 }
 
