@@ -4,5 +4,6 @@
     "damage" : 300,
     "magical-damage" : 300,
     "defense" : 0,
-    "attack_cooldown" : 10.5
+    "attack_cooldown" : 10.5,
+    "texture": "assets/monster.svg"
 }
