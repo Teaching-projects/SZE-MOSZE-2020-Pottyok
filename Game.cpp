@@ -158,6 +158,17 @@ int Game::countMonstersHere(unsigned int x,unsigned int y) const {
     return monsterCount;
 }
 
+Monster Game::getMonstersHere(unsigned int x,unsigned int y) const {
+    for (unsigned int i = 0; i < this->monsters.size(); i++)
+    {
+        MapEntity monster = this->monsters[i];
+        if(x == monster.getX() && y == monster.getY()){
+            return std::get<Monster>(monster.getEntity());
+        }
+    }
+    throw std::runtime_error("No monster here");
+}
+
 void Game::render() {
     
     

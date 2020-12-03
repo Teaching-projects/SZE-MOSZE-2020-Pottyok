@@ -26,7 +26,8 @@ void CharacterSVGRenderer::render(const Game &game) const
             }
             else if (game.countMonstersHere(j, i) > 0)
             {
-                std::string monsterTextureFileName = std::get<Monster>(game.getMonsters()[0].getEntity()).getTexture();
+                std::string monsterTextureFileName = game.getMonstersHere(j,i).getTexture();
+                
                 std::string svgContent = this->getSVGContent(monsterTextureFileName);
                 svgFile << this->replaceSVGCoordinates(svgContent, (j - (unsigned int)std::max<int>(playerX - playerLightRadius, 0)) * 10, (i - (unsigned int)std::max<int>(playerY - playerLightRadius, 0)) * 10);
             }

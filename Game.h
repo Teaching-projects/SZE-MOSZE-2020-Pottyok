@@ -82,6 +82,8 @@ class Game {
         std::vector<MapEntity> getHeroes() const;
         std::vector<MapEntity> getMonsters() const;
         Map getMap() const;
+        Monster getMonstersHere(unsigned int, unsigned int) const;
+
 
 
     class WrongIndexException : virtual public std::runtime_error {
