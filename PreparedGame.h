@@ -22,16 +22,12 @@
 class PreparedGame : Game {
     private:
         std::vector<Renderer*> renderers;
-        std::string wallTexture;
-        std::string freeTexture;
 
     public:
         PreparedGame(std::string mapjson);
         void run();
         void registerRenderer(Renderer*);
         void render();
-        std::string getWallTexture();
-        std::string getFreeTexture();
 
 };
 

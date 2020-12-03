@@ -108,6 +108,6 @@ Monster Monster::parse(const std::string& fileName){
     );
 }
 
-std::string Monster::getTexture() {
+std::string Monster::getTexture() const {
     return this->Texture;
 }

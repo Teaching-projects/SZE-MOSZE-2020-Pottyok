@@ -47,6 +47,10 @@ class Game {
             { "south",  {{'x', 0},{'y', 1}} }
         };
         unsigned int loop_cycle = 0;
+
+    protected:
+        std::string wallTexture;
+        std::string freeTexture;
         
 
     public:
@@ -71,7 +75,10 @@ class Game {
         bool heroIsHere(unsigned int x,unsigned int y) const;
         int countMonstersHere(unsigned int x,unsigned int y) const;
         
+
         
+        std::string getWallTexture() const;
+        std::string getFreeTexture() const;
         std::vector<MapEntity> getHeroes() const;
         std::vector<MapEntity> getMonsters() const;
         Map getMap() const;

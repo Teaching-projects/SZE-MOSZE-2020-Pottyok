@@ -196,3 +196,11 @@ Map Game::getMap() const {
     return this->map;
 }
 
+
+std::string Game::getWallTexture() const {
+    return this->wallTexture;
+};
+
+std::string Game::getFreeTexture() const {
+    return this->freeTexture;
+};
