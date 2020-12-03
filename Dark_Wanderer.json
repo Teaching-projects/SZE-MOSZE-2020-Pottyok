@@ -13,5 +13,5 @@
     "defense_bonus_per_level" : 1,
     "cooldown_multiplier_per_level": 0.9,
     "light_radius_bonus_per_level": 2,
-    "texture": "hero.svg"
+    "texture": "assets/hero.svg"
 }

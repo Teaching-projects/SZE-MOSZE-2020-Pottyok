@@ -30,7 +30,7 @@ class SvgRenderer : public Renderer {
         virtual void render(const Game&) const = 0;
 
         std::string getSVGContent(const std::string filename) const {
-            std::ifstream file("assets/" + filename);
+            std::ifstream file(filename);
             std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
             return content;
         }
