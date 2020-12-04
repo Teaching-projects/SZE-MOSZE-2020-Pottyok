@@ -158,7 +158,7 @@ int Game::countMonstersHere(unsigned int x,unsigned int y) const {
     return monsterCount;
 }
 
-Monster Game::getMonstersHere(unsigned int x,unsigned int y) const {
+Monster Game::getMonsterHere(unsigned int x,unsigned int y) const {
     for (unsigned int i = 0; i < this->monsters.size(); i++)
     {
         MapEntity monster = this->monsters[i];

@@ -15,7 +15,7 @@ void ObserverSVGRenderer::render(const Game& game) const {
                 svgFile << this->replaceSVGCoordinates(svgContent, j * 10, i * 10);
             }
             else if(game.countMonstersHere(j,i) > 0){
-                std::string monsterTextureFileName = game.getMonstersHere(j,i).getTexture();
+                std::string monsterTextureFileName = game.getMonsterHere(j,i).getTexture();
                 
                 std::string svgContent = this->getSVGContent(monsterTextureFileName);
                 svgFile << this->replaceSVGCoordinates(svgContent, j * 10, i * 10);
