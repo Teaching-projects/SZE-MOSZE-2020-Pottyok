@@ -18,6 +18,7 @@
 
 class ObserverSVGRenderer : public SvgRenderer {
     public:
+        using SvgRenderer::SvgRenderer;
         virtual void render(const Game&) const;
 };
 
