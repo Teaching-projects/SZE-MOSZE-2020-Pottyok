@@ -4,6 +4,7 @@
 
 #include "Game.h"
 #include "Map.h"
+#include "Renderer.h"
 
 Game::Game() {
 
@@ -169,9 +170,16 @@ Monster Game::getMonsterHere(unsigned int x,unsigned int y) const {
     throw std::runtime_error("No monster here");
 }
 
+void Game::registerRenderer(Renderer* renderer) {
+    this->renderers.push_back(renderer);
+}
+
 void Game::render() {
-    
-    
+    Game *game = this;
+
+    for (unsigned int i = 0; i < this->renderers.size(); i++) {
+        this->renderers[i]->render((Game)(*game));
+    }
 }
 
 

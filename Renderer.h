@@ -11,8 +11,7 @@
 #ifndef RENDERER_HEADER
 #define RENDERER_HEADER
 
-#include "Game.h"
-
+class Game;
 
 class Renderer {
     public:

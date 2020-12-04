@@ -8,6 +8,7 @@
 #include <iterator>
 #include <list>
 
+#include "Game.h"
 #include "PreparedGame.h"
 #include "JSON.h"
 #include "ObserverTextRenderer.h"

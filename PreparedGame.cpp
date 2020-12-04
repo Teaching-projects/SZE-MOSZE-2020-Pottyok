@@ -41,14 +41,6 @@ void PreparedGame::run(){
     Game::run();
 }
 
-void PreparedGame::registerRenderer(Renderer* renderer){
-    this->renderers.push_back(renderer);
-}
-
-void PreparedGame::render(){
-    Game *game = this;
-
-    for (unsigned int i = 0; i < this->renderers.size(); i++) {
-        this->renderers[i]->render((Game)(*game));
-    }
+void PreparedGame::registerRenderer(Renderer* renderer) {
+    Game::registerRenderer(renderer);
 }

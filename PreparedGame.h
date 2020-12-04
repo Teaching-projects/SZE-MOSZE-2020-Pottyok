@@ -16,19 +16,12 @@
 
 #include "Game.h"
 #include "MarkedMap.h"
-#include "Renderer.h"
 
-
-class PreparedGame : Game {
-    private:
-        std::vector<Renderer*> renderers;
-
+class PreparedGame : private Game {
     public:
         PreparedGame(std::string mapjson);
         void run();
         void registerRenderer(Renderer*);
-        void render();
-
 };
 
 #endif // PREPAREDGAME_HEADER

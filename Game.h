@@ -17,6 +17,7 @@
 
 #include "Map.h"
 #include "Hero.h"
+class Renderer;
 
 class MapEntity {
     private:
@@ -51,7 +52,7 @@ class Game {
     protected:
         std::string wallTexture;
         std::string freeTexture;
-        
+        std::vector<Renderer*> renderers;
 
     public:
         Game();
@@ -63,6 +64,7 @@ class Game {
         void run();
 
         virtual void render();
+        void registerRenderer(Renderer*);
         std::string getMapRow(unsigned int rowId);  
         bool isHeroSet();
         bool isMapSet();
