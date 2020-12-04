@@ -20,21 +20,19 @@ void CharacterSVGRenderer::render(const Game &game) const
         {
             if (game.heroIsHere(j, i))
             {
-                std::string monsterTextureFileName = std::get<Hero>(game.getHeroes()[0].getEntity()).getTexture();
-                std::string svgContent = this->getSVGContent(monsterTextureFileName);
+                std::string heroTextureFileName = std::get<Hero>(game.getHeroes()[0].getEntity()).getTexture();
+                std::string svgContent = this->getSVGContent(heroTextureFileName);
                 svgFile << this->replaceSVGCoordinates(svgContent, (j - (unsigned int)std::max<int>(playerX - playerLightRadius, 0)) * 10, (i - (unsigned int)std::max<int>(playerY - playerLightRadius, 0)) * 10);
             }
             else if (game.countMonstersHere(j, i) > 0)
             {
                 std::string monsterTextureFileName = game.getMonstersHere(j,i).getTexture();
-                
                 std::string svgContent = this->getSVGContent(monsterTextureFileName);
                 svgFile << this->replaceSVGCoordinates(svgContent, (j - (unsigned int)std::max<int>(playerX - playerLightRadius, 0)) * 10, (i - (unsigned int)std::max<int>(playerY - playerLightRadius, 0)) * 10);
             }
             else
             {
                 std::string textureFile = (game.getMap().get(j, i) == Map::Free ? game.getFreeTexture() : game.getWallTexture());
-
                 std::string svgContent = this->getSVGContent(textureFile);
                 svgFile << this->replaceSVGCoordinates(svgContent, (j - (unsigned int)std::max<int>(playerX - playerLightRadius, 0)) * 10, (i - (unsigned int)std::max<int>(playerY - playerLightRadius, 0)) * 10);
             }
