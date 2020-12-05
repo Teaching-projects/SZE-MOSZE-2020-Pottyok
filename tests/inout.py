@@ -14,7 +14,7 @@ with open(expected_file, 'r', encoding="UTF-8") as e_file:
     listOfLineExpected = e_file.readlines()
     del listOfLineExpected[:2]
 
-    actualRawText = subprocess.check_output("echo 'east' | .././output preparedgame_test.json", shell=True)
+    actualRawText = subprocess.check_output("cd ../ && echo 'east' | ./output " + scenario, shell=True)
     listOfLinesActual = actualRawText.splitlines(keepends=True)
     print("The Expected OUTPUT")
     print(listOfLineExpected)
