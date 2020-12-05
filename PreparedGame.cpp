@@ -3,7 +3,6 @@
 #include "PreparedGame.h"
 #include "MarkedMap.h"
 #include "JSON.h"
-#include "Renderer.h"
 
 PreparedGame::PreparedGame(std::string mapjson) {
     JSON json = JSON::parseFromFile(mapjson);

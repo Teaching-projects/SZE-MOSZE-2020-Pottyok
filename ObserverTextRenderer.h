@@ -10,8 +10,6 @@
 
 #ifndef OBSERVERTEXTRENDERER_HEADER
 #define OBSERVERTEXTRENDERER_HEADER
-#include <iostream>
-
 
 #include "TextRenderer.h"
 #include "Game.h"

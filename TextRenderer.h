@@ -15,7 +15,6 @@
 #include <map>
 
 #include "Renderer.h"
-#include "Game.h"
 
 class TextRenderer : public Renderer {
     protected:
