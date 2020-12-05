@@ -16,7 +16,7 @@ done < "$expected"
 echo "Expected OUTPUT"
 cat $expected
 echo "Real OUTPUT"
-cat $results 
+cat $results
 
 different="$(diff $expected $results)"
 
