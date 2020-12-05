@@ -17,9 +17,9 @@ with open(expected_file, 'r', encoding="UTF-8") as e_file:
     actualRawText = subprocess.check_output("cd ../ && echo 'east' | ./output " + scenario, shell=True)
     listOfLinesActual = actualRawText.splitlines(keepends=True)
     print("The Expected OUTPUT")
-    print(listOfLineExpected)
+    print("".join(listOfLineExpected).encode("UTF-8"))
     print("The Actual OUTPUT")
-    print(listOfLinesActual)
+    print("".join(listOfLinesActual).encode("UTF-8"))
     if listOfLineExpected == listOfLinesActual: 
         print("they are indetical") 
         os._exit(0)
