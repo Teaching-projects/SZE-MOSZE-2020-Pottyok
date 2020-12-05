@@ -26,7 +26,7 @@ unittests:
 	cd tests && make && ./runEntityTests && ./runJsonTests
 
 outputtest:
-	./tests.sh
+	./tests/outputtest.sh
 
 tests: sca valgrind
 

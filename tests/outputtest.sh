@@ -1,6 +1,6 @@
 #!/bin/bash
-expected="units/expected.txt"
-results="results.txt"
+expected="tests/expected.txt"
+results="tests/results.txt"
 
 while IFS= read line
 do
