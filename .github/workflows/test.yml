@@ -14,8 +14,8 @@ jobs:
           name: cppcheck_report
           path: cppcheck_report.txt
       - name: Build
-        run: g++-9 -Wall -Werror -std=c++17 *.cpp -o output
+        run: make
       - name: Valgrind memory check
         run: make valgrind
       - name: In-Out tests
-        run: ./tests.sh
+        run: make outputtest
