@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get update
 
-RUN apt-get install --no-install-recommends -y software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update
+RUN apt-get install --no-install-recommends -y software-properties-common && add-apt-repository ppa:ubuntu-toolchain-r/test && apt-get update && apt install software-properties-common && add-apt-repository ppa:deadsnakes/ppa -y && apt install python3.8
 
 RUN apt-get install --no-install-recommends -y gcc g++ gcc-9 g++-9 doxygen graphviz valgrind cppcheck libgtest-dev make cmake git
 

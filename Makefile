@@ -53,7 +53,7 @@ unittests:
 	cd tests && make && ./runEntityTests && ./runJsonTests
 
 outputtest:
-	./tests/outputtest.sh
+	cd tests && python3 inout.py
 
 sca:
 	cppcheck --enable=all ./*.cpp 2> cppcheck_report.txt && cat cppcheck_report.txt && if grep -q "(warning)" "./cppcheck_report.txt"; then exit 1; fi && if grep -q "(error)" "./cppcheck_report.txt"; then exit 1; fi
