@@ -4,5 +4,5 @@ var searchData=
   ['mapentity',['MapEntity',['../classMapEntity.html',1,'']]],
   ['markedmap',['MarkedMap',['../classMarkedMap.html',1,'']]],
   ['maxhealth',['MaxHealth',['../classMonster.html#a884269d2229a61f0fff50b7653a40815',1,'Monster']]],
-  ['monster',['Monster',['../classMonster.html',1,'Monster'],['../classMonster.html#ae3f19df3bc8a0baae37bebc99aac918e',1,'Monster::Monster(const float health, const float attackPhysicalDamage, const float attackMagicDamage, const float defense, const std::string &amp;name, const float attackSpeed)'],['../classMonster.html#a514a04131beebbbdd094e41094153bac',1,'Monster::Monster(const Monster &amp;monster)']]]
+  ['monster',['Monster',['../classMonster.html',1,'Monster'],['../classMonster.html#a5be910a9c974f2d0578a8f7b3d69973a',1,'Monster::Monster(const float health, const float attackPhysicalDamage, const float attackMagicDamage, const float defense, const std::string &amp;name, const float attackSpeed, const std::string &amp;texture)'],['../classMonster.html#a514a04131beebbbdd094e41094153bac',1,'Monster::Monster(const Monster &amp;monster)']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['type',['type',['../classMap.html#a41697b848ea9a5aad1910714e0196b7b',1,'Map']]]
+  ['sze_2dmosze_2d2020_2dpottyok',['SZE-MOSZE-2020-Pottyok',['../autotoc_md0.html',1,'']]],
+  ['svgrenderer',['SvgRenderer',['../classSvgRenderer.html',1,'']]]
 ];

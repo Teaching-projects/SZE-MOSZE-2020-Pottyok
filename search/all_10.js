@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['wall',['Wall',['../classMap.html#a41697b848ea9a5aad1910714e0196b7ba874474147b8fcfcec145b20926fc83bf',1,'Map']]],
-  ['wrongindexexception',['WrongIndexException',['../classMap_1_1WrongIndexException.html',1,'Map::WrongIndexException'],['../classGame_1_1WrongIndexException.html',1,'Game::WrongIndexException'],['../classMap_1_1WrongIndexException.html#afbe8d410842313e33f73422d27a84a71',1,'Map::WrongIndexException::WrongIndexException()']]]
+  ['textrenderer',['TextRenderer',['../classTextRenderer.html',1,'']]],
+  ['texture',['Texture',['../classMonster.html#a97b0ecfcc95424fbc1979263cdb58689',1,'Monster']]],
+  ['type',['type',['../classMap.html#a41697b848ea9a5aad1910714e0196b7b',1,'Map']]]
 ];
