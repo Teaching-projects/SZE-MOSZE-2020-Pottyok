@@ -13,7 +13,7 @@ Hero& Hero::operator=(const Monster &monster){
     this->Name                          =   monster.getName();
 	this->AttackSpeed					=	monster.getAttackCoolDown();
     this->ExperienceCurrent             =   0;
-    
+    this->Texture                       =   monster.getTexture();
     return *this;
 }
 
@@ -50,6 +50,7 @@ Hero Hero::parse(const std::string& fileName){
     int physicalDamage = json.count("damage") == 0 ? 0 : json.get<int>("damage");
     int magicalDamage = json.count("magical-damage") == 0 ? 0 : json.get<int>("magical-damage");
     int lightRadiusBonusPerLevel = json.count("light_radius_bonus_per_level") == 0 ? 1 : json.get<int>("light_radius_bonus_per_level");
+    
     return Hero(
         json.get<int>("base_health_points"),
         physicalDamage,
@@ -64,6 +65,7 @@ Hero Hero::parse(const std::string& fileName){
         json.get<int>("defense_bonus_per_level"),
         json.get<float>("cooldown_multiplier_per_level"),
         json.get<int>("light_radius"),
-        lightRadiusBonusPerLevel
+        lightRadiusBonusPerLevel,
+        json.get<std::string>("texture")
     );
 }

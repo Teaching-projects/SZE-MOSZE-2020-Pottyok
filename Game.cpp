@@ -4,6 +4,7 @@
 
 #include "Game.h"
 #include "Map.h"
+#include "Renderer.h"
 
 Game::Game() {
 
@@ -47,7 +48,7 @@ void Game::run() {
 
     while (areMonstersAlive() && areHeroesAlive()) {
         this->loop_cycle++;
-        printMap();
+        render();
         do{
             std::cout << "Where to go? (north, south, west, east): ";
             std::cin >> input;
@@ -60,11 +61,11 @@ void Game::run() {
     this->loop_cycle = 0;
 
     if (areHeroesAlive()) {
-        printMap();
+        render();
         std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map." << std::endl;
     }
     else {
-        printMap();
+        render();
         std::cout << "The hero died." << std::endl;
     }
 }
@@ -140,13 +141,13 @@ void Game::fight(){
     }
 }
 
-bool Game::heroIsHere(unsigned int x,unsigned int y){
+bool Game::heroIsHere(unsigned int x,unsigned int y) const {
     MapEntity hero =  this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
     return currentX == x && currentY == y;
 }
-int Game::countMonstersHere(unsigned int x,unsigned int y){
+int Game::countMonstersHere(unsigned int x,unsigned int y) const {
     int monsterCount = 0;
     for (unsigned int i = 0; i < this->monsters.size(); i++)
     {
@@ -158,42 +159,27 @@ int Game::countMonstersHere(unsigned int x,unsigned int y){
     return monsterCount;
 }
 
-void Game::printMap() {
-    int playerLightRadius = std::get<Hero>(this->heroes[0].getEntity()).getLightRadius();
-    int playerX = this->heroes[0].getX();
-    int playerY = this->heroes[0].getY();
-    unsigned int border_width = (std::min<int>(playerLightRadius, playerX) + 1 + std::min<int>(playerLightRadius, map.getLongestRowCount() - 1 - playerX)) * 2;
-    
-    std::cout << "\n╔";
-    for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
-    std::cout << "╗" << std::endl;
-
-    for (unsigned int i = (unsigned int)std::max<int>(playerY - playerLightRadius , 0); i < (unsigned int)std::min<int>(map.getColumnCount(), playerY + 1 + playerLightRadius); i++) {
-        std::cout << "║";
-        std::string row = this->map.getRow(i);
-        for (unsigned int j = (unsigned int)std::max<int>(playerX - playerLightRadius , 0); j < (unsigned int)std::min<int>(row.size(), playerX + 1 + playerLightRadius); j++)
-        {
-            if (this->heroIsHere(j,i)){
-                std::cout << "┣┫";
-            }
-            else if(this->countMonstersHere(j,i) > 0){
-                std::cout << (this->countMonstersHere(j,i) > 1 ? "MM" : "M░");
-            }
-            else{
-                std::cout << (this->map.get(j,i) == Map::Free ? "░░" : "██");
-            }
-            
+Monster Game::getMonsterHere(unsigned int x,unsigned int y) const {
+    for (unsigned int i = 0; i < this->monsters.size(); i++)
+    {
+        MapEntity monster = this->monsters[i];
+        if(x == monster.getX() && y == monster.getY()){
+            return std::get<Monster>(monster.getEntity());
         }
-        
-        for (unsigned int j = (unsigned int)std::min<int>(row.size(), playerX + 1 + playerLightRadius); j < (unsigned int)std::min<int>((playerX + 1 + playerLightRadius), map.getLongestRowCount()); j++) {
-            std::cout << "██";
-        }
-        std::cout << "║" << std::endl;
     }
+    throw std::runtime_error("No monster here");
+}
 
-    std::cout << "╚";
-    for (unsigned int i = 0; i < border_width; i++) { std::cout << "═"; }
-    std::cout << "╝" << std::endl;
+void Game::registerRenderer(Renderer* renderer) {
+    this->renderers.push_back(renderer);
+}
+
+void Game::render() {
+    Game *game = this;
+
+    for (unsigned int i = 0; i < this->renderers.size(); i++) {
+        this->renderers[i]->render((Game)(*game));
+    }
 }
 
 
@@ -216,3 +202,24 @@ bool Game::areHeroesAlive() {
     }
     return false;
 }
+
+std::vector<MapEntity> Game::getHeroes() const {
+    return this->heroes;
+}
+
+std::vector<MapEntity> Game::getMonsters() const {
+    return this->monsters;
+}
+
+Map Game::getMap() const {
+    return this->map;
+}
+
+
+std::string Game::getWallTexture() const {
+    return this->wallTexture;
+};
+
+std::string Game::getFreeTexture() const {
+    return this->freeTexture;
+};

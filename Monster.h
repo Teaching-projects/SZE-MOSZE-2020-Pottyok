@@ -22,6 +22,7 @@ class Monster{
         float Defense;            ///< Monster vedekezesi ereje
         float AttackSpeed;      ///< Monster ket tamadasa kozotti ido
         void damage(const float); ///< Monster jelenlegi eleterejenek csokkentese
+        std::string Texture;        ///< Monster svg textúrája
 
     public:
         Monster(const float health /** [in] A Monster eletereje */,
@@ -29,12 +30,14 @@ class Monster{
                 const float attackMagicDamage,
                 const float defense /** [in] A Monster vedekezesi ereje */,
                 const std::string& name /** [in] A Monster neve */,
-                const float attackSpeed /** [in] A Monster tamadasi sebessege */) : 
+                const float attackSpeed /** [in] A Monster tamadasi sebessege */,
+                const std::string& texture /** [in] A Monster svg textúrája */) : 
                     Name(name),
                     Health(health),
                     MaxHealth(health),
                     Defense(defense),
-                    AttackSpeed(attackSpeed) 
+                    AttackSpeed(attackSpeed),
+                    Texture(texture) 
                     {
                         Damage dmg = Damage();
                         dmg.magical = attackMagicDamage;
@@ -43,7 +46,7 @@ class Monster{
                         this->AttackDamage = dmg;
 
                     };   ///< Az Monster class konstruktora
-		Monster(const Monster& monster /** [in] Másolni kívánt Monster */) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), Defense(monster.Defense), AttackSpeed(monster.AttackSpeed) {};	///< Az Monster class copy konstruktora
+		Monster(const Monster& monster /** [in] Másolni kívánt Monster */) : Name(monster.Name), Health(monster.Health), MaxHealth(monster.MaxHealth), AttackDamage(monster.AttackDamage), Defense(monster.Defense), AttackSpeed(monster.AttackSpeed), Texture(monster.Texture) {};	///< Az Monster class copy konstruktora
         Monster& operator=(const Monster& /** [in] A Monster amivel egyenlove akarjuk tenni az objektumot */);   ///< Az Monster class egyenloseg operatora
         float getDamage(float defense = 0) const;    ///< Monster sebzeset visszaado getter
         float getDefense() const;    ///< Monster vedekezesi erejet visszaado getter
@@ -68,6 +71,8 @@ class Monster{
          * \return Monster a JSON fajlban megadott ertekekkel
         */
         static Monster parse(const std::string&);
+
+        std::string getTexture() const;
 
 
 };

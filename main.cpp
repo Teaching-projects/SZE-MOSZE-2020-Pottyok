@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <map>
 #include <string>
 #include <filesystem>
@@ -7,8 +8,13 @@
 #include <iterator>
 #include <list>
 
+#include "Game.h"
 #include "PreparedGame.h"
 #include "JSON.h"
+#include "ObserverTextRenderer.h"
+#include "HeroTextRenderer.h"
+#include "CharacterSVGRenderer.h"
+#include "ObserverSVGRenderer.h"
 
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single map file should be provided." },
@@ -30,6 +36,11 @@ int main(int argc, char** argv){
 
     try { 
         PreparedGame game(argv[1]);
+        std::ofstream stream = std::ofstream("log.txt");
+        game.registerRenderer(new HeroTextRenderer());
+        game.registerRenderer(new ObserverTextRenderer(stream));
+        game.registerRenderer(new CharacterSVGRenderer("game.svg"));
+        game.registerRenderer(new ObserverSVGRenderer("observe.svg"));
         game.run();
     } catch (const JSON::ParseException& e) {bad_exit(3);}
 

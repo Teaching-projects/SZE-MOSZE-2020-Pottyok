@@ -17,6 +17,7 @@
 
 #include "Map.h"
 #include "Hero.h"
+class Renderer;
 
 class MapEntity {
     private:
@@ -48,6 +49,11 @@ class Game {
         };
         unsigned int loop_cycle = 0;
 
+    protected:
+        std::string wallTexture;
+        std::string freeTexture;
+        std::vector<Renderer*> renderers;
+
     public:
         Game();
         Game(std::string mapfilename);
@@ -57,7 +63,8 @@ class Game {
         void putMonster(Monster &monster, int x, int y);
         void run();
 
-        void printMap();
+        virtual void render();
+        void registerRenderer(Renderer*);
         std::string getMapRow(unsigned int rowId);  
         bool isHeroSet();
         bool isMapSet();
@@ -67,8 +74,18 @@ class Game {
         bool isMovePossible(std::string &input);
         void move(std::string &input);
         void fight();
-        bool heroIsHere(unsigned int x,unsigned int y);
-        int countMonstersHere(unsigned int x,unsigned int y);
+        bool heroIsHere(unsigned int x,unsigned int y) const;
+        int countMonstersHere(unsigned int x,unsigned int y) const;
+        
+
+        
+        std::string getWallTexture() const;
+        std::string getFreeTexture() const;
+        std::vector<MapEntity> getHeroes() const;
+        std::vector<MapEntity> getMonsters() const;
+        Map getMap() const;
+        Monster getMonsterHere(unsigned int, unsigned int) const;
+
 
 
     class WrongIndexException : virtual public std::runtime_error {
