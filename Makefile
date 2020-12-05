@@ -1,6 +1,6 @@
-OBJS := main.o game.o preparedgame.o markedmap.o map.o json.o observertextrenderer.o herotextrenderer.o charactersvgrenderer.o observersvgrenderer.o hero.o monster.o
+OBJS := main.o Game.o PreparedGame.o MarkedMap.o Map.o JSON.o ObserverTextRenderer.o HeroTextRenderer.o CharacterSVGRenderer.o ObserverSVGRenderer.o Hero.o Monster.o
 CFLAGS := -std=c++17 -Wall -Werror -g
-CC := g++
+CC := g++-9
 OUT := output
 
 output: $(OBJS)
@@ -9,37 +9,37 @@ output: $(OBJS)
 main.o: main.cpp Game.h PreparedGame.h JSON.h ObserverTextRenderer.h HeroTextRenderer.h CharacterSVGRenderer.h ObserverSVGRenderer.h
 	$(CC) $(CFLAGS) -c main.cpp
 
-game.o: Game.cpp Game.h Map.h Renderer.h
+Game.o: Game.cpp Game.h Map.h Renderer.h
 	$(CC) $(CFLAGS) -c Game.cpp
 
-preparedgame.o: PreparedGame.cpp PreparedGame.h Game.h MarkedMap.h
+PreparedGame.o: PreparedGame.cpp PreparedGame.h Game.h MarkedMap.h
 	$(CC) $(CFLAGS) -c PreparedGame.cpp
 
-markedmap.o: MarkedMap.cpp MarkedMap.h Map.h
+MarkedMap.o: MarkedMap.cpp MarkedMap.h Map.h
 	$(CC) $(CFLAGS) -c MarkedMap.cpp
 
-map.o: Map.cpp Map.h
+Map.o: Map.cpp Map.h
 	$(CC) $(CFLAGS) -c Map.cpp
 
-json.o: JSON.cpp JSON.h
+JSON.o: JSON.cpp JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp
 
-observertextrenderer.o: ObserverTextRenderer.cpp ObserverTextRenderer.h TextRenderer.h Game.h
+ObserverTextRenderer.o: ObserverTextRenderer.cpp ObserverTextRenderer.h TextRenderer.h Game.h
 	$(CC) $(CFLAGS) -c ObserverTextRenderer.cpp
 
-herotextrenderer.o: HeroTextRenderer.cpp HeroTextRenderer.h TextRenderer.h Game.h
+HeroTextRenderer.o: HeroTextRenderer.cpp HeroTextRenderer.h TextRenderer.h Game.h
 	$(CC) $(CFLAGS) -c HeroTextRenderer.cpp
 
-charactersvgrenderer.o: CharacterSVGRenderer.cpp CharacterSVGRenderer.h SvgRenderer.h Game.h
+CharacterSVGRenderer.o: CharacterSVGRenderer.cpp CharacterSVGRenderer.h SvgRenderer.h Game.h
 	$(CC) $(CFLAGS) -c CharacterSVGRenderer.cpp
 
-observersvgrenderer.o: ObserverSVGRenderer.cpp ObserverSVGRenderer.h SvgRenderer.h Game.h
+ObserverSVGRenderer.o: ObserverSVGRenderer.cpp ObserverSVGRenderer.h SvgRenderer.h Game.h
 	$(CC) $(CFLAGS) -c ObserverSVGRenderer.cpp
 
-hero.o: Hero.cpp Hero.h Monster.h
+Hero.o: Hero.cpp Hero.h Monster.h
 	$(CC) $(CFLAGS) -c Hero.cpp
 
-monster.o: Monster.cpp Monster.h Damage.h
+Monster.o: Monster.cpp Monster.h Damage.h
 	$(CC) $(CFLAGS) -c Monster.cpp
 
 
