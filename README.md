@@ -7,7 +7,9 @@ Modern szoftverfejlesztés órára készült C++ projekt.
 - Őri Tamás
 
 ## A program működése
-A program egy indítási paramétert vár, egy **.json** kiterjesztésű fájlt, ami egy előkészített játék adatait tartalmazza. Példa indítás:
+A program egy indítási paramétert vár, egy **.json** kiterjesztésű fájlt, ami egy előkészített játék adatait tartalmazza.
+
+***Példa indítás:***
 ```bash
 ./output preparedgame.json
 ```
