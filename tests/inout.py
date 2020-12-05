@@ -9,10 +9,8 @@ listOfLinesActual = []
 listOfLineExpected = []
 with open(expected_file, 'r', encoding="UTF-8") as e_file:
     scenario = e_file.readline().replace(';','').strip()
-    e_file.readline()
 
     listOfLineExpected = e_file.readlines()
-    del listOfLineExpected[:1]
 
     actualRawText = subprocess.check_output("cd ../ && echo 'east' | ./output " + scenario, shell=True).decode("UTF-8")
     listOfLinesActual = actualRawText.splitlines(keepends=True)
