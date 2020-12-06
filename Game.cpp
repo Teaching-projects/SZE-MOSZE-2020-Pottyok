@@ -143,9 +143,7 @@ void Game::fight(){
 
 
 void Game::deleteAllRenderersSafely(){
-    for (unsigned int i = this->renderers.size() - 1; i >= 0; i--) {
-        delete this->renderers[i];
-    }
+    this->renderers.clear();
 }
 
 bool Game::heroIsHere(unsigned int x,unsigned int y) const {
