@@ -35,16 +35,14 @@ int main(int argc, char** argv){
     if (!std::filesystem::exists(argv[1])) bad_exit(2);
 
     try { 
-        PreparedGame *game = new PreparedGame(argv[1]);
+        PreparedGame game(argv[1]);
         std::ofstream stream = std::ofstream("log.txt");
-        game->registerRenderer(new HeroTextRenderer());
-        game->registerRenderer(new ObserverTextRenderer(stream));
-        game->registerRenderer(new CharacterSVGRenderer("game.svg"));
-        game->registerRenderer(new ObserverSVGRenderer("observe.svg"));
-        game->run();
+        game.registerRenderer(new HeroTextRenderer());
+        game.registerRenderer(new ObserverTextRenderer(stream));
+        game.registerRenderer(new CharacterSVGRenderer("game.svg"));
+        game.registerRenderer(new ObserverSVGRenderer("observe.svg"));
+        game.run();
         stream.close();
-        game->deleteAllRenderersSafely();
-        delete[] game;
     } catch (const JSON::ParseException& e) {bad_exit(3);}
     
     return 0;

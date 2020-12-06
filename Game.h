@@ -14,6 +14,7 @@
 #include <string>
 #include <vector>
 #include <variant>
+#include <list>
 
 #include "Map.h"
 #include "Hero.h"
@@ -52,18 +53,22 @@ class Game {
     protected:
         std::string wallTexture;
         std::string freeTexture;
-        std::vector<Renderer*> renderers;
+        std::list<Renderer*> renderers;
 
     public:
         Game();
         Game(std::string mapfilename);
+        ~Game(){
+            for (auto &&renderer : this->renderers)
+            {
+                delete renderer;
+            }
+        }
 
         void setMap(Map &map);
         void putHero(Hero &hero, int x, int y);
         void putMonster(Monster &monster, int x, int y);
         void run();
-
-        void deleteAllRenderersSafely();
 
         virtual void render();
         void registerRenderer(Renderer*);
@@ -88,9 +93,6 @@ class Game {
         Map getMap() const;
         Monster getMonsterHere(unsigned int, unsigned int) const;
         
-        
-
-        virtual ~Game(){}
 
 
     class WrongIndexException : virtual public std::runtime_error {

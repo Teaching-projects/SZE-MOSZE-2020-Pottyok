@@ -139,14 +139,6 @@ void Game::fight(){
     }
 }
 
-
-void Game::deleteAllRenderersSafely(){
-    for (unsigned int i = this->renderers.size() - 1; i >= 0; i--) {
-        delete (Renderer *)this->renderers[i];
-    }
-    this->renderers.clear();
-}
-
 bool Game::heroIsHere(unsigned int x,unsigned int y) const {
     MapEntity hero =  this->heroes[0];
     unsigned int currentX = hero.getX();
@@ -181,10 +173,8 @@ void Game::registerRenderer(Renderer* renderer) {
 }
 
 void Game::render() {
-    Game *game = this;
-
-    for (unsigned int i = 0; i < this->renderers.size(); i++) {
-        this->renderers[i]->render((Game)(*game));
+    for(auto renderer : this->renderers){
+        renderer->render(*this);
     }
 }
 
