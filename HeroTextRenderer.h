@@ -11,8 +11,6 @@
 #ifndef HEROTEXTRENDERER_HEADER
 #define HEROTEXTRENDERER_HEADER
 
-#include <iostream>
-
 #include "TextRenderer.h"
 #include "Game.h"
 

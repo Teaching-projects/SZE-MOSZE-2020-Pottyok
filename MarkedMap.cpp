@@ -1,6 +1,5 @@
 #include "MarkedMap.h"
 #include <string>
-#include <iostream>
 
 MarkedMap::MarkedMap(std::string &fileName) : Map(fileName){
     for (int i = 0; i < (int)this->getColumnCount(); i++)

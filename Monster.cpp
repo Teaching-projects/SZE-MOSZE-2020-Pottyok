@@ -1,7 +1,5 @@
 #include "Monster.h"
 #include <string>
-#include <iostream>
-#include <fstream>
 #include <regex> 
 #include "JSON.h"
 #include "Damage.h"

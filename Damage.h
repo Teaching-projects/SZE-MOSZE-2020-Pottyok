@@ -1,8 +1,6 @@
 #ifndef DAMAGE_HEADER
 #define DAMAGE_HEADER
 
-#include <iostream>
-
 struct Damage{
     public:
         float physical;
