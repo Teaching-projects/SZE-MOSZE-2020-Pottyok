@@ -143,6 +143,9 @@ void Game::fight(){
 
 
 void Game::deleteAllRenderersSafely(){
+    for (unsigned int i = this->renderers.size() - 1; i >= 0; i--) {
+        delete (Renderer *)this->renderers[i];
+    }
     this->renderers.clear();
 }
 
