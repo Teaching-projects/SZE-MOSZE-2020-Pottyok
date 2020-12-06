@@ -24,6 +24,7 @@ A kiosztott sebzés után a hős tapasztalati pontot szerez, amiből ha elegend�
 
 ## Előkészített játékfájl tartalma
 Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő szörnyeket, illetve a hőst és a térlép textúráit.
+
 ***Például:***
 ```json
 {
@@ -103,6 +104,14 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
     "texture":"assets/raven.svg"
 }
 ```
+
+## Megjelenítés
+Lehetőség van 4 féle megjelenítő regisztrálására:
+- **HeroTextRenderer**: Szöveges megjelenítés, adott output streamre. A hős látótávolságába eső mezőket jeleníti meg.
+- **ObserverTextRenderer**: Szöveges megjelenítés, adott output streamre. Az összes mezőt megjeleníti.
+- **CharacterSvgRenderer**: Képi megjelenítés, adott fájlba. A hős látótávolságába eső mezőket jeleníti meg.
+- **ObserverSvgRenderer**: Képi megjelenítés, adott fájlba. Az összes mezőt megjeleníti.
+A program az összes regisztrált megjelenítőre kirajzolja a játék aktuális állását.
 
 ## Make parancsok
  - **make output**: A futtatható fájl (output) elkészítése. Ez fut le **make** esetén is.
