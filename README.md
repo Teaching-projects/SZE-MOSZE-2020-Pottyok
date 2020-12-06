@@ -14,9 +14,9 @@ A program egy indítási paramétert vár, egy **.json** kiterjesztésű fájlt,
 ./output preparedgame.json
 ```
 Amennyiben ez nem áll rendelkezésre vagy hibás, a program hibát dob.
-A program kirajzol egy térképet ahol a **north**, **south**, **east** és **west** parancs segítségével mozoghathatjuk hősünket. Ha a hősünkkel egy olyan mezőre lépünk ahol szörny(ek) található(ak) akkor megküzdenek halálig. A játéknak akkor van vége, ha a hős az összes szörnyet megölte vagy meghalt.
+A program kirajzol egy térképet ahol a **north**, **south**, **east** és **west** parancs segítségével mozgathatjuk hősünket. Ha a hősünkkel egy olyan mezőre lépünk, ahol szörny(ek) található(ak), akkor megküzdenek halálig. A játéknak akkor van vége, ha a hős az összes szörnyet megölte vagy meghalt.
 
-Amikor két egység harcol, akkor először a támadó üt, majd a védekező, ezután mindét félnél elindul a saját támadás töltési idejük és csak ennek leteltével üthetnek újra. A harc valamelyik egység haláláig tart.
+Amikor két egység harcol, akkor először a támadó üt, majd a védekező, ezután mindkét félnél elindul a saját támadás töltési idejük és csak ennek leteltével üthetnek újra. A harc valamelyik egység haláláig tart.
 
 A kiosztott sebzés a levédés utáni fizikai sebzésből és a (nem védhető) varázs sebzésből adódik össze.
 
@@ -51,9 +51,9 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
 - **magic_damage_bonus_per_level**: Ennyi plusz varázs sebzést szerez a hős szintlépéskor
 - **physical_damage_bonus_per_level**: Ennyi plusz fizikai sebzést szerez a hős szintlépéskor
 - **defense_bonus_per_level**: Ennyi plusz páncélt szerez a hős szintlépéskor
-- **cooldown_multiplier_per_level**: Ennyivel csökken a támadásonkénti töltési idő a hős szintlépéskor
-- **light_radius_bonus_per_level**: Ennyivel nő a látotávolság a hős szintlépéskor
-- **texture**: A hős svg megjelenítését tartalmazó fájlt elérési útvonala
+- **cooldown_multiplier_per_level**: Ennyivel csökken a támadásonkénti töltési idő a hős szintlépésekor
+- **light_radius_bonus_per_level**: Ennyivel nő a látótávolság a hős szintlépésekor
+- **texture**: A hős svg megjelenítését tartalmazó fájl elérési útvonala
 
 ***Például:***
 ```json
@@ -87,7 +87,7 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
 - **defense**: Ennyi páncéllal rendelkezik a szörny
 - **attack_cooldown**: Ennyi időközönként tud támadni a szörny
 - **race**: A szörny faja
-- **texture**:A szörny svg megjelenítését tartalmazó fájlt elérési útvonala
+- **texture**: A szörny svg megjelenítését tartalmazó fájl elérési útvonala
 
 ***Például:***
 ```json
@@ -105,18 +105,18 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
 ```
 
 ## Make parancsok
- - **make output** : 
- -  **make documentation**:
- - **make tests**: 
- - **make unittests**: 
- - **make outputtest**:
- - **make sca**: 
- - **make valgrind**: 
- - **make clean**:
+ - **make output**: A futtatható fájl (output) elkészítése. Ez fut le **make** esetén is.
+ - **make documentation**: Doxygen dokumentáció generálása.
+ - **make tests**: SCA és Valgrind memory check együttes futtatása.
+ - **make unittests**: Google Test egységtesztek futtatása.
+ - **make outputtest**: Kimenetet ellenőrző teszt futtatása. 
+ - **make sca**: Csak az SCA teszt futtatása.
+ - **make valgrind**: Csak a Valgrind memory check futtatása.
+ - **make clean**: Minden make parancs által generált fájl törlése.
 
 ## Tesztek
 ### Ki és bemeneti teszt
-A ```tests``` mappában található egy előre definiált teszt játékmenet, amihez adott egy elvárt kimenet. Továbbá ebben a mappában található egy ```inout.py``` nevű fájlt ami lefuttatja a játékot a tesztadatokkal és összehasonlítja a kimenetet az elvárt kimenettel.
+A ```tests``` mappában található egy előre definiált teszt játékmenet, amihez adott egy elvárt kimenet. Továbbá ebben a mappában található egy ```inout.py``` nevű fájl, ami lefuttatja a játékot a tesztadatokkal, és összehasonlítja a kimenetet az elvárt kimenettel.
 A teszt **Github Actions**-ben automatikusan lefut minden **push**-oláskor.
 
 ### Egységtesztek 
