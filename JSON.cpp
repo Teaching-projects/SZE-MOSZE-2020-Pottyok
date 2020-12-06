@@ -48,7 +48,7 @@ JSON JSON::parseFromString(const std::string &input){
         worker = searchMatches.suffix();
     }
 
-    return *(new JSON(data));
+    return (JSON(data));
 }
 
 JSON JSON::parseFromFile(const std::string &fileName){
