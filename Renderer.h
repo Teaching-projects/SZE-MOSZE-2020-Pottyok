@@ -16,6 +16,7 @@ class Game;
 class Renderer {
     public:
         virtual void render(const Game&) const = 0;
+        virtual ~Renderer(){};
 };
 
 #endif // RENDERER_HEADER

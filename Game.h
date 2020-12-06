@@ -17,7 +17,7 @@
 
 #include "Map.h"
 #include "Hero.h"
-class Renderer;
+#include "Renderer.h"
 
 class MapEntity {
     private:
@@ -63,6 +63,8 @@ class Game {
         void putMonster(Monster &monster, int x, int y);
         void run();
 
+        void deleteAllRenderersSafely();
+
         virtual void render();
         void registerRenderer(Renderer*);
         std::string getMapRow(unsigned int rowId);  
@@ -86,11 +88,9 @@ class Game {
         Map getMap() const;
         Monster getMonsterHere(unsigned int, unsigned int) const;
         
-        ~Game(){
-            for (unsigned int i = this->renderers.size() - 1; i >= 0; i--) {
-                delete this->renderers[i];
-            }
-        };
+        
+
+        virtual ~Game(){}
 
 
     class WrongIndexException : virtual public std::runtime_error {

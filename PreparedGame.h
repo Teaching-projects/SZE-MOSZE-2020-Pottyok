@@ -22,6 +22,9 @@ class PreparedGame : private Game {
         PreparedGame(std::string mapjson);
         void run();
         void registerRenderer(Renderer*);
+        void deleteAllRenderersSafely(){
+            Game::deleteAllRenderersSafely();
+        };
 };
 
 #endif // PREPAREDGAME_HEADER
