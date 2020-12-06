@@ -44,7 +44,7 @@ int main(int argc, char** argv){
         game->run();
         stream.close();
         game->deleteAllRenderersSafely();
-        delete game;
+        delete[] game;
     } catch (const JSON::ParseException& e) {bad_exit(3);}
     
     return 0;

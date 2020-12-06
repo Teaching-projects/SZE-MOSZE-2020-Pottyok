@@ -6,9 +6,7 @@
 #include "Map.h"
 #include "Renderer.h"
 
-Game::Game() {
-
-}
+Game::Game() {}
 
 Game::Game(std::string mapfilename) {
     Map map(mapfilename);
