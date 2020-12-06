@@ -85,7 +85,12 @@ class Game {
         std::vector<MapEntity> getMonsters() const;
         Map getMap() const;
         Monster getMonsterHere(unsigned int, unsigned int) const;
-
+        
+        ~Game(){
+            for (unsigned int i = this->renderers.size() - 1; i >= 0; i--) {
+                delete this->renderers[i];
+            }
+        };
 
 
     class WrongIndexException : virtual public std::runtime_error {
