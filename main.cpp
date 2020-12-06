@@ -42,6 +42,7 @@ int main(int argc, char** argv){
         game->registerRenderer(new CharacterSVGRenderer("game.svg"));
         game->registerRenderer(new ObserverSVGRenderer("observe.svg"));
         game->run();
+        stream.close();
         game->deleteAllRenderersSafely();
         delete game;
     } catch (const JSON::ParseException& e) {bad_exit(3);}
