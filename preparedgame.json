@@ -1,9 +1,9 @@
 {
-  "map"  : "markedmap.txt",
-  "hero" : "units/Dark_Wanderer.json",
-  "monster-1" : "units/Fallen.json",
-  "monster-2" : "units/Zombie.json",
-  "monster-3" : "units/Blood_Raven.json",
-  "wall_texture" : "assets/wall.svg",
-  "free_texture" : "assets/free.svg"
+  "map": "markedmap.txt",
+  "hero": "units/Dark_Wanderer.json",
+  "monster-1": "units/Fallen.json",
+  "monster-2": "units/Zombie.json",
+  "monster-3": "units/Blood_Raven.json",
+  "wall_texture": "assets/wall.svg",
+  "free_texture": "assets/free.svg"
 }

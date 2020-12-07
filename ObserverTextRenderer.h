@@ -14,10 +14,11 @@
 #include "TextRenderer.h"
 #include "Game.h"
 
-class ObserverTextRenderer : public TextRenderer {
-    public:
-        using TextRenderer::TextRenderer;
-        virtual void render(const Game&) const override;
+class ObserverTextRenderer : public TextRenderer
+{
+public:
+    using TextRenderer::TextRenderer;
+    virtual void render(const Game &) const override;
 };
 
 #endif // OBSERVERTEXTRENDERER_HEADER

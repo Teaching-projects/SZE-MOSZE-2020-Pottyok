@@ -3,8 +3,8 @@
 
 #include <gtest/gtest.h>
 
-
-TEST(EntityTests, ParseMonster) {
+TEST(EntityTests, ParseMonster)
+{
     Monster monster = Monster::parse("../units/TestMonster.json");
 
     ASSERT_EQ(monster.getHealthPoints(), 450.0);
@@ -13,7 +13,8 @@ TEST(EntityTests, ParseMonster) {
     ASSERT_EQ(monster.getAttackCoolDown(), 10.5);
 }
 
-TEST(EntityTests, ParseHero) {
+TEST(EntityTests, ParseHero)
+{
     Hero hero = Hero::parse("../units/TestHero.json");
 
     ASSERT_EQ(hero.getHealthPoints(), 30);
@@ -22,32 +23,36 @@ TEST(EntityTests, ParseHero) {
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f);
 }
 
-TEST(EntityTests, Attack) {
+TEST(EntityTests, Attack)
+{
     Monster monster = Monster::parse("../units/TestMonster.json");
 
     monster.attack(monster);
     ASSERT_EQ(monster.getHealthPoints(), 0);
 }
 
-TEST(EntityTests, FightVictory) {
+TEST(EntityTests, FightVictory)
+{
     Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
-    Monster monster(10.0, 1.0,0.0 , 0.0, "Zombie", 2.8f, "monster.svg");
-    
+    Monster monster(10.0, 1.0, 0.0, 0.0, "Zombie", 2.8f, "monster.svg");
+
     hero.fightTilDeath(monster);
 
     ASSERT_NEAR(hero.getHealthPoints(), 28.0, 0.005);
 }
 
-TEST(EntityTests, FightLose) {
+TEST(EntityTests, FightLose)
+{
     Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
-    Monster monster(113.0, 8.0,0.0,  0.0, "Blood Raven", 1.2, "monster.svg");
-    
+    Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
+
     hero.fightTilDeath(monster);
 
     ASSERT_EQ(hero.getHealthPoints(), 0);
 }
 
-TEST(EntityTests, MaxHealthLevelUp) {
+TEST(EntityTests, MaxHealthLevelUp)
+{
     Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
     Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
     hero.attack(monster);
@@ -59,9 +64,10 @@ TEST(EntityTests, MaxHealthLevelUp) {
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f * 0.9f);
 }
 
-TEST(EntityTests, MaxHealthNoLevelUp) {
-    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0,0.0, 0.0, 0.9, 2, 2, "hero.svg");
-    Monster monster(113.0, 8.0,0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
+TEST(EntityTests, MaxHealthNoLevelUp)
+{
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
+    Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
     hero.attack(monster);
 
     ASSERT_EQ(hero.getLevel(), 0);
@@ -71,9 +77,10 @@ TEST(EntityTests, MaxHealthNoLevelUp) {
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f);
 }
 
-TEST(EntityTests, NoMaxHealthLevelUp) {
-    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0,0.0, 0.0, 0.9, 2, 2, "hero.svg");
-    Monster monster(113.0, 8.0,0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
+TEST(EntityTests, NoMaxHealthLevelUp)
+{
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
+    Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
     monster.attack(hero);
     hero.attack(monster);
 
@@ -84,9 +91,10 @@ TEST(EntityTests, NoMaxHealthLevelUp) {
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f * 0.9f);
 }
 
-TEST(EntityTests, NoMaxHealthNoLevelUp) {
-    Hero hero(30.0, 3.0,0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0,0.0, 0.0, 0.9, 2, 2, "hero.svg");
-    Monster monster(113.0, 8.0,0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
+TEST(EntityTests, NoMaxHealthNoLevelUp)
+{
+    Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 20.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
+    Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
     monster.attack(hero);
     hero.attack(monster);
 
@@ -97,7 +105,8 @@ TEST(EntityTests, NoMaxHealthNoLevelUp) {
     ASSERT_EQ(hero.getAttackCoolDown(), 1.1f);
 }
 
-TEST(EntityTests, IncreaseLightRadius) {
+TEST(EntityTests, IncreaseLightRadius)
+{
     Hero hero(30.0, 3.0, 0.0, 0.0, "Prince Aidan of Khanduras", 1.1, 3.0, 5.0, 1.0, 0.0, 0.0, 0.9, 2, 2, "hero.svg");
     Monster monster(113.0, 8.0, 0.0, 0.0, "Blood Raven", 1.2, "monster.svg");
     hero.attack(monster);
@@ -105,8 +114,8 @@ TEST(EntityTests, IncreaseLightRadius) {
     ASSERT_EQ(hero.getLightRadius(), 4);
 }
 
-
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }

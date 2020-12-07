@@ -14,48 +14,54 @@
 #include <vector>
 #include <sstream>
 
-class Map {
-    private:
-        std::vector<std::string> map;   ///< A terkepet tarolo adatstruktura
-        unsigned int longestRowCount;
+class Map
+{
+private:
+    std::vector<std::string> map; ///< A terkepet tarolo adatstruktura
+    unsigned int longestRowCount;
 
-    public:
-        /**
+public:
+    /**
          * A terkep egy adott pontjanak tipusat meghatarozo enum
-         */ 
-        enum type {
-            Free,       /**< Az adott pont ures */
-            Wall        /**< Az adott ponton fal van */
-        };
-        Map();
-        /**
+         */
+    enum type
+    {
+        Free, /**< Az adott pont ures */
+        Wall  /**< Az adott ponton fal van */
+    };
+    Map();
+    /**
          * \brief A Map class konstruktora
          * \param filename A terkepet tartalmazo fajl
          */
-        explicit Map(std::string filename);
-        /**
+    explicit Map(std::string filename);
+    /**
          * \brief A terkep egy adott pontjanak tipusat visszaado fuggveny
          * \param x A terkep x koordinataja - a vector y. soranak x. eleme
          * \param y A terkep y koordinataja - a vector y. eleme
-         */ 
-        Map::type get(unsigned int x, unsigned int y) const;
-        
-        unsigned int getLongestRowCount() {
-            return this->longestRowCount;
-        }
+         */
+    Map::type get(unsigned int x, unsigned int y) const;
 
-        unsigned int getColumnCount() {
-            return this->map.size();
-        }
+    unsigned int getLongestRowCount()
+    {
+        return this->longestRowCount;
+    }
 
-        std::string getRow(int rowNumber) {
-            return this->map[rowNumber];
-        }
+    unsigned int getColumnCount()
+    {
+        return this->map.size();
+    }
 
-        void setRow(int rowNumber, std::string &newValue) {
-            this->map[rowNumber] = newValue;
-        }
-        
+    std::string getRow(int rowNumber)
+    {
+        return this->map[rowNumber];
+    }
+
+    void setRow(int rowNumber, std::string &newValue)
+    {
+        this->map[rowNumber] = newValue;
+    }
+
     /**
      * \class WrongIndexException
      * 
@@ -65,13 +71,14 @@ class Map {
      * 
      * Created on: 2020/11/17 15:57
     */
-    class WrongIndexException : virtual public std::runtime_error {
-        public:
-            /**
+    class WrongIndexException : virtual public std::runtime_error
+    {
+    public:
+        /**
              * \brief Konstruktor
              * \param key A hiba leirasa
             */
-            explicit WrongIndexException(const std::string &description) : std::runtime_error("Index out of range: " + description) {}
+        explicit WrongIndexException(const std::string &description) : std::runtime_error("Index out of range: " + description) {}
     };
 };
 

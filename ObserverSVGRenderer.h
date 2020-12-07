@@ -13,10 +13,11 @@
 
 #include "SvgRenderer.h"
 
-class ObserverSVGRenderer : public SvgRenderer {
-    public:
-        using SvgRenderer::SvgRenderer;
-        virtual void render(const Game&) const override;
+class ObserverSVGRenderer : public SvgRenderer
+{
+public:
+    using SvgRenderer::SvgRenderer;
+    virtual void render(const Game &) const override;
 };
 
 #endif // OBSERVERSVGRENDERER_HEADER
