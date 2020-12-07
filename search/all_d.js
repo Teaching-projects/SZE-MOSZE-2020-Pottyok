@@ -5,6 +5,9 @@ var searchData=
   ['parsefromfile',['parseFromFile',['../classJSON.html#abc450ba5a4dd1c69754408c55d22da4c',1,'JSON']]],
   ['parsefromstream',['parseFromStream',['../classJSON.html#a758c56273583ac45534be352849a7879',1,'JSON']]],
   ['parsefromstring',['parseFromString',['../classJSON.html#a8b27ad2033a8406d986408670b8dfb78',1,'JSON']]],
+  ['physicaldamagebonusperlevel',['PhysicalDamageBonusPerLevel',['../classHero.html#af8b4319effd48a8023ba5866424f7d10',1,'Hero']]],
   ['position',['Position',['../structPosition.html',1,'']]],
-  ['preparedgame',['PreparedGame',['../classPreparedGame.html',1,'']]]
+  ['preparedgame',['PreparedGame',['../classPreparedGame.html',1,'']]],
+  ['puthero',['putHero',['../classGame.html#a4bc0fdfabed318e6a08c4dbce318900c',1,'Game']]],
+  ['putmonster',['putMonster',['../classGame.html#a177080a15f97665925f878e634292d09',1,'Game']]]
 ];

@@ -64,15 +64,70 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>Modern szoftverfejlesztés órára készült C++ projekt. </p>
-<p>A program két indítási paramétert vár, két **.json** kiterjesztésű fájlnevet. Példa indítás: </p><div class="fragment"><div class="line">./a units/kakarott.json units/sally.json</div></div><!-- fragment --><p> Amennyiben ezek nem állnak rendelkezésre, a program alapértelmezett adatokkal dolgozik. A két egység felváltva támadja egymást, amíg az egyik életereje el nem fogy, ekkor a játék véget ér.</p>
-<p>A projekt bővült 3 teszt egységgel, amik a "units" mappában találhatóak.</p>
-<p>Egy automatizált teszt is lefut minden egyes "push" után, ahol a 3 egység felváltva küzdenek meg egymással, és a kapott eredményeket összehasonlítja a kalkulált/várt eredményekkel. Amennyiben megegyeznek, a teszt sikeresnek minősül.</p>
-<p><a href="https://teaching-projects.github.io/SZE-MOSZE-2020-Pottyok/index.html">https://teaching-projects.github.io/SZE-MOSZE-2020-Pottyok/index.html</a></p>
 <ul>
 <li>Pénzes Péter</li>
 <li>Nagy Bálint</li>
-<li>Őri Tamás </li>
+<li>Őri Tamás</li>
 </ul>
+<p>A program egy indítási paramétert vár, egy **.json** kiterjesztésű fájlt, ami egy előkészített játék adatait tartalmazza.</p>
+<p><em><b>Példa indítás:</b></em> </p><div class="fragment"><div class="line">./output preparedgame.json</div></div><!-- fragment --><p> Amennyiben ez nem áll rendelkezésre vagy hibás, a program hibát dob. A program kirajzol egy térképet ahol a <b>north</b>, <b>south</b>, <b>east</b> és <b>west</b> parancs segítségével mozgathatjuk hősünket. Ha a hősünkkel egy olyan mezőre lépünk, ahol szörny(ek) található(ak), akkor megküzdenek halálig. A játéknak akkor van vége, ha a hős az összes szörnyet megölte vagy meghalt.</p>
+<p>Amikor két egység harcol, akkor először a támadó üt, majd a védekező, ezután mindkét félnél elindul a saját támadás töltési idejük és csak ennek leteltével üthetnek újra. A harc valamelyik egység haláláig tart.</p>
+<p>A kiosztott sebzés a levédés utáni fizikai sebzésből és a (nem védhető) varázs sebzésből adódik össze.</p>
+<p>A kiosztott sebzés után a hős tapasztalati pontot szerez, amiből ha elegendőt gyűjt össze, akkor szintet lép és bónuszokat szerez, illetve feltöltődik az életereje a maximumra.</p>
+<p>Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő szörnyeket, illetve a hőst és a térlép textúráit.</p>
+<p><em><b>Például:</b></em> </p><div class="fragment"><div class="line">{</div><div class="line">    &quot;map&quot; : &quot;markedmap.txt&quot;,</div><div class="line">    &quot;hero&quot; : &quot;units/Dark_Wanderer.json&quot;,</div><div class="line">    &quot;monster-1&quot; : &quot;units/Fallen.json&quot;,</div><div class="line">    &quot;monster-2&quot; : &quot;units/Zombie.json&quot;,</div><div class="line">    &quot;monster-3&quot; : &quot;units/Blood_Raven.json&quot;,</div><div class="line">    &quot;wall_texture&quot; : &quot;assets/wall.svg&quot;,</div><div class="line">    &quot;free_texture&quot; : &quot;assets/free.svg&quot;</div><div class="line">}</div></div><!-- fragment --><p>A jelölt térképen meg van jelölve a hős kezdési pozíciója, illetve a különböző szörnyek elhelyezkedése. A térképen **#** karakter jelöli a falat, a szabad mezőket pedig <b>szóköz</b> karakter jelöli. A különböző számok különböző szörnyeket jelölnek, ezeket az előkészített játékfájl tartalmazza.</p>
+<p><em><b>Például:</b></em> </p><div class="fragment"><div class="line"><span class="preprocessor">##############</span></div><div class="line"><span class="preprocessor"># H #  ####  #</span></div><div class="line"><span class="preprocessor"># ####22##  #</span></div><div class="line"><span class="preprocessor"># 12# 3##  #</span></div><div class="line"><span class="preprocessor">###1# ##  #</span></div><div class="line"><span class="preprocessor">#     1   #</span></div><div class="line"><span class="preprocessor">#########</span></div></div><!-- fragment --><p><em><b>Adatok:</b></em></p>
+<ul>
+<li><b>name</b>: A hős neve</li>
+<li><b>base_health_points</b>: Ennyi életerővel kezd a hős</li>
+<li><b>damage</b>: Kezdéskor ennyi fizikai sebzéssel rendelkezik a hős</li>
+<li><b>magical-damage</b>: Kezdéskor ennyi varázs sebzéssel rendelkezik a hős</li>
+<li><b>base_defense</b>: Kezdéskor ennyi páncéllal rendelkezik a hős</li>
+<li><b>base_attack_cooldown</b>: Kezdéskor ennyi időközönként tud támadni a hős</li>
+<li><b>light_radius</b>: Kezdéskor ennyi mező távolságra lát el a hős</li>
+<li><b>experience_per_level</b>: Ennyi tapasztalati pont szükséges egy szintlépéshez</li>
+<li><b>health_point_bonus_per_level</b>: Ennyi plusz maximum életerőt szerez a hős szintlépéskor</li>
+<li><b>magic_damage_bonus_per_level</b>: Ennyi plusz varázs sebzést szerez a hős szintlépéskor</li>
+<li><b>physical_damage_bonus_per_level</b>: Ennyi plusz fizikai sebzést szerez a hős szintlépéskor</li>
+<li><b>defense_bonus_per_level</b>: Ennyi plusz páncélt szerez a hős szintlépéskor</li>
+<li><b>cooldown_multiplier_per_level</b>: Ennyivel csökken a támadásonkénti töltési idő a hős szintlépésekor</li>
+<li><b>light_radius_bonus_per_level</b>: Ennyivel nő a látótávolság a hős szintlépésekor</li>
+<li><b>texture</b>: A hős svg megjelenítését tartalmazó fájl elérési útvonala</li>
+</ul>
+<p><em><b>Például:</b></em> </p><div class="fragment"><div class="line">{</div><div class="line">    &quot;name&quot; : &quot;Prince Aidan of Khanduras&quot;,</div><div class="line">    &quot;base_health_points&quot; : 30,</div><div class="line">    &quot;damage&quot; : 3,</div><div class="line">    &quot;magical-damage&quot; : 3,</div><div class="line">    &quot;base_defense&quot; : 2,</div><div class="line">    &quot;base_attack_cooldown&quot; : 1.1,</div><div class="line">    &quot;light_radius&quot;: 2,</div><div class="line">    &quot;experience_per_level&quot; : 20,</div><div class="line">    &quot;health_point_bonus_per_level&quot; : 5,</div><div class="line">    &quot;magic_damage_bonus_per_level&quot; : 1,</div><div class="line">    &quot;physical_damage_bonus_per_level&quot; : 1,</div><div class="line">    &quot;defense_bonus_per_level&quot; : 1,</div><div class="line">    &quot;cooldown_multiplier_per_level&quot;: 0.9,</div><div class="line">    &quot;light_radius_bonus_per_level&quot;: 2,</div><div class="line">    &quot;texture&quot;: &quot;assets/hero.svg&quot;</div><div class="line">}</div></div><!-- fragment --><p><em><b>Adatok:</b></em></p>
+<ul>
+<li><b>name</b>: A szörny neve</li>
+<li><b>lore</b>: A szörny eredettörténete</li>
+<li><b>damage</b>: Ennyi fizikai sebzéssel rendelkezik a szörny</li>
+<li><b>health_points</b>: Ennyi életerővel rendelkezik a szörny</li>
+<li><b>magical-damage</b>: Ennyi varázs sebzéssel rendelkezik a szörny</li>
+<li><b>defense</b>: Ennyi páncéllal rendelkezik a szörny</li>
+<li><b>attack_cooldown</b>: Ennyi időközönként tud támadni a szörny</li>
+<li><b>race</b>: A szörny faja</li>
+<li><b>texture</b>: A szörny svg megjelenítését tartalmazó fájl elérési útvonala</li>
+</ul>
+<p><em><b>Például:</b></em> </p><div class="fragment"><div class="line">{</div><div class="line">    &quot;name&quot; : &quot;Blood Raven&quot;,</div><div class="line">    &quot;lore&quot; : &quot;Blood Raven fought valiantly against Diablo in the catacombs beneath Tristram...She was never quite the same afterwards. It is now obvious she brought an evil influence back with her.&quot;,</div><div class="line">    &quot;health_points&quot; : 113,</div><div class="line">    &quot;damage&quot; : 8,</div><div class="line">    &quot;magical-damage&quot; : 8,</div><div class="line">    &quot;defense&quot; : 2,</div><div class="line">    &quot;attack_cooldown&quot; : 1.2,</div><div class="line">    &quot;race&quot; : &quot;undead&quot;,</div><div class="line">    &quot;texture&quot;:&quot;assets/raven.svg&quot;</div><div class="line">}</div></div><!-- fragment --><p>Lehetőség van 4 féle megjelenítő regisztrálására:</p><ul>
+<li><b><a class="el" href="classHeroTextRenderer.html" title="HeroTextRenderer class. ">HeroTextRenderer</a></b>: Szöveges megjelenítés, adott output streamre. A hős látótávolságába eső mezőket jeleníti meg.</li>
+<li><b><a class="el" href="classObserverTextRenderer.html" title="ObserverTextRenderer class. ">ObserverTextRenderer</a></b>: Szöveges megjelenítés, adott output streamre. Az összes mezőt megjeleníti.</li>
+<li><b>CharacterSvgRenderer</b>: Képi megjelenítés, adott fájlba. A hős látótávolságába eső mezőket jeleníti meg.</li>
+<li><b>ObserverSvgRenderer</b>: Képi megjelenítés, adott fájlba. Az összes mezőt megjeleníti. A program az összes regisztrált megjelenítőre kirajzolja a játék aktuális állását.</li>
+</ul>
+<ul>
+<li><b>make output</b>: A futtatható fájl (output) elkészítése. Ez fut le <b>make</b> esetén is.</li>
+<li><b>make documentation</b>: Doxygen dokumentáció generálása.</li>
+<li><b>make tests</b>: SCA és Valgrind memory check együttes futtatása.</li>
+<li><b>make unittests</b>: Google Test egységtesztek futtatása.</li>
+<li><b>make outputtest</b>: Kimenetet ellenőrző teszt futtatása.</li>
+<li><b>make sca</b>: Csak az SCA teszt futtatása.</li>
+<li><b>make valgrind</b>: Csak a Valgrind memory check futtatása.</li>
+<li><b>make clean</b>: Minden make parancs által generált fájl törlése.</li>
+</ul>
+<p>A <code>tests</code> mappában található egy előre definiált teszt játékmenet, amihez adott egy elvárt kimenet. Továbbá ebben a mappában található egy <code>inout.py</code> nevű fájl, ami lefuttatja a játékot a tesztadatokkal, és összehasonlítja a kimenetet az elvárt kimenettel. A teszt <b>Github Actions</b>-ben automatikusan lefut minden <b>push</b>-oláskor. Futtatható a <b>make outputtest</b> paranccsal.</p>
+<p>Egyedi tesztesetek, amelyek külön tesztelik a játék egyes komponenseit. Futtatható a <b>make unittests</b> paranccsal.</p>
+<p>Memória hibák felderítésére, és memory leakek megtalálására <b>Valgrindot</b> használunk. A Valgrind debug feladatokhoz – elsősorban memória debughoz, memóriaszivárgás-érzékeléshez és teljesítményméréshez – használatos programozói eszköz. Mi az alábbi beállításokkal használjuk: </p><div class="fragment"><div class="line">valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all</div></div><!-- fragment --><p> Amint látszik teljes tesztet végzünk, ezzel is biztosítva kódunk minőségét. A Valgrindot úgy állítottuk be, hogy hiba esetén teljes leírást adjon, ezzel is megkönnyítve a hiba okának feltárását.</p>
+<p>A statikus kódanalízishez <b>cppchecket</b> használunk. A statikus kódanalízis egyfajta ellenőrzése a számítógépes programoknak, ami a kód konkrét futtatása nélkül történik. Lényegében a forráskódot ellenörzi. A cppcheck az alábbi módon van konfigurálva nálunk: </p><div class="fragment"><div class="line">cppcheck --enable=all ./*.cpp</div></div><!-- fragment --><p> Amennyiben hibát talál, akkor 1-el térünk vissza, minden más esetben 0 a visszatérés értéke, és a megjegyzéseket <b>artifactként feltöltjük a GHA-ra</b>.</p>
+<p>Doxygen dokumentáció. Minden, a master branchbe történő <b>push</b>-oláskor automatikusan lefut. A <b>make documentation</b> paranccsal generálható.</p>
+<p><a href="https://teaching-projects.github.io/SZE-MOSZE-2020-Pottyok/index.html">https://teaching-projects.github.io/SZE-MOSZE-2020-Pottyok/index.html</a> </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

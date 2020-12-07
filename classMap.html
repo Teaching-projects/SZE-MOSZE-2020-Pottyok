@@ -101,7 +101,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab124c12c6c9dec693aedb1a4b6384ecd"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="classMap.html" title="Map class. ">Map</a> class konstruktora.  <a href="#ab124c12c6c9dec693aedb1a4b6384ecd">More...</a><br /></td></tr>
 <tr class="separator:ab124c12c6c9dec693aedb1a4b6384ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af3d2f71301bb5bdafcef6099a65ae7e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMap.html#a41697b848ea9a5aad1910714e0196b7b">Map::type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#af3d2f71301bb5bdafcef6099a65ae7e0">get</a> (unsigned int x, unsigned int y) const</td></tr>
-<tr class="memdesc:af3d2f71301bb5bdafcef6099a65ae7e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A terkep egy adott pontjanak tipusat visszaado fuggveny.  <a href="#af3d2f71301bb5bdafcef6099a65ae7e0">More...</a><br /></td></tr>
+<tr class="memdesc:af3d2f71301bb5bdafcef6099a65ae7e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">A terkep egy adott pontjanak tipusat visszaado getter.  <a href="#af3d2f71301bb5bdafcef6099a65ae7e0">More...</a><br /></td></tr>
 <tr class="separator:af3d2f71301bb5bdafcef6099a65ae7e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1c5b37898ed6b1169bd003b16c78d1e"><td class="memItemLeft" align="right" valign="top"><a id="ae1c5b37898ed6b1169bd003b16c78d1e"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getLongestRowCount</b> ()</td></tr>
@@ -109,11 +109,9 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getLongestRow
 <tr class="memitem:a3ae2f5241e057d76054de14597d4d8bd"><td class="memItemLeft" align="right" valign="top"><a id="a3ae2f5241e057d76054de14597d4d8bd"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>getColumnCount</b> ()</td></tr>
 <tr class="separator:a3ae2f5241e057d76054de14597d4d8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2718eaac528d0801032947feb4311e56"><td class="memItemLeft" align="right" valign="top"><a id="a2718eaac528d0801032947feb4311e56"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getRow</b> (int rowNumber)</td></tr>
+<tr class="memitem:a2718eaac528d0801032947feb4311e56"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a2718eaac528d0801032947feb4311e56">getRow</a> (int rowNumber)</td></tr>
 <tr class="separator:a2718eaac528d0801032947feb4311e56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b5f0f2ba0ed20173d63798ffb585df9"><td class="memItemLeft" align="right" valign="top"><a id="a5b5f0f2ba0ed20173d63798ffb585df9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setRow</b> (int rowNumber, std::string &amp;newValue)</td></tr>
+<tr class="memitem:a5b5f0f2ba0ed20173d63798ffb585df9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMap.html#a5b5f0f2ba0ed20173d63798ffb585df9">setRow</a> (int rowNumber, std::string &amp;newValue)</td></tr>
 <tr class="separator:a5b5f0f2ba0ed20173d63798ffb585df9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -148,6 +146,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setRow</b> (int rowNu
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Map::Map </td>
@@ -157,6 +158,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setRow</b> (int rowNu
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>A <a class="el" href="classMap.html" title="Map class. ">Map</a> class konstruktora. </p>
@@ -196,11 +202,85 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>setRow</b> (int rowNu
       </table>
 </div><div class="memdoc">
 
-<p>A terkep egy adott pontjanak tipusat visszaado fuggveny. </p>
+<p>A terkep egy adott pontjanak tipusat visszaado getter. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>A terkep x koordinataja - a vector y. soranak x. eleme </td></tr>
     <tr><td class="paramname">y</td><td>A terkep y koordinataja - a vector y. eleme </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2718eaac528d0801032947feb4311e56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2718eaac528d0801032947feb4311e56">&#9670;&nbsp;</a></span>getRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Map::getRow </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rowNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rowNumber</td><td>A <a class="el" href="classMap.html" title="Map class. ">Map</a> egy sorat visszaado getter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b5f0f2ba0ed20173d63798ffb585df9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b5f0f2ba0ed20173d63798ffb585df9">&#9670;&nbsp;</a></span>setRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Map::setRow </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rowNumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>newValue</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newValue</td><td>A <a class="el" href="classMap.html" title="Map class. ">Map</a> egy sorat atallito fuggveny </td></tr>
   </table>
   </dd>
 </dl>

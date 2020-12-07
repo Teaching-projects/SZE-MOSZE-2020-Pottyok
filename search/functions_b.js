@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['wrongindexexception',['WrongIndexException',['../classMap_1_1WrongIndexException.html#afbe8d410842313e33f73422d27a84a71',1,'Map::WrongIndexException']]]
+  ['registerrenderer',['registerRenderer',['../classGame.html#ab234db2839bf8776c31998fee8d02038',1,'Game']]],
+  ['render',['render',['../classGame.html#a15ddd769261d923827a3cdf41499c843',1,'Game']]],
+  ['run',['run',['../classGame.html#a1ab78f5ed0d5ea879157357cf2fb2afa',1,'Game']]]
 ];

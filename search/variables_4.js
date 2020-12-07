@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['health',['Health',['../classMonster.html#a9aabfd58aed1ef42e2a038cb27b1262b',1,'Monster']]],
-  ['healthpointbonusperlevel',['HealthPointBonusPerLevel',['../classHero.html#abc239daac29da8a4421a5bc61dda1092',1,'Hero']]]
+  ['freetexture',['freeTexture',['../classGame.html#a491700652c5bc09e94cb108f929d20a7',1,'Game']]]
 ];
