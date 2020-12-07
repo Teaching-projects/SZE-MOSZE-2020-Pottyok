@@ -16,25 +16,25 @@
 
 | Feladat | Merge ideje a határidóhöz (nap) | Change request körök | Reviewer | 
 | ------- | ------------------------------- | -------------------- | -------- |
-| Feladat 1 | -2 | 0 | @oliverosz | 
-| Feladat 2 | +2 | 1 | @wajzy |
-| jsonparser | ... | ... | @wajzy |
-| levelup | ... | ... | @oliverosz |
-| attackspeed | ... | ... | @vizvezetek |
-| documentation | ... | ... | @otherteam / @never |
-| jsonparser | ... | ... | @otherteam / @gonna, @let |
-| makefile | ... | ... | @hegyhati |
-| refactor | ... | ... | @hegyhati |
-| docker | ... | ... | @hegyhati |
-| jsonpimp | Merge: 11.12 | ... | @otherteam / @you, @down |
-| map | Merge: 11.13 | ... | @otherteam / @never, @gonna |
-| game | Merge: mm.dd | ... | @otherteam / @run, @arond |
-| defense | Merge: mm.dd | ... | @otherteam / @and, @desert |
-| damage | Merge: mm.dd | ... | @otherteam / @you  |
-| markedmap | Merge: mm.dd | ... | @otherteam / @otherguy1,otherguy2 |
-| preparedgame | nem készült el | - | -
-| light radius | Merge: mm.dd | ... | @otherteam / @otherguy1,otherguy2 |
-| rendering | Merge: mm.dd | ... | @otherteam / @otherguy1,otherguy2 |
+| Feladat 1 | +3 | 1 | @wajzy | 
+| Feladat 2 | +8 | 3 | @hegyhati |
+| jsonparser | +6 | 1 | @wajzy |
+| levelup | -5 | 2 | @oliverosz |
+| attackspeed | -3 | 0 | @vizvezetek |
+| documentation | -1 | 0 | @merida_dualthrust / @NemesTom, @LilikF |
+| unittests | -1 | 1 | @merida_dualthrust / @NemesTom, @LilikF |
+| makefile | -1 | 0 | @hegyhati |
+| refactor | -2 | 0 | @hegyhati |
+| docker | 0 | 0 | @hegyhati |
+| jsonpimp | Merge: 11.11 | 0 | @merida_dualthrust / @LilikF |
+| map | Merge: 11.19 | 0 | @merida_dualthrust / @LilikF |
+| game | Merge: 11.29 | 0 | @merida_dualthrust / @NemesTom |
+| defense | Merge: 11.24 | 0 | @merida_dualthrust / @LilikF |
+| damage | Merge: 11.29 | 1 | @balintxd  |
+| markedmap | Merge: 11.30 | 0 | @balintxd |
+| preparedgame | Merge: 11.30 | 0 | @balintxd, @tamasori |
+| light radius | Merge: 11.30 | 0 | @tamasori |
+| rendering | Merge: 12.05 | 1 | @tamasori |
 
 # Unit tesztek
 
