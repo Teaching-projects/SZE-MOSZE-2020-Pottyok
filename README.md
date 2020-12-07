@@ -22,7 +22,7 @@ A kiosztott sebzés a levédés utáni fizikai sebzésből és a (nem védhető)
 
 A kiosztott sebzés után a hős tapasztalati pontot szerez, amiből ha elegendőt gyűjt össze, akkor szintet lép és bónuszokat szerez, illetve feltöltődik az életereje a maximumra.
 
-## Előkészített játékfájl tartalma
+## Előkészített játékfájl (Prepared game) tartalma
 Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő szörnyeket, illetve a hőst és a térlép textúráit.
 
 ***Például:***
@@ -37,7 +37,24 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
     "free_texture" : "assets/free.svg"
 }
 ```
-## Hős fájl tartalma
+
+## Jelölt Térkép (Marked map)
+A jelölt térképen meg van jelölve a hős kezdési pozíciója, illetve a különböző szörnyek elhelyezkedése.
+A térképen **#** karakter jelöli a falat, a szabad mezőket pedig **szóköz** karakter jelöli.
+A különböző számok különböző szörnyeket jelölnek, ezeket az előkészített játékfájl tartalmazza.
+
+***Például:***
+```txt
+##############
+# H #  ####  #
+# ####22##  #
+# 12# 3##  #
+###1# ##  #
+#     1   #
+#########
+```
+
+## Hős (Hero) fájl tartalma
 ***Adatok:***
 
 - **name**: A hős neve
@@ -77,7 +94,7 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
 }
 ```
 
-## Szörny fálj tartalma
+## Szörny (Monster) fálj tartalma
 ***Adatok:***
 
 - **name**: A szörny neve
@@ -105,7 +122,7 @@ Ez a fájl tartalmazza a betöltendő térképet és az arra elhelyezendő ször
 }
 ```
 
-## Megjelenítés
+## Megjelenítés (Render)
 Lehetőség van 4 féle megjelenítő regisztrálására:
 - **HeroTextRenderer**: Szöveges megjelenítés, adott output streamre. A hős látótávolságába eső mezőket jeleníti meg.
 - **ObserverTextRenderer**: Szöveges megjelenítés, adott output streamre. Az összes mezőt megjeleníti.
@@ -127,28 +144,19 @@ A program az összes regisztrált megjelenítőre kirajzolja a játék aktuális
 ### Ki és bemeneti teszt
 A ```tests``` mappában található egy előre definiált teszt játékmenet, amihez adott egy elvárt kimenet. Továbbá ebben a mappában található egy ```inout.py``` nevű fájl, ami lefuttatja a játékot a tesztadatokkal, és összehasonlítja a kimenetet az elvárt kimenettel.
 A teszt **Github Actions**-ben automatikusan lefut minden **push**-oláskor.
+Futtatható a **make outputtest** paranccsal.
 
 ### Egységtesztek 
+Egyedi tesztesetek, amelyek külön tesztelik a játék egyes komponenseit.
+Futtatható a **make unittests** paranccsal.
 
 ### Memória vesztési teszt
 
 ### SCA teszt
 
-## Jelölt Térkép
-A jelölt térképen meg van jelölve a hős kezdési pozíciója, illetve a különböző szörnyek elhelyezkedése.
-A térképen **#** karakter jelöli a falat, a szabad mezőket pedig **szóköz** karakter jelöli.
-A különböző számok különböző szörnyeket jelölnek, ezeket az előkészített játékfájl tartalmazza.
-***Például:***
-```txt
-##############
-# H #  ####  #
-# ####22##  #
-# 12# 3##  #
-###1# ##  #
-#     1   #
-#########
-```
-
 ## Dokumentáció
+Doxygen dokumentáció.
+Minden, a master branchbe történő **push**-oláskor automatikusan lefut.
+A **make documentation** paranccsal generálható.
 
 https://teaching-projects.github.io/SZE-MOSZE-2020-Pottyok/index.html
