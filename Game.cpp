@@ -203,10 +203,6 @@ std::vector<MapEntity> Game::getHeroes() const {
     return this->heroes;
 }
 
-std::vector<MapEntity> Game::getMonsters() const {
-    return this->monsters;
-}
-
 Map Game::getMap() const {
     return this->map;
 }

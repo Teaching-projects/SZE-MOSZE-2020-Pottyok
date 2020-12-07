@@ -16,7 +16,7 @@
 class ObserverSVGRenderer : public SvgRenderer {
     public:
         using SvgRenderer::SvgRenderer;
-        virtual void render(const Game&) const;
+        virtual void render(const Game&) const override;
 };
 
 #endif // OBSERVERSVGRENDERER_HEADER

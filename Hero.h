@@ -55,7 +55,7 @@ class Hero : public Monster{
                 LightRadiusBonusPerLevel(LightRadiusBonusPerLevel)
                 {}; ///< Hero osztaly konstruktora
 
-        Hero(Monster monster /** [in] A Monster, ami alapjan letre akarjuk hozni a Hero-t */)
+        explicit Hero(Monster monster /** [in] A Monster, ami alapjan letre akarjuk hozni a Hero-t */)
             : Monster(monster), 
             ExperienceCurrent(0),
             ExperiencePerLevel(0),
@@ -71,7 +71,7 @@ class Hero : public Monster{
         Hero& operator=(const Monster& /** [in] A Monster, amivel egyenlove akarjuk tenni a Hero objektumot */); ///< Hero objektum egyenlove tetele egy Monster objektummal
         int getLevel() const; ///< A Hero szintjet adja vissza
         int getLightRadius() const;
-        void attack(Monster& /** [in] A Monster, amit megtamad a Hero objektum*/); ///< Hero tamadasa, ami soran egy Monstert tamad meg
+        void attack(Monster& /** [in] A Monster, amit megtamad a Hero objektum*/) override; ///< Hero tamadasa, ami soran egy Monstert tamad meg
         static Hero parse(const std::string& /** [in] std::string, ami megadja a fajl eleresi utvonalat*/); ///< Hero letrehozasa egy JSON fajl alapjan
 };
 

@@ -17,7 +17,7 @@
 class HeroTextRenderer : public TextRenderer {
     public:
         using TextRenderer::TextRenderer;
-        virtual void render(const Game&) const;
+        virtual void render(const Game&) const override;
 };
 
 #endif // HEROTEXTRENDERER_HEADER

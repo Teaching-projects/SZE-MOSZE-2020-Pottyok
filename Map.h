@@ -32,7 +32,7 @@ class Map {
          * \brief A Map class konstruktora
          * \param filename A terkepet tartalmazo fajl
          */
-        Map(std::string filename);
+        explicit Map(std::string filename);
         /**
          * \brief A terkep egy adott pontjanak tipusat visszaado fuggveny
          * \param x A terkep x koordinataja - a vector y. soranak x. eleme

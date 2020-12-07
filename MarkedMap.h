@@ -25,7 +25,7 @@ class MarkedMap : public Map {
         std::map<char, std::list<Position>> monsterPositions;
 
     public:
-        MarkedMap(std::string &fileName);
+        explicit MarkedMap(std::string &fileName);
         Position getHeroPosition() const;
         std::list<Position> getMonsterPositions(char c);
         int getMaxMonsterNumber();

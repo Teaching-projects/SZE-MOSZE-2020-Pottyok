@@ -58,7 +58,7 @@ class Game {
 
     public:
         Game();
-        Game(std::string mapfilename);
+        explicit Game(std::string mapfilename);
         ~Game(){
             for (auto &&renderer : this->renderers)
             {

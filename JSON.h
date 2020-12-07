@@ -25,7 +25,7 @@ class JSON{
          * \brief A JSON class konstruktora
          * \param data Adatokat tartalmazo adatstruktura
         */
-        JSON(std::map<std::string, std::any> data) : Data(data){};
+        explicit JSON(std::map<std::string, std::any> data) : Data(data){};
 
         /**
          * \brief String bemenetbol JSON peldanyt visszaado fuggveny 

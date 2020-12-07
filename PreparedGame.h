@@ -19,7 +19,7 @@
 
 class PreparedGame : private Game {
     public:
-        PreparedGame(std::string mapjson);
+        explicit PreparedGame(std::string mapjson);
         void run();
         void registerRenderer(Renderer*);
 };
