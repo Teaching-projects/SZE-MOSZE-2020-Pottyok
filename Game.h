@@ -15,6 +15,7 @@
 #include <vector>
 #include <variant>
 #include <list>
+#include <map>
 
 #include "Map.h"
 #include "Hero.h"
