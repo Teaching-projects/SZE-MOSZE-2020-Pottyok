@@ -27,8 +27,8 @@ protected:
 
 public:
     Monster(const float health /** [in] A Monster eletereje */,
-            const float attackPhysicalDamage,
-            const float attackMagicDamage,
+            const float attackPhysicalDamage /** [in] A Monster fizikai sebzese */,
+            const float attackMagicDamage /** [in] A Monster varazs sebzese */,
             const float defense /** [in] A Monster vedekezesi ereje */,
             const std::string &name /** [in] A Monster neve */,
             const float attackSpeed /** [in] A Monster tamadasi sebessege */,

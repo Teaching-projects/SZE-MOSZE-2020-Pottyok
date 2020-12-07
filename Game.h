@@ -43,25 +43,25 @@ public:
 class Game
 {
 private:
-    Map map;
-    std::vector<MapEntity> monsters;
-    std::vector<MapEntity> heroes;
+    Map map; ///< A Game -ben futo Map
+    std::vector<MapEntity> monsters; ///< Vektor, amely a Monster -eket tartalmazza
+    std::vector<MapEntity> heroes; ///< Vektor, amely a Hero -kat tartalmazza
     std::map<std::string, std::map<char, int>> movements = {
         {"north", {{'x', 0}, {'y', -1}}},
         {"east", {{'x', 1}, {'y', 0}}},
         {"west", {{'x', -1}, {'y', 0}}},
-        {"south", {{'x', 0}, {'y', 1}}}};
-    unsigned int loop_cycle = 0;
+        {"south", {{'x', 0}, {'y', 1}}}}; ///< Egy map, amely az egyes lepesekhez tartozo koordinata valtozast irja le
+    unsigned int loop_cycle = 0; ///< A Game fordulojanak szama
 
 protected:
-    std::string wallTexture;
-    std::string freeTexture;
-    std::list<Renderer *> renderers;
+    std::string wallTexture; ///< A fal texturaja
+    std::string freeTexture;    ///< A szabad teruletek texturaja
+    std::list<Renderer *> renderers;    ///< Lista, amely a Game rendererjeit tartalmazza
 
 public:
-    Game();
-    explicit Game(std::string mapfilename);
-    ~Game()
+    Game(); ///< A Game osztaly ures konstruktora
+    explicit Game(std::string mapfilename); ///< A Game osztaly konstruktora
+    ~Game() ///< A Game osztaly destruktora
     {
         for (auto &&renderer : this->renderers)
         {
@@ -69,31 +69,31 @@ public:
         }
     }
 
-    void setMap(Map &map);
-    void putHero(Hero &hero, int x, int y);
-    void putMonster(Monster &monster, int x, int y);
-    void run();
+    void setMap(Map &map);  ///< Terkep beallitasa
+    void putHero(Hero &hero, int x, int y); ///< Hero elhelyezese
+    void putMonster(Monster &monster, int x, int y);    ///< Monster elhelyezese
+    void run(); ///< A Game futtatasa
 
-    virtual void render();
-    void registerRenderer(Renderer *);
-    std::string getMapRow(unsigned int rowId);
-    bool isHeroSet();
-    bool isMapSet();
-    bool areMonstersAlive();
-    bool areHeroesAlive();
-    bool checkUserInput(std::string &input);
-    bool isMovePossible(std::string &input);
-    void move(std::string &input);
-    void fight();
-    bool heroIsHere(unsigned int x, unsigned int y) const;
-    int countMonstersHere(unsigned int x, unsigned int y) const;
+    virtual void render();  ///< Renderer futtatasa
+    void registerRenderer(Renderer *);  ///< Renderer hozzaadasa a Game -hez
+    std::string getMapRow(unsigned int rowId /** A Map adott soranak szama */);  ///< A Map egy sorat adja vissza
+    bool isHeroSet();   ///< Visszaadja, hogy van-e mar Hero beallitva
+    bool isMapSet();    ///< Visszaadja, hogy van-e mar Map beallitva
+    bool areMonstersAlive();    ///< Visszaadja, hogy van-e Monster eletben
+    bool areHeroesAlive();  ///< Visszaadja, hogy van-e Hero eletben
+    bool checkUserInput(std::string &input);    ///< Ellenorzi a felhasznalo altal megadott bemenetet
+    bool isMovePossible(std::string &input);    ///< Ellenorzi, hogy a felhasznalo altal megadott bemenet vegrehajthato-e
+    void move(std::string &input);  ///< A Hero mozgatasara szolgalo fuggveny
+    void fight();   ///< Harc lejatszasa Hero es Monster kozott
+    bool heroIsHere(unsigned int x, unsigned int y) const;  ///< Visszaadja, hogy az adott koordinatan talalhato-e Hero
+    int countMonstersHere(unsigned int x, unsigned int y) const;    ///< Visszaadja, hogy az adott koordinatan hany Monster talalhato
 
-    std::string getWallTexture() const;
-    std::string getFreeTexture() const;
-    std::vector<MapEntity> getHeroes() const;
-    std::vector<MapEntity> getMonsters() const;
-    Map getMap() const;
-    Monster getMonsterHere(unsigned int, unsigned int) const;
+    std::string getWallTexture() const; ///< Visszaadja a fal texturaja
+    std::string getFreeTexture() const; ///< Visszaadja a szabad teruletek texturaja
+    std::vector<MapEntity> getHeroes() const;   ///< Visszaadja a Hero vektort
+    std::vector<MapEntity> getMonsters() const; ///< Visszaadja a Monster vektort
+    Map getMap() const; ///< Visszaadja a beallitott Map -ot
+    Monster getMonsterHere(unsigned int, unsigned int) const;   ///< Visszaadja az adott koordinatan talalhato Monster -t
 
     class WrongIndexException : virtual public std::runtime_error
     {

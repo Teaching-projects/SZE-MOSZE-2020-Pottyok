@@ -16,33 +16,33 @@
 class Hero : public Monster
 {
 protected:
-    float ExperienceCurrent;        ///< Hero jelenlegi tapasztalatpontja
-    float ExperiencePerLevel;       ///< Hero egy szinthez szukseges tapasztalati pontjai
-    float HealthPointBonusPerLevel; ///< Hero szintlepesenkent kapott eletero bonusza
-    float MagicDamageBonusPerLevel;
-    float PhysicalDamageBonusPerLevel;
-    float DefenseBonusPerLevel;       ///< Hero szintlepesenkent kapott vedekezesi ero bonusza
-    float CooldownMultiplierPerLevel; ///< Hero szintlepesenkent kapott cooldown bonusza
-    int LightRadius;
-    int LightRadiusBonusPerLevel;
+    float ExperienceCurrent;           ///< Hero jelenlegi tapasztalatpontja
+    float ExperiencePerLevel;          ///< Hero egy szinthez szukseges tapasztalati pontjai
+    float HealthPointBonusPerLevel;    ///< Hero szintlepesenkent kapott eletero bonusza
+    float MagicDamageBonusPerLevel;    ///< Hero varazs sebzese
+    float PhysicalDamageBonusPerLevel; ///< Hero fizikai sebzese
+    float DefenseBonusPerLevel;        ///< Hero szintlepesenkent kapott vedekezesi ero bonusza
+    float CooldownMultiplierPerLevel;  ///< Hero szintlepesenkent kapott cooldown bonusza
+    int LightRadius;                   ///< Hero latotavolsaga
+    int LightRadiusBonusPerLevel;      ///< Hero szintlepesenkent kapott latotavolsag bonusza
 
     void addExperience(float /** [in] A kapott tapasztalati pontok */); ///< Hero tapasztalati pontjainak novelese, elvegzi a szintlepest is
 
 public:
     Hero(const float health /** [in] A Hero kezdo eletereje */,
-         const float attackPhysicalDamage,
-         const float attackMagicDamage,
+         const float attackPhysicalDamage /** [in] A Hero fizikai sebzese */,
+         const float attackMagicDamage /** [in] A Hero varazs sebzese */,
          const float defense /** [in] A Hero kezdo tamadasi ereje */,
          const std::string &name /** [in] A Hero neve */,
          const float attackSpeed /** [in] A Hero kezdo tamadasi sebessege */,
          float ExperiencePerLevel /** [in] A Hero szintlepesehez szukseges tapasztalati pontjainak mennyisege */,
          float HealthPointBonusPerLevel /** [in] A Hero szintlepesenkent kapott eletero bonusza */,
-         float PhysicalDamageBonusPerLevel,
-         float MagicDamageBonusPerLevel,
+         float PhysicalDamageBonusPerLevel /** [in] A Hero szintlepesenkent kapott fizikai sebzes bonusza */,
+         float MagicDamageBonusPerLevel /** [in] A Hero szintlepesenkent kapott varazs sebzes bonusza */,
          float DefenseBonusPerLevel /** [in] A Hero szintlepesenkent kapott vedekezesi ero bonusza */,
          float CooldownMultiplierPerLevel /** [in] A Hero szintlepesenkent kapott cooldown bonusza */,
-         int LightRadius,
-         int LightRadiusBonusPerLevel,
+         int LightRadius /** [in] A Hero latotavolsaga */,
+         int LightRadiusBonusPerLevel /** [in] A Hero szintlepesenkent kapott latotavolsag bonusza */,
          const std::string texture)
         : Monster(health, attackPhysicalDamage, attackMagicDamage, defense, name, attackSpeed, texture),
           ExperienceCurrent(0),
@@ -69,9 +69,9 @@ public:
 
     Hero &operator=(const Monster & /** [in] A Monster, amivel egyenlove akarjuk tenni a Hero objektumot */); ///< Hero objektum egyenlove tetele egy Monster objektummal
     int getLevel() const;                                                                                     ///< A Hero szintjet adja vissza
-    int getLightRadius() const;
-    void attack(Monster & /** [in] A Monster, amit megtamad a Hero objektum*/) override;                 ///< Hero tamadasa, ami soran egy Monstert tamad meg
-    static Hero parse(const std::string & /** [in] std::string, ami megadja a fajl eleresi utvonalat*/); ///< Hero letrehozasa egy JSON fajl alapjan
+    int getLightRadius() const;                                                                               ///< A Hero latotavolsagat adja vissza
+    void attack(Monster & /** [in] A Monster, amit megtamad a Hero objektum*/) override;                      ///< Hero tamadasa, ami soran egy Monstert tamad meg
+    static Hero parse(const std::string & /** [in] std::string, ami megadja a fajl eleresi utvonalat*/);      ///< Hero letrehozasa egy JSON fajl alapjan
 };
 
 #endif // HERO_HEADER

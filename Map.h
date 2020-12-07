@@ -18,7 +18,7 @@ class Map
 {
 private:
     std::vector<std::string> map; ///< A terkepet tarolo adatstruktura
-    unsigned int longestRowCount;
+    unsigned int longestRowCount; ///< A Map leghosszabb soranak hossza
 
 public:
     /**
@@ -36,28 +36,28 @@ public:
          */
     explicit Map(std::string filename);
     /**
-         * \brief A terkep egy adott pontjanak tipusat visszaado fuggveny
+         * \brief A terkep egy adott pontjanak tipusat visszaado getter
          * \param x A terkep x koordinataja - a vector y. soranak x. eleme
          * \param y A terkep y koordinataja - a vector y. eleme
          */
     Map::type get(unsigned int x, unsigned int y) const;
 
-    unsigned int getLongestRowCount()
+    unsigned int getLongestRowCount() ///< A Map leghosszabb soranak hosszat visszaado getter
     {
         return this->longestRowCount;
     }
 
-    unsigned int getColumnCount()
+    unsigned int getColumnCount() ///< A Map oszlopainak szamat visszaado getter
     {
         return this->map.size();
     }
 
-    std::string getRow(int rowNumber)
+    std::string getRow(int rowNumber) ///< A Map egy sorat visszaado getter
     {
         return this->map[rowNumber];
     }
 
-    void setRow(int rowNumber, std::string &newValue)
+    void setRow(int rowNumber, std::string &newValue) ///< A Map egy sorat atallito fuggveny
     {
         this->map[rowNumber] = newValue;
     }
