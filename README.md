@@ -151,8 +151,19 @@ Egyedi tesztesetek, amelyek külön tesztelik a játék egyes komponenseit.
 Futtatható a **make unittests** paranccsal.
 
 ### Memória vesztési teszt
+Memória hibák felderítésére, és memory leakek megtalálására **Valgrindot** használunk. A Valgrind debug feladatokhoz – elsősorban memória debughoz, memóriaszivárgás-érzékeléshez és teljesítményméréshez – használatos programozói eszköz. Mi az alábbi beállításokkal használjuk: 
+```bash
+valgrind --error-exitcode=1 --leak-check=full --show-leak-kinds=all
+```
+Amint látszik teljes tesztet végzünk, ezzel is biztosítva kódunk minőségét.
+A Valgrindot úgy állítottuk be, hogy hiba esetén teljes leírást adjon, ezzel is megkönnyítve a hiba okának feltárását.
 
 ### SCA teszt
+A statikus kódanalízishez **cppchecket** használunk. A statikus kódanalízis egyfajta ellenőrzése a számítógépes programoknak, ami a kód konkrét futtatása nélkül történik. Lényegében a forráskódot ellenörzi. A cppcheck az alábbi módon van konfigurálva nálunk:
+```bash
+cppcheck --enable=all ./*.cpp
+```
+Amennyiben hibát talál, akkor 1-el térünk vissza, minden más esetben 0 a visszatérés értéke, és a megjegyzéseket **artifactként feltöltjük a GHA-ra**.
 
 ## Dokumentáció
 Doxygen dokumentáció.
