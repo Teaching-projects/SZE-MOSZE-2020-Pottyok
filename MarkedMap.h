@@ -11,24 +11,25 @@ struct Position
     int x = 0;
     int y = 0;
     Position(){};
-    Position(int _x, int _y){
+    Position(int _x, int _y)
+    {
         this->x = _x;
         this->y = _y;
     };
 };
 
+class MarkedMap : public Map
+{
 
-class MarkedMap : public Map {
+private:
+    Position heroPosition;
+    std::map<char, std::list<Position>> monsterPositions;
 
-    private:
-        Position heroPosition;
-        std::map<char, std::list<Position>> monsterPositions;
-
-    public:
-        MarkedMap(std::string &fileName);
-        Position getHeroPosition() const;
-        std::list<Position> getMonsterPositions(char c);
-        int getMaxMonsterNumber();
+public:
+    explicit MarkedMap(std::string &fileName);
+    Position getHeroPosition() const;
+    std::list<Position> getMonsterPositions(char c);
+    int getMaxMonsterNumber();
 };
 
 #endif

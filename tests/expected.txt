@@ -1,4 +1,4 @@
-markedmap_test.json;
+tests/preparedgame_test.json;
 
 ╔════════╗
 ║██░░░░░░║

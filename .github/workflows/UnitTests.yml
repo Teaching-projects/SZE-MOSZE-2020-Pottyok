@@ -6,7 +6,5 @@ jobs:
     container: balintxd/mosze:latest
     steps:
       - uses: actions/checkout@v2
-      - name: cmake
-        run: cd tests && cmake . && make
       - name: Run Tests
         run: make unittests

@@ -11,15 +11,14 @@
 #ifndef HEROTEXTRENDERER_HEADER
 #define HEROTEXTRENDERER_HEADER
 
-#include <iostream>
-
 #include "TextRenderer.h"
 #include "Game.h"
 
-class HeroTextRenderer : public TextRenderer {
-    public:
-        using TextRenderer::TextRenderer;
-        virtual void render(const Game&) const;
+class HeroTextRenderer : public TextRenderer
+{
+public:
+    using TextRenderer::TextRenderer;
+    virtual void render(const Game &) const override;
 };
 
 #endif // HEROTEXTRENDERER_HEADER

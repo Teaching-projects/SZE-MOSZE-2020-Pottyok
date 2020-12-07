@@ -20,33 +20,36 @@
 #include "Renderer.h"
 #include "Game.h"
 
-class SvgRenderer : public Renderer {
-    protected:
-        std::string filename;
-        
-    public:
-        SvgRenderer(std::string filename): filename(filename) {};
+class SvgRenderer : public Renderer
+{
+protected:
+    std::string filename;
 
-        virtual void render(const Game&) const = 0;
+public:
+    SvgRenderer(std::string filename) : filename(filename){};
 
-        std::string getSVGContent(const std::string filename) const {
-            std::ifstream file(filename);
-            if(!file.good()){
-                file.close();
-                return "<svg width=\"10\" height=\"10\" viewBox=\"0 0 1 1\"><rect width=\"10\" height=\"10\"/></svg>";
-            }
-            std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    virtual void render(const Game &) const = 0;
+
+    std::string getSVGContent(const std::string filename) const
+    {
+        std::ifstream file(filename);
+        if (!file.good())
+        {
             file.close();
-
-            return content;
+            return "<svg width=\"10\" height=\"10\" viewBox=\"0 0 1 1\"><rect width=\"10\" height=\"10\"/></svg>";
         }
+        std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+        file.close();
 
-        std::string replaceSVGCoordinates(std::string fileContent, int x, int y) const {
-            std::regex regex_x("\\{\\{X\\}\\}");
-            std::regex regex_y("\\{\\{Y\\}\\}");
-            return std::regex_replace(std::regex_replace(fileContent, regex_x, std::to_string(x)), regex_y, std::to_string(y));
-        }
+        return content;
+    }
 
+    std::string replaceSVGCoordinates(std::string fileContent, int x, int y) const
+    {
+        std::regex regex_x("\\{\\{X\\}\\}");
+        std::regex regex_y("\\{\\{Y\\}\\}");
+        return std::regex_replace(std::regex_replace(fileContent, regex_x, std::to_string(x)), regex_y, std::to_string(y));
+    }
 };
 
 #endif // SVGRENDERER_HEADER

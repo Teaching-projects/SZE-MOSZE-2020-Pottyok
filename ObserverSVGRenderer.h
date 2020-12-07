@@ -11,15 +11,13 @@
 #ifndef OBSERVERSVGRENDERER_HEADER
 #define OBSERVERSVGRENDERER_HEADER
 
-#include <iostream>
-
 #include "SvgRenderer.h"
-#include "Game.h"
 
-class ObserverSVGRenderer : public SvgRenderer {
-    public:
-        using SvgRenderer::SvgRenderer;
-        virtual void render(const Game&) const;
+class ObserverSVGRenderer : public SvgRenderer
+{
+public:
+    using SvgRenderer::SvgRenderer;
+    virtual void render(const Game &) const override;
 };
 
 #endif // OBSERVERSVGRENDERER_HEADER

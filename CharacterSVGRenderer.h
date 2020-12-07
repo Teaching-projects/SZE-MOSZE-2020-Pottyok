@@ -11,16 +11,13 @@
 #ifndef CHARACTERSVGRENDERER_HEADER
 #define CHARACTERSVGRENDERER_HEADER
 
-#include <iostream>
-
 #include "SvgRenderer.h"
-#include "Game.h"
 
-
-class CharacterSVGRenderer : public SvgRenderer {
-    public:
-        using SvgRenderer::SvgRenderer;
-        virtual void render(const Game&) const;
+class CharacterSVGRenderer : public SvgRenderer
+{
+public:
+    using SvgRenderer::SvgRenderer;
+    virtual void render(const Game &) const override;
 };
 
 #endif // CHARACTERSVGRENDERER_HEADER
