@@ -40,22 +40,22 @@
 
 | Osztály               | Publikus metódusok száma  | Unit tesztelt metódusok száma     | Unit tesztek száma        |
 | --------------------- | ------------------------- | --------------------------------- | ------------------------- |
-| `Monster`             | 4                         | 2                                 | 8                         |
-| `Hero`                | 5                         | 0                                 | 0                         | 
-| `TextRenderer`        | 5                         | 0                                 | 0                         | 
-| `SvgRenderer`         | 5                         | 0                                 | 0                         | 
-| `Renderer`            | 5                         | 0                                 | 0                         | 
-| `PreparedGame`        | 5                         | 0                                 | 0                         | 
-| `ObserverTextRenderer`| 5                         | 0                                 | 0                         | 
-| `ObserverSvgRenderer` | 5                         | 0                                 | 0                         | 
-| `MarkedMap`           | 5                         | 0                                 | 0                         | 
-| `Map`                 | 5                         | 0                                 | 0                         | 
-| `JSON`                | 5                         | 0                                 | 0                         | 
-| `HeroTextRenderer`    | 5                         | 0                                 | 0                         | 
-| `Game`                | 5                         | 0                                 | 0                         | 
-| `Damage`              | 5                         | 0                                 | 0                         | 
-| `CharacterSvgRenderer`| 5                         | 0                                 | 0                         | 
-| `MapEntity`           | 5                         | 0                                 | 0                         | 
+| `Monster`             | 14                        | 8                                 | 4                         |
+| `Hero`                | 5                         | 10                                | 6                         | 
+| `TextRenderer`        | 2                         | -                                 | -                         | 
+| `SvgRenderer`         | 3                         | -                                 | -                         | 
+| `Renderer`            | 1                         | -                                 | -                         | 
+| `PreparedGame`        | 2                         | -                                 | -                         | 
+| `ObserverTextRenderer`| 1                         | -                                 | -                         | 
+| `ObserverSvgRenderer` | 1                         | -                                 | -                         | 
+| `MarkedMap`           | 3                         | -                                 | -                         | 
+| `Map`                 | 5                         | -                                 | -                         | 
+| `JSON`                | 6                         | 4                                 | 7                         | 
+| `HeroTextRenderer`    | 1                         | -                                 | -                         | 
+| `Game`                | 23                        | 12                                | 14                        | 
+| `Damage`              | 5                         | -                                 | -                         | 
+| `CharacterSvgRenderer`| 1                         | -                                 | -                         | 
+| `MapEntity`           | 6                         | -                                 | -                         | 
 
 # Kód dokumentáció
 
