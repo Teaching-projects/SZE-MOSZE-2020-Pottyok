@@ -33,14 +33,14 @@ TEST(DamageTests, SumDamageWithProgress)
 TEST(DamageTests, AddDamages)
 {
     Damage damage1 = Damage();
-    damage.physical = 4;
-    damage.magical = 4;
+    damage1.physical = 4;
+    damage1.magical = 4;
     Damage damage2 = Damage();
-    damage.physical = 4;
-    damage.magical = 4;
+    damage2.physical = 4;
+    damage2.magical = 4;
     damage1 += damage2;
 
-    ASSERT_EQ(damage.sum(0), 16);
+    ASSERT_EQ(damage1.sum(0), 16);
 }
 
 int main(int argc, char **argv)

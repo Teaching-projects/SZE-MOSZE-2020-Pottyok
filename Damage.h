@@ -10,6 +10,8 @@
 #ifndef DAMAGE_HEADER
 #define DAMAGE_HEADER
 
+#include <algorithm>
+
 struct Damage
 {
 public:
