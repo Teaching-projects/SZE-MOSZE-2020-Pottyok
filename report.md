@@ -61,12 +61,16 @@
 
 | Teljesen dokumentált osztályok    | Részben dokumentált osztályok     | Nem dokumentált osztályok |
 | --------------------------------- | --------------------------------- | ------------------------- | 
-| `Unit`                            | `Game`                            | `JSON`                    | 
-| `Unit`                            | `Game`                            | `JSON`                    | 
-| `Unit`                            | `Game`                            | `JSON`                    | 
-| `Unit`                            | `Game`                            | `JSON`                    | 
-| `Unit`                            | `Game`                            | `JSON`                    | 
-| `Unit`                            | `Game`                            | `JSON`                    | 
+| `Monster`                         | `TextRenderer`                    | `Damage`                  | 
+| `Hero`                            | `SvgRenderer`                     | `MapEntity`               | 
+| `Map`                             | `Renderer`                        |                           | 
+| `JSON`                            | `PreparedGame`                    |                           | 
+|                                   | `ObserverTextRenderer`            |                           | 
+|                                   | `ObserverSvgRenderer`             |                           | 
+|                                   | `MarkedMap`                       |                           | 
+|                                   | `HeroTextRenderer`                |                           | 
+|                                   | `Game`                            |                           | 
+|                                   | `CharacterSvgRenderer`            |                           | 
 
 # Mindenféle számok
 
