@@ -28,7 +28,7 @@ protected:
 public:
     SvgRenderer(std::string filename /** [in] A kimenetnek használni kívánt fájl neve */) : filename(filename){}; ///< SvgRenderer konstruktora
 
-    virtual void render(const Game &) const = 0; ///< Kirajzoló függvény, ez egy 'pure virtual' függvény, vagyik a leszármazó osztályoknak kötelező tartalmazniuk egy ilyen metódust
+    virtual void render(const Game & /** [in] A kirajzolni kívánt Game& */) const = 0; ///< Kirajzoló függvény, ez egy 'pure virtual' függvény, vagyik a leszármazó osztályoknak kötelező tartalmazniuk egy ilyen metódust
 
     std::string getSVGContent(const std::string filename /** [in] Beolvasni kívánt SVG fájl neve */) const
     {
