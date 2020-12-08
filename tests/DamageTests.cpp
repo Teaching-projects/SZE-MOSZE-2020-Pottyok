@@ -4,7 +4,7 @@
 
 TEST(DamageTests, SumDamageWithoutDefense)
 {
-    Damage damage();
+    Damage damage = Damage();
     damage->physical = 4;
     damage->magical = 4;
 
@@ -13,7 +13,7 @@ TEST(DamageTests, SumDamageWithoutDefense)
 
 TEST(DamageTests, SumDamageWithDefense)
 {
-    Damage damage();
+    Damage damage = Damage();
     damage->physical = 4;
     damage->magical = 4;
 
@@ -22,7 +22,7 @@ TEST(DamageTests, SumDamageWithDefense)
 
 TEST(DamageTests, SumDamageWithProgress)
 {
-    Damage damage();
+    Damage damage = Damage();
     damage->physical = 4;
     damage->magical = 4;
     damage->progress(5,5);
@@ -32,10 +32,10 @@ TEST(DamageTests, SumDamageWithProgress)
 
 TEST(DamageTests, AddDamages)
 {
-    Damage damage1();
+    Damage damage1 = Damage();
     damage->physical = 4;
     damage->magical = 4;
-    Damage damage2();
+    Damage damage2 = Damage();
     damage->physical = 4;
     damage->magical = 4;
     damage1 += damage2;
