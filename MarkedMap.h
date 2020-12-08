@@ -1,3 +1,12 @@
+/**
+ * \class MarkedMap
+ * 
+ * \brief MarkedMap class
+ * 
+ * \author Pénzes Péter, Nagy Bálint, Őri Tamás
+ * 
+ * Created on: 2020/11/25 14:30
+*/
 #ifndef MARKED_MAP_H
 #define MARKED_MAP_H
 
@@ -22,14 +31,14 @@ class MarkedMap : public Map
 {
 
 private:
-    Position heroPosition;
-    std::map<char, std::list<Position>> monsterPositions;
+    Position heroPosition; ///< A Hero pozíciója
+    std::map<char, std::list<Position>> monsterPositions; ///< Egy std::map a monsterek pozíciójiról
 
 public:
-    explicit MarkedMap(std::string &fileName);
-    Position getHeroPosition() const;
-    std::list<Position> getMonsterPositions(char c);
-    int getMaxMonsterNumber();
+    explicit MarkedMap(std::string &fileName /** [in] A MarkedMap adatait tartalmazó fájl elérési útvonala */); ///< Explicit konstruktor
+    Position getHeroPosition() const; ///< Visszaadja a Hero jelenlegi pozícióját
+    std::list<Position> getMonsterPositions(char c /** [in] Azonosító */); ///< Visszadja az adott azonosítójú Monster-ek listáját
+    int getMaxMonsterNumber(); ///< Visszadja a Monster-ek számát
 };
 
 #endif

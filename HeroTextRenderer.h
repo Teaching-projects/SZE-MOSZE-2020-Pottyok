@@ -18,7 +18,7 @@ class HeroTextRenderer : public TextRenderer
 {
 public:
     using TextRenderer::TextRenderer;
-    virtual void render(const Game &) const override;
+    virtual void render(const Game & /** [in] A kirajzolni kívánt Game& */) const override; ///< Kirajzoló függvény
 };
 
 #endif // HEROTEXTRENDERER_HEADER
