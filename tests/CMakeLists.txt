@@ -19,3 +19,7 @@ target_compile_features(runEntityTests PRIVATE cxx_std_17)
 add_executable( runGameTests GameTests.cpp ${PARENT_DIR}/Game.cpp ${PARENT_DIR}/Map.cpp ${PARENT_DIR}/Monster.cpp ${PARENT_DIR}/Hero.cpp ${PARENT_DIR}/JSON.cpp )
 target_link_libraries(runGameTests gtest gtest_main pthread)
 target_compile_features(runGameTests PRIVATE cxx_std_17)
+
+add_executable( runDamageTests DamageTests.cpp )
+target_link_libraries(runDamageTests gtest gtest_main pthread)
+target_compile_features(runDamageTests PRIVATE cxx_std_17)
