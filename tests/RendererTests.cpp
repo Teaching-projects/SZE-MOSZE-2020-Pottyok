@@ -6,6 +6,8 @@
 TEST(RendererTests, ObserverTest)
 {
     Game g("map_test.txt");
+    Hero hero = Hero::parse("units/TestHero.json");
+    g.putHero(hero,1,1);
     std::stringstream output;
     std::string expected("\n╔════════════════════════════╗\n║████████████████████████████║\n║██░░░░░░██░░░░████████░░░░██║\n║██░░████████░░░░████░░░░████║\n║██░░░░░░██░░░░████░░░░██████║\n║██████░░██░░████░░░░████████║\n║██░░░░░░░░░░░░░░░░░░████████║\n║████████████████████████████║\n╚════════════════════════════╝\n");
     g.registerRenderer(new ObserverTextRenderer(output));
@@ -16,29 +18,10 @@ TEST(RendererTests, ObserverTest)
 TEST(RendererTests, HeroRenderTest)
 {
     Game g("map_test.txt");
+    Hero hero = Hero::parse("units/TestHero.json");
+    g.putHero(hero,1,1);
     std::stringstream output;
     std::string expected("\n╔══════════╗\n║██████████║\n║██░░░░░░██║\n║██░░██████║\n║██░░░░░░██║\n╚══════════╝\n");
-    g.registerRenderer(new HeroTextRenderer(output));
-    g.render();
-    ASSERT_EQ(output.str(), expected);
-}
-
-TEST(RendererTests, ObserverTestPreparedGame)
-{
-    PreparedGame g("preparedgame_test");
-    std::stringstream output;
-    std::string expected("\n╔════════════════════════════╗\n║████████████████████████████║\n║██░░░░░░██░░░░████████░░░░██║\n║██░░████████░░░░████░░░░████║\n║██┣┫M░░░██░░░░████░░░░██████║\n║██████░░██░░████░░░░████████║\n║██░░░░░░░░░░░░░░░░░░████████║\n║████████████████████████████║\n╚════════════════════════════╝\n");
-    g.registerRenderer(new ObserverTextRenderer(output));
-    g.render();
-    ASSERT_EQ(output.str(), expected);
-}
-
-
-TEST(RendererTests, HeroRenderTestPreparedGame)
-{
-    PreparedGame g("preparedgame_test");
-    std::stringstream output;
-    std::string expected("\n╔════════╗\n║██░░░░░░║\n║██░░████║\n║██┣┫M░░░║\n║██████░░║\n║██░░░░░░║\n╚════════╝\n");
     g.registerRenderer(new HeroTextRenderer(output));
     g.render();
     ASSERT_EQ(output.str(), expected);
