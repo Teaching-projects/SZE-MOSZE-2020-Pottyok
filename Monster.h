@@ -61,7 +61,7 @@ public:
          * \brief Visszaadja, hogy az Monster halott-e
          * \return True, ha az Monster jelenlegi eletereje 0, mas esetben False
         */
-    bool getIsDead() const;
+    bool getIsDead() const; ///< Megadja, hogy a Monster halott-e
     bool isAlive() const; ///< Megadja, hogy a Monster eletben van-e
 
     void fightTilDeath(Monster & /** [in] Az Monster akivel a harcot kezdemenyezzuk */); ///< Harc kezdemenyezese egy masik Monster-vel
@@ -72,7 +72,7 @@ public:
         */
     static Monster parse(const std::string &);
 
-    std::string getTexture() const;
+    std::string getTexture() const; ///< Visszadja a Monster textúra fájljának elérési útvonalát
 };
 
 #endif // MONSTER_HEADER

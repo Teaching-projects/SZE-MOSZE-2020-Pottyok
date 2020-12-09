@@ -50,7 +50,7 @@ documentation:
 tests: sca valgrind
 
 unittests:
-	cd tests && cmake . && make && ./runEntityTests && ./runJsonTests && ./runGameTests
+	cd tests && cmake . && make && ./runEntityTests && ./runJsonTests && ./runGameTests && ./runDamageTests && ./runRendererTests && ./runMapTests && ./runMarkedMapTests && ./runMapEntityTests
 
 outputtest:
 	cd tests && python3 inout.py

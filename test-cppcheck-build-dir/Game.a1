@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="260956171">
+        <error id="missingOverride" severity="style" msg="The function &apos;attack&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;attack&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." hash="11421741285310926091">
+            <location file0="Game.cpp" file="Hero.h" line="18" column="14" info="Function in derived class"/>
+            <location file0="Game.cpp" file="Entity.h" line="20" column="22" info="Virtual function in base class"/>
+            <symbol>attack</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="Start" lineNumber="10"/>
+    <functiondecl functionName="End" lineNumber="19"/>
+    <functiondecl functionName="isAnyoneDead" lineNumber="23"/>
+    <functiondecl functionName="attackPhase" lineNumber="27"/>
+    <functiondecl functionName="getWinner" lineNumber="31"/>
+    <functioncall functionName="AttackDamage"/>
+    <functioncall functionName="End"/>
+    <functioncall functionName="Entity"/>
+    <functioncall functionName="ExperienceCurrent"/>
+    <functioncall functionName="Game"/>
+    <functioncall functionName="Health"/>
+    <functioncall functionName="MaxHealth"/>
+    <functioncall functionName="Name"/>
+    <functioncall functionName="attack"/>
+    <functioncall functionName="attackDamage"/>
+    <functioncall functionName="attackPhase"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="ent1"/>
+    <functioncall functionName="ent2"/>
+    <functioncall functionName="float"/>
+    <functioncall functionName="getHealthPoints"/>
+    <functioncall functionName="getIsDead"/>
+    <functioncall functionName="getName"/>
+    <functioncall functionName="getWinner"/>
+    <functioncall functionName="health"/>
+    <functioncall functionName="isAnyoneDead"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

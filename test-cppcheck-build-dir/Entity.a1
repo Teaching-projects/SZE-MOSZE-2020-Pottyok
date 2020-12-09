@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="1565859196">
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="getHealthPoints" lineNumber="15"/>
+    <functiondecl functionName="getMaxHealth" lineNumber="19"/>
+    <functiondecl functionName="getAttackDamage" lineNumber="23"/>
+    <functiondecl functionName="damage" lineNumber="28"/>
+    <functiondecl functionName="attack" lineNumber="35"/>
+    <functiondecl functionName="getIsDead" lineNumber="39"/>
+    <functiondecl functionName="getName" lineNumber="43"/>
+    <functiondecl functionName="parseUnit" lineNumber="48"/>
+    <functioncall functionName="AttackDamage"/>
+    <functioncall functionName="Entity"/>
+    <functioncall functionName="Health"/>
+    <functioncall functionName="MaxHealth"/>
+    <functioncall functionName="Name"/>
+    <functioncall functionName="attackDamage"/>
+    <functioncall functionName="begin"/>
+    <functioncall functionName="close"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="damage"/>
+    <functioncall functionName="end"/>
+    <functioncall functionName="f"/>
+    <functioncall functionName="fileInOneLine"/>
+    <functioncall functionName="fileName"/>
+    <functioncall functionName="getAttackDamage"/>
+    <functioncall functionName="getline"/>
+    <functioncall functionName="good"/>
+    <functioncall functionName="health"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="line"/>
+    <functioncall functionName="matchValue"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="regex_match"/>
+    <functioncall functionName="regex_search"/>
+    <functioncall functionName="replace"/>
+    <functioncall functionName="return"/>
+    <functioncall functionName="runtime_error"/>
+    <functioncall functionName="searchMatches"/>
+    <functioncall functionName="searchRegex"/>
+    <functioncall functionName="stoi"/>
+    <functioncall functionName="str"/>
+    <functioncall functionName="suffix"/>
+    <functioncall functionName="while"/>
+  </FileInfo>
+</analyzerinfo>

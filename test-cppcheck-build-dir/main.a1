@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<analyzerinfo checksum="2098627648">
+        <error id="missingOverride" severity="style" msg="The function &apos;attack&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." verbose="The function &apos;attack&apos; overrides a function in a base class but is not marked with a &apos;override&apos; specifier." hash="8314089150008241903">
+            <location file0="main.cpp" file="Hero.h" line="18" column="14" info="Function in derived class"/>
+            <location file0="main.cpp" file="Entity.h" line="20" column="22" info="Virtual function in base class"/>
+            <symbol>attack</symbol>
+        </error>
+  <FileInfo check="CheckUnusedFunctions">
+    <functiondecl functionName="isNumeric" lineNumber="10"/>
+    <functiondecl functionName="main" lineNumber="18"/>
+    <functioncall functionName="AttackDamage"/>
+    <functioncall functionName="Entity"/>
+    <functioncall functionName="ExperienceCurrent"/>
+    <functioncall functionName="Health"/>
+    <functioncall functionName="MaxHealth"/>
+    <functioncall functionName="Name"/>
+    <functioncall functionName="Start"/>
+    <functioncall functionName="attackDamage"/>
+    <functioncall functionName="c"/>
+    <functioncall functionName="catch"/>
+    <functioncall functionName="chars"/>
+    <functioncall functionName="const"/>
+    <functioncall functionName="ent1"/>
+    <functioncall functionName="ent2"/>
+    <functioncall functionName="float"/>
+    <functioncall functionName="for"/>
+    <functioncall functionName="game"/>
+    <functioncall functionName="health"/>
+    <functioncall functionName="if"/>
+    <functioncall functionName="isdigit"/>
+    <functioncall functionName="name"/>
+    <functioncall functionName="parseUnit"/>
+    <functioncall functionName="what"/>
+  </FileInfo>
+</analyzerinfo>

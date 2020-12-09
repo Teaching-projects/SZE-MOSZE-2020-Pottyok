@@ -16,8 +16,8 @@ class Game;
 class Renderer
 {
 public:
-    virtual void render(const Game &) const = 0;
-    virtual ~Renderer(){};
+    virtual void render(const Game &) const = 0; ///< Kirajzoló függvény, ez egy 'pure virtual' függvény, vagyik a leszármazó osztályoknak kötelező tartalmazniuk egy ilyen metódust
+    virtual ~Renderer(){}; ///< A Renderer osztály virtual destruktora
 };
 
 #endif // RENDERER_HEADER
