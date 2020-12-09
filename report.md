@@ -41,8 +41,8 @@
 
 | Osztály                | Publikus metódusok száma | Unit tesztelt metódusok száma | Unit tesztek száma |
 | ---------------------- | ------------------------ | ----------------------------- | ------------------ |
-| `Monster`              | 14                       | 8                             | 4                  |
-| `Hero`                 | 5                        | 10                            | 6                  |
+| `Monster`              | 16                       | 11                            | 10                 |
+| `Hero`                 | 7                        | 5                             | 10                 |
 | `TextRenderer`         | 2                        | 0                             | 0                  |
 | `SvgRenderer`          | 3                        | 0                             | 0                  |
 | `Renderer`             | 1                        | 0                             | 0                  |
@@ -50,13 +50,13 @@
 | `ObserverTextRenderer` | 1                        | 1                             | 1                  |
 | `ObserverSvgRenderer`  | 1                        | 0                             | 0                  |
 | `MarkedMap`            | 4                        | 4                             | 4                  |
-| `Map`                  | 5                        | 5                             | 5                  |
-| `JSON`                 | 6                        | 4                             | 7                  |
+| `Map`                  | 7                        | 6                             | 5                  |
+| `JSON`                 | 7                        | 4                             | 7                  |
 | `HeroTextRenderer`     | 1                        | 1                             | 1                  |
-| `Game`                 | 23                       | 12                            | 14                 |
-| `Damage`               | 5                        | 3                             | 4                  |
+| `Game`                 | 26                       | 8                             | 14                 |
+| `Damage`               | 6                        | 3                             | 4                  |
 | `CharacterSvgRenderer` | 1                        | 0                             | 0                  |
-| `MapEntity`            | 6                        | 5                             | 3                  |
+| `MapEntity`            | 7                        | 7                             | 3                  |
 
 # Kód dokumentáció
 
