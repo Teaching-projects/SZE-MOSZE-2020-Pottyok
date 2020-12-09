@@ -1,6 +1,6 @@
-#include "HeroTextRenderer.cpp"
-#include "ObserverTextRenderer.cpp"
-#include "Game.cpp"
+#include "HeroTextRenderer.h"
+#include "ObserverTextRenderer.h"
+#include "Game.h"
 
 #include <gtest/gtest.h>
 
