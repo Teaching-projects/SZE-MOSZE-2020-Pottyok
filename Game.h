@@ -100,8 +100,7 @@ public:
     std::vector<MapEntity> getMonsters() const; ///< Visszaadja a Monster vektort
     Map getMap() const; ///< Visszaadja a beallitott Map -ot
     Monster getMonsterHere(unsigned int, unsigned int) const;   ///< Visszaadja az adott koordinatan talalhato Monster -t
-    MapEntity getHeroEntity() const;///< Visszaadja azt a MapEntityt ahol a Hero található
-
+    
     class WrongIndexException : virtual public std::runtime_error
     {
     public:

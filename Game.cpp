@@ -74,7 +74,7 @@ void Game::run()
     if (areHeroesAlive())
     {
         render();
-        std::cout << std::get<Hero>(this->getHeroEntity().getEntity()).getName() + " cleared the map." << std::endl;
+        std::cout << std::get<Hero>(this->heroes[0].getEntity()).getName() + " cleared the map." << std::endl;
     }
     else
     {
@@ -102,7 +102,7 @@ bool Game::checkUserInput(std::string &input)
 
 bool Game::isMovePossible(std::string &input)
 {
-    MapEntity hero = this->getHeroEntity();
+    MapEntity hero = this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
 
@@ -127,28 +127,28 @@ bool Game::isMovePossible(std::string &input)
 
 void Game::move(std::string &input)
 {
-    MapEntity hero = this->getHeroEntity();
+    MapEntity hero = this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
     unsigned int futureX = currentX + this->movements[input]['x'];
     unsigned int futureY = currentY + this->movements[input]['y'];
-    this->getHeroEntity().setX(futureX);
-    this->getHeroEntity().setY(futureY);
+    this->heroes[0].setX(futureX);
+    this->heroes[0].setY(futureY);
 }
 void Game::fight()
 {
-    unsigned int currentX = this->getHeroEntity().getX();
-    unsigned int currentY = this->getHeroEntity().getY();
+    unsigned int currentX = this->heroes[0].getX();
+    unsigned int currentY = this->heroes[0].getY();
     std::vector<int> toDelete;
-    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(this->getHeroEntity().getEntity()).isAlive(); i++)
+    for (unsigned int i = 0; i < this->monsters.size() && std::get<Hero>(this->heroes[0].getEntity()).isAlive(); i++)
     {
         MapEntity monster = this->monsters[i];
         if (currentX == monster.getX() && currentY == monster.getY())
         {
             Monster m = std::get<Monster>(monster.getEntity());
-            std::get<Hero>(this->getHeroEntity().getEntity()).fightTilDeath(m);
+            std::get<Hero>(this->heroes[0].getEntity()).fightTilDeath(m);
 
-            if (std::get<Hero>(this->getHeroEntity().getEntity()).isAlive())
+            if (std::get<Hero>(this->heroes[0].getEntity()).isAlive())
             {
                 toDelete.push_back(i);
             }
@@ -163,7 +163,7 @@ void Game::fight()
 
 bool Game::heroIsHere(unsigned int x, unsigned int y) const
 {
-    MapEntity hero = this->getHeroEntity();
+    MapEntity hero = this->heroes[0];
     unsigned int currentX = hero.getX();
     unsigned int currentY = hero.getY();
     return currentX == x && currentY == y;
@@ -252,9 +252,3 @@ std::string Game::getFreeTexture() const
 {
     return this->freeTexture;
 };
-
-MapEntity Game::getHeroEntity() const {
-    if (!this->isHeroSet())
-        throw NotInitializedException("Hero is not set.");
-    return this->heroes[0];
-}
