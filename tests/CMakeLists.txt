@@ -23,3 +23,7 @@ target_compile_features(runGameTests PRIVATE cxx_std_17)
 add_executable( runDamageTests DamageTests.cpp )
 target_link_libraries(runDamageTests gtest gtest_main pthread)
 target_compile_features(runDamageTests PRIVATE cxx_std_17)
+
+add_executable( runRendererTests RendererTests.cpp )
+target_link_libraries(runRendererTests gtest gtest_main pthread)
+target_compile_features(runRendererTests PRIVATE cxx_std_17)
