@@ -83,7 +83,7 @@ public:
     virtual void render();  ///< Renderer futtatasa
     void registerRenderer(Renderer *);  ///< Renderer hozzaadasa a Game -hez
     std::string getMapRow(unsigned int rowId /** A Map adott soranak szama */);  ///< A Map egy sorat adja vissza
-    bool isHeroSet();   ///< Visszaadja, hogy van-e mar Hero beallitva
+    bool isHeroSet() const;   ///< Visszaadja, hogy van-e mar Hero beallitva
     bool isMapSet();    ///< Visszaadja, hogy van-e mar Map beallitva
     bool areMonstersAlive();    ///< Visszaadja, hogy van-e Monster eletben
     bool areHeroesAlive();  ///< Visszaadja, hogy van-e Hero eletben
@@ -100,6 +100,7 @@ public:
     std::vector<MapEntity> getMonsters() const; ///< Visszaadja a Monster vektort
     Map getMap() const; ///< Visszaadja a beallitott Map -ot
     Monster getMonsterHere(unsigned int, unsigned int) const;   ///< Visszaadja az adott koordinatan talalhato Monster -t
+    MapEntity getHeroEntity() const;///< Visszaadja azt a MapEntityt ahol a Hero található
 
     class WrongIndexException : virtual public std::runtime_error
     {
