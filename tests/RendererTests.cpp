@@ -6,7 +6,7 @@
 TEST(RendererTests, ObserverTest)
 {
     Game g("map_test.txt");
-    Hero hero = Hero::parse("units/TestHero.json");
+    Hero hero = Hero::parse("../units/TestHero.json");
     g.putHero(hero,1,1);
     std::stringstream output;
     std::string expected("\n╔════════════════════════════╗\n║████████████████████████████║\n║██░░░░░░██░░░░████████░░░░██║\n║██░░████████░░░░████░░░░████║\n║██░░░░░░██░░░░████░░░░██████║\n║██████░░██░░████░░░░████████║\n║██░░░░░░░░░░░░░░░░░░████████║\n║████████████████████████████║\n╚════════════════════════════╝\n");
@@ -18,7 +18,7 @@ TEST(RendererTests, ObserverTest)
 TEST(RendererTests, HeroRenderTest)
 {
     Game g("map_test.txt");
-    Hero hero = Hero::parse("units/TestHero.json");
+    Hero hero = Hero::parse("../units/TestHero.json");
     g.putHero(hero,1,1);
     std::stringstream output;
     std::string expected("\n╔══════════╗\n║██████████║\n║██░░░░░░██║\n║██░░██████║\n║██░░░░░░██║\n╚══════════╝\n");
