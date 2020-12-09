@@ -3,7 +3,7 @@
 
 TEST(Maptest, FileReadTest)
 {
-    ASSERT_THROW(Map map("./none.txt"), std::runtime_error);
+    ASSERT_THROW(Map map("none.txt"), std::runtime_error);
     ASSERT_NO_THROW(Map map("map_test.txt"));
 }
 
