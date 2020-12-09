@@ -208,7 +208,7 @@ void Game::render()
     }
 }
 
-bool Game::isHeroSet()
+bool Game::isHeroSet() const
 {
     return this->heroes.size() > 0;
 }

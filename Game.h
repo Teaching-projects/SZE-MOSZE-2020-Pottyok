@@ -1,13 +1,3 @@
-/**
- * \class Game
- * 
- * \brief Game class
- * 
- * \author Pénzes Péter, Nagy Bálint, Őri Tamás
- * 
- * Created on: 2020/11/19 16:30
-*/
-
 #ifndef GAME_HEADER
 #define GAME_HEADER
 
@@ -20,26 +10,42 @@
 #include "Map.h"
 #include "Hero.h"
 #include "Renderer.h"
-
+/**
+ * \class MapEntity
+ * 
+ * \brief MapEntity class
+ * 
+ * \author Pénzes Péter, Nagy Bálint, Őri Tamás
+ * 
+ * Created on: 2020/11/19 16:30
+*/
 class MapEntity
 {
 private:
-    unsigned int x;
-    unsigned int y;
-    std::variant<Monster, Hero> entity;
+    unsigned int x; ///< Karakter X koordinátája
+    unsigned int y; ///< Karakter Y koordinátája
+    std::variant<Monster, Hero> entity; ///< Monster-t, vagy Hero-t tartalmazó std::variant
 
 public:
-    MapEntity(unsigned int _x, unsigned int _y, std::variant<Monster, Hero> _entity) : x(_x), y(_y), entity(_entity){};
+    MapEntity(unsigned int _x, unsigned int _y, std::variant<Monster, Hero> _entity) : x(_x), y(_y), entity(_entity){}; ///< MapEntity konstruktora
 
-    unsigned int getX() { return x; }
-    unsigned int getY() { return y; }
-    std::variant<Monster, Hero> &getEntity() { return this->entity; }
+    unsigned int getX() { return x; } ///< Visszaadja az Entity X koordinátáját
+    unsigned int getY() { return y; } ///< Visszaadja az Entity Y koordinátáját
+    std::variant<Monster, Hero> &getEntity() { return this->entity; } ///< Visszaadja az Entity-t
 
-    void setX(unsigned int _x) { x = _x; }
-    void setY(unsigned int _y) { y = _y; }
-    void setEntity(std::variant<Monster, Hero> _entity) { entity = _entity; }
+    void setX(unsigned int _x) { x = _x; } ///< Beállítja az X koordinátáját
+    void setY(unsigned int _y) { y = _y; } ///< Beállítja az Y koordinátáját
+    void setEntity(std::variant<Monster, Hero> _entity) { entity = _entity; } ///< Beállítja az Entity-t
 };
-
+/**
+ * \class Game
+ * 
+ * \brief Game class
+ * 
+ * \author Pénzes Péter, Nagy Bálint, Őri Tamás
+ * 
+ * Created on: 2020/11/19 16:30
+*/
 class Game
 {
 private:
@@ -77,7 +83,7 @@ public:
     virtual void render();  ///< Renderer futtatasa
     void registerRenderer(Renderer *);  ///< Renderer hozzaadasa a Game -hez
     std::string getMapRow(unsigned int rowId /** A Map adott soranak szama */);  ///< A Map egy sorat adja vissza
-    bool isHeroSet();   ///< Visszaadja, hogy van-e mar Hero beallitva
+    bool isHeroSet() const;   ///< Visszaadja, hogy van-e mar Hero beallitva
     bool isMapSet();    ///< Visszaadja, hogy van-e mar Map beallitva
     bool areMonstersAlive();    ///< Visszaadja, hogy van-e Monster eletben
     bool areHeroesAlive();  ///< Visszaadja, hogy van-e Hero eletben
@@ -94,7 +100,7 @@ public:
     std::vector<MapEntity> getMonsters() const; ///< Visszaadja a Monster vektort
     Map getMap() const; ///< Visszaadja a beallitott Map -ot
     Monster getMonsterHere(unsigned int, unsigned int) const;   ///< Visszaadja az adott koordinatan talalhato Monster -t
-
+    
     class WrongIndexException : virtual public std::runtime_error
     {
     public:

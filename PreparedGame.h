@@ -20,9 +20,9 @@
 class PreparedGame : private Game
 {
 public:
-    explicit PreparedGame(std::string mapjson);
-    void run();
-    void registerRenderer(Renderer *);
+    explicit PreparedGame(std::string mapjson /** [in] A használni kívánt beállítások json fájlja */); ///< PreparedMap explicit konstruktora
+    void run(); ///< PreparedMap játék loop indítása 
+    void registerRenderer(Renderer *); ///< Renderer regisztrálása a kirajzolók közé
 };
 
 #endif // PREPAREDGAME_HEADER

@@ -17,7 +17,7 @@ class CharacterSVGRenderer : public SvgRenderer
 {
 public:
     using SvgRenderer::SvgRenderer;
-    virtual void render(const Game &) const override;
+    virtual void render(const Game & /** [in] A kirajzolni kívánt Game& */) const override; ///< Kirajzoló függvény
 };
 
 #endif // CHARACTERSVGRENDERER_HEADER
