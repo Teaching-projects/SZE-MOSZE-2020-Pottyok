@@ -1,4 +1,0 @@
-Entity.a1::Entity.cpp
-Game.a1::Game.cpp
-Hero.a1::Hero.cpp
-main.a1::main.cpp
